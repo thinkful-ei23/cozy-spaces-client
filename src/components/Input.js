@@ -33,6 +33,7 @@ export default class Input extends React.Component {
                     {error}
                     {warning}
                 </div>
+                <br />
             </div>
         );
     }
