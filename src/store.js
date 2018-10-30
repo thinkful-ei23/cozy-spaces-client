@@ -1,8 +1,9 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import { loadAuthToken, setAuthToken, refreshAuthToken } from './local-storage';
+import { loadAuthToken } from './local-storage';
 import registerReducer from './reducers/register';
 import authReducer from './reducers/auth';
+import {refreshAuthToken, setAuthToken} from './actions/auth'
 import { reducer as formReducer } from 'redux-form';
 import {composeWithDevTools} from 'redux-devtools-extension';
 

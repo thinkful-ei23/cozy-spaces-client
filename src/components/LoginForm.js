@@ -2,11 +2,11 @@ import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
 import Input from './Input';
 import {login} from '../actions/auth';
-import {required, nonEmpty, isEmail} from '../validators';
+import {required, nonEmpty} from '../validators';
 
 export class LoginForm extends React.Component {
     onSubmit(values) {
-        return this.props.dispatch(login(values.username, values.password, values.email));
+        return this.props.dispatch(login(values.username, values.password));
     }
 
     render() {
@@ -35,15 +35,6 @@ export class LoginForm extends React.Component {
                     autocomplete="username"
                     validate={[required, nonEmpty]}
                     label="Username"
-                />
-                <Field
-                    component={Input}
-                    type="email"
-                    name="email"
-                    id="email"
-                    autocomplete="email"
-                    validate={[required, nonEmpty, isEmail]}
-                    label='Email'
                 />
                 <Field
                     component={Input}
