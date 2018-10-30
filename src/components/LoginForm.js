@@ -1,12 +1,12 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
-import Input from './input2';
-// import {login} from '../actions/auth';
+import Input from './Input';
+import {login} from '../actions/auth';
 import {required, nonEmpty, isEmail} from '../validators';
 
 export class LoginForm extends React.Component {
     onSubmit(values) {
-        // return this.props.dispatch(login(values.username, values.password));
+        return this.props.dispatch(login(values.username, values.password, values.email));
     }
 
     render() {
@@ -27,35 +27,32 @@ export class LoginForm extends React.Component {
                     this.onSubmit(values)
                 )}>
                 {error}
-                <label htmlFor="username">Username</label>
                 <Field
                     component={Input}
                     type="text"
                     name="username"
                     id="username"
-                    placeholder="username"
                     autocomplete="username"
                     validate={[required, nonEmpty]}
+                    label="Username"
                 />
-                <label htmlFor="email">Email</label>
                 <Field
                     component={Input}
                     type="email"
                     name="email"
                     id="email"
-                    placeholder="Email"
                     autocomplete="email"
                     validate={[required, nonEmpty, isEmail]}
+                    label='Email'
                 />
-                <label htmlFor="password">Password</label>
                 <Field
                     component={Input}
                     type="password"
                     name="password"
                     id="password"
-                    placeholder="enter password"
                     autocomplete="current-password"
                     validate={[required, nonEmpty]}
+                    label='Password'
                 />
                 <button className="login" disabled={this.props.pristine || this.props.submitting}>
                     Cozy up!
