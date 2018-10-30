@@ -30,7 +30,7 @@ export class RegistrationForm extends React.Component {
         if (this.props.submitSucceeded) {
             success = (
                 <div className="form-success" aria-live="polite">
-                    <p>'Submit succeeded</p>
+                    <p>Submit succeeded</p>
                 </div>
             );
         }
