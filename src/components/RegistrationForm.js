@@ -26,39 +26,49 @@ export class RegistrationForm extends React.Component {
                 </div>
             );
         }
+        let success;
+        if (this.props.submitSucceeded) {
+            success = (
+                <div className="form-success" aria-live="polite">
+                    <p>Submit succeeded</p>
+                </div>
+            );
+        }
         return (
             <form
               onSubmit={this.props.handleSubmit(values =>
                   this.onSubmit(values)
               )}>
               {error}
-              <label htmlFor="username">Username</label>
+              {success}
               <Field
                   component={Input}
                   type="text"
                   name="username"
                   validate={[required, nonEmpty, isTrimmed]}
+                  label="Username"
                 />
-                <label htmlFor="email">Email</label>
               <Field
                   component={Input}
                   type="email"
                   name="email"
                   validate={[required, nonEmpty, isTrimmed, isEmail]}
+                  label="Email"
                 />
-              <label htmlFor="password">Password</label>
               <Field
                   component={Input}
                   type="password"
                   name="password"
                   validate={[required, passwordLength, isTrimmed]}
-              />
-              <label htmlFor="passwordConfirm">Confirm password</label>    
+                  label="Password"
+              />   
               <Field
                   component={Input}
                   type="password"
                   name="passwordConfirm"
                   validate={[required, nonEmpty, matchesPassword]}
+                  label="ConfirmPassword"
+                  labelText="Confirm password"
               />
               <button
                 className="btn-sub"
