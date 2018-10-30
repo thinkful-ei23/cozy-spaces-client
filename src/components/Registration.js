@@ -6,7 +6,7 @@ import RegistrationForm from './RegistrationForm';
 
 export function RegistrationPage(props) {
     if (props.loggedIn) {
-        return <Redirect to="/dashboard" />;
+        return <Redirect to="/" />;
     }
 
     return (
@@ -19,7 +19,7 @@ export function RegistrationPage(props) {
 }
 
 const mapStateToProps = state => ({
-    // loggedIn: state.auth.currentUser !== null
+    loggedIn: state.auth.currentUser !== null
 });
 
 export default connect(mapStateToProps)(RegistrationPage);

@@ -5,7 +5,7 @@ import LoginForm from './LoginForm';
 
 export function LogIn(props) {
     if (props.loggedIn) {
-        return <Redirect to="/dashboard" />;
+        return <Redirect to="/" />;
     }
 
     return (
@@ -18,7 +18,7 @@ export function LogIn(props) {
 }
 
 const mapStateToProps = state => ({
-    // loggedIn: state.auth.currentUser !== null
+    loggedIn: state.auth.currentUser !== null
 });
 
 export default connect(mapStateToProps)(LogIn);
