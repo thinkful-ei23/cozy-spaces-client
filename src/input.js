@@ -57,7 +57,6 @@ export default class Input extends React.Component {
                 placeholder={this.props.placeholder}
                 min={this.props.min}
                 columns={this.props.columns}
-                value={this.props.currentDeliveryDate}
               >
                 {this.props.children}
               </Element>

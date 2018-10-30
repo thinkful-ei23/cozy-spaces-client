@@ -27,7 +27,7 @@ export class LoginForm extends React.Component {
                     this.onSubmit(values)
                 )}>
                 {error}
-                <label htmlFor="username">Sign In</label>
+                <label htmlFor="username">Username</label>
                 <Field
                     component={Input}
                     type="text"
@@ -37,6 +37,7 @@ export class LoginForm extends React.Component {
                     autocomplete="username"
                     validate={[required, nonEmpty]}
                 />
+                <label htmlFor="email">Email</label>
                 <Field
                     component={Input}
                     type="email"
@@ -46,6 +47,7 @@ export class LoginForm extends React.Component {
                     autocomplete="email"
                     validate={[required, nonEmpty, validateEmail]}
                 />
+                <label htmlFor="password">Password</label>
                 <Field
                     component={Input}
                     type="password"
