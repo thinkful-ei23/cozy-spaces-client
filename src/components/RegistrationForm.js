@@ -38,7 +38,6 @@ export class RegistrationForm extends React.Component {
                   type="text"
                   name="username"
                   validate={[required, nonEmpty, isTrimmed]}
-                  label="Username"
                 />
                 <label htmlFor="email">Email</label>
               <Field
@@ -46,7 +45,6 @@ export class RegistrationForm extends React.Component {
                   type="email"
                   name="email"
                   validate={[required, nonEmpty, isTrimmed, isEmail]}
-                  label="email"
                 />
               <label htmlFor="password">Password</label>
               <Field
@@ -54,7 +52,6 @@ export class RegistrationForm extends React.Component {
                   type="password"
                   name="password"
                   validate={[required, passwordLength, isTrimmed]}
-                  label="Password"
               />
               <label htmlFor="passwordConfirm">Confirm password</label>    
               <Field
@@ -62,7 +59,6 @@ export class RegistrationForm extends React.Component {
                   type="password"
                   name="passwordConfirm"
                   validate={[required, nonEmpty, matchesPassword]}
-                  label="Confirm password"
               />
               <button
                 className="btn-sub"
