@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-// import { loadAuthToken } from './local-storage';
+import { loadAuthToken, setAuthToken, refreshAuthToken } from './local-storage';
 import registerReducer from './reducers/register';
 import authReducer from './reducers/auth';
 import { reducer as formReducer } from 'redux-form';
@@ -24,11 +24,11 @@ const store = createStore(rootReducer, composeWithDevTools(
 ));
 
 // Hydrate the authToken from localStorage if it exist
-// const authToken = loadAuthToken();
-// if (authToken) {
-//     const token = authToken;
-    // store.dispatch(setAuthToken(token));
-    // store.dispatch(refreshAuthToken());
-// }
+const authToken = loadAuthToken();
+if (authToken) {
+    const token = authToken;
+    store.dispatch(setAuthToken(token));
+    store.dispatch(refreshAuthToken());
+}
 
 export default store;
