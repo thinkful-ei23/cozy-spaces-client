@@ -4,21 +4,14 @@ import { Link } from 'react-router-dom';
 import { clearAuth } from '../actions/auth';
 
 export class LandingPage extends Component {
-    logOut() {
-        this.props.dispatch(clearAuth());
-    }
 
     render(){
-        let logOut;
-        if (this.props.loggedIn) {
-            logOut =  <button onClick={() => this.logOut()}>Log out</button>
-        }
-
         return (
             <main role="main">
-                <div><Link to="/register">Register</Link></div>
-                <div><Link to="/login">Log in</Link></div>
-                {logOut}
+                <div>
+                    <h2>Find a cozy space</h2>
+                    <p>Not all spaces are created equal in terms of coziness</p>
+                </div>
             </main>
         );
     }
