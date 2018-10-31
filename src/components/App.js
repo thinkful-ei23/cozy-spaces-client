@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import { Route, withRouter } from 'react-router-dom';
+
+import Header from './Header';
 import Registration from './Registration';
 import LogIn from './Login';
 import Profile from './Profile';
 import AddAListingPage from './AddAListingPage';
 import LandingPage from './LandingPage';
 import Dashboard from "./Dashboard";
-import Header from './Header';
-import { Route, withRouter} from 'react-router-dom';
-import { connect } from 'react-redux';
 
 class App extends Component {
   render() {
