@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { Link } from 'react-router-dom';
 
-export class Header extends Component {
+class Header extends React.Component {
 
   logOut() {
     this.props.dispatch(clearAuth());
@@ -15,7 +15,7 @@ export class Header extends Component {
         logOut =  <button onClick={() => this.logOut()}>Log out</button>
       }
 
-        return (
+      return (
           <div>
             <div><Link to="/register">Register</Link></div>
             <div><Link to="/login">Log in</Link></div>
@@ -26,7 +26,7 @@ export class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.auth.currentUser !== null
+  loggedIn: state.auth.currentUser
 });
 
 export default connect(mapStateToProps)(Header);
