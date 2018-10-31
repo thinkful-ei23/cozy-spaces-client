@@ -11,11 +11,20 @@ class Header extends Component {
   }
 
   render() {
-    let logOut;
-    console.log('test', this.props.loggedIn);
+
+    const buttonStyle = {
+      margin: '5px'
+    }
+
+    let registerButton = <Link style={buttonStyle} to="/register">Register</Link>;
+    let loginButton = <Link style={buttonStyle} to="/login">Log in</Link>;
+    let logOutButton,
+    profileButton,
+    faqsButton;
+
     if (this.props.loggedIn) {
-      logOut = (
-        <button id="logoutButton" onClick={() => this.logOut()}>
+      logOutButton = (
+        <button style={buttonStyle} id="logoutButton" onClick={() => this.logOut()}>
           Log out
         </button>
       );
@@ -24,13 +33,9 @@ class Header extends Component {
     return (
       <header>
         <h1>Cozy Places</h1>
-        <div>
-          <Link to="/register">Register</Link>
-        </div>
-        <div>
-          <Link to="/login">Log in</Link>
-        </div>
-        {logOut}
+        {registerButton}
+        {loginButton}
+        {logOutButton}
       </header>
     );
   }
