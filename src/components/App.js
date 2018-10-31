@@ -5,8 +5,8 @@ import Profile from './Profile';
 import AddAListingPage from './AddAListingPage';
 import LandingPage from './LandingPage';
 import { Route } from 'react-router-dom';
-import { Dashboard } from "./Dashboard";
-import { Header } from './Header';
+import Dashboard from "./Dashboard";
+import Header from './Header';
 
 class App extends Component {
   render() {
@@ -19,6 +19,7 @@ class App extends Component {
           <Route exact path="/login" component={LogIn} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/add-listing" component={AddAListingPage} />
+          <Route exact path="/places/:id" component={Listing} />
       </div>
     );
   }
