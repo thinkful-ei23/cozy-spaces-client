@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
 import { fetchPlaceByID } from '../actions/places';
 
-export class Listing extends Component {
+class Listing extends Component {
 
     componentWillMount() {
         if (!this.props.detailedPlace) {

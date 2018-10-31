@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
 import {fetchPlaces, fetchPlaceByID} from '../actions/places';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
-export class Dashboard extends Component {
+class Dashboard extends Component {
+
     componentDidMount() {
         return (
             this.props.dispatch(fetchPlaces())
@@ -15,6 +18,9 @@ export class Dashboard extends Component {
     }
 
     render(){
+      if (!this.props.returningUser) {
+        return <Redirect to="/" />;
+      }
       return (
        <div className="dashboard">
         <ul>{(this.props.places).map(place =>
@@ -34,7 +40,9 @@ export class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-    places: state.places.places
+    places: state.places.places,
+    loggedIn: state.auth.currentUser !== null,
+    returningUser: state.auth.returningUser
 });
 
 export default connect(mapStateToProps)(Dashboard);

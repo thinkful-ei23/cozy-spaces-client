@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
+import { Route, withRouter } from 'react-router-dom';
+
+import Header from './Header';
 import Registration from './Registration';
 import LogIn from './Login';
 import Profile from './Profile';
 import AddAListingPage from './AddAListingPage';
 import LandingPage from './LandingPage';
-import { Route } from 'react-router-dom';
-import Dashboard from "./Dashboard";
-import Header from './Header';
 import Listing from './Listing';
+import Dashboard from "./Dashboard";
 
 class App extends Component {
   render() {
@@ -26,4 +28,9 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  hasAuthToken: state.auth.authToken !== null,
+  loggedIn: state.auth.currentUser !== null
+});
+
+export default withRouter(connect(mapStateToProps)(App));

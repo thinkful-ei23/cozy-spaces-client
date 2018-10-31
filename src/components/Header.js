@@ -1,32 +1,56 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { Link } from 'react-router-dom';
+import { clearAuthToken } from '../local-storage';
 
-export class Header extends Component {
+class Header extends Component {
 
   logOut() {
     this.props.dispatch(clearAuth());
+    clearAuthToken();
   }
 
-    render(){
-      let logOut;
-      if (this.props.loggedIn) {
-        logOut =  <button onClick={() => this.logOut()}>Log out</button>
-      }
+  render() {
 
-        return (
-          <div>
-            <div><Link to="/register">Register</Link></div>
-            <div><Link to="/login">Log in</Link></div>
-            {logOut}
-          </div>
-        );
+    const buttonStyle = {
+      margin: '5px'
     }
+
+    let registerButton = <Link style={buttonStyle} to="/register">Register</Link>;
+    let loginButton = <Link style={buttonStyle} to="/login">Log in</Link>;
+    let faqsButton = <Link style={buttonStyle} id="faqsButton" to="/faqs">FAQ</Link>;
+    let logOutButton,
+    profileButton;
+
+    if (this.props.loggedIn) {
+      logOutButton = (
+        <button style={buttonStyle} id="logoutButton" onClick={() => this.logOut()}>
+          Log out
+        </button>
+      );
+      profileButton = (
+        <Link style={buttonStyle} id="profileButton" to="/profile">Profile</Link>
+      )
+      loginButton = null;
+      registerButton = null;
+    }
+
+    return (
+      <header>
+        <h1>Cozy Places</h1>
+        {faqsButton}
+        {loginButton}
+        {registerButton}
+        {profileButton}
+        {logOutButton}
+      </header>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.auth.currentUser !== null
+  loggedIn: state.auth.currentUser
 });
 
 export default connect(mapStateToProps)(Header);

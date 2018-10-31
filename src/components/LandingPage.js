@@ -1,24 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { clearAuth } from '../actions/auth';
+import { Redirect } from 'react-router-dom';
+import { storeReturningUser } from '../actions/auth';
 
-export class LandingPage extends Component {
+class LandingPage extends Component {
+    setReturnUser() {
+        this.props.dispatch(storeReturningUser());
+    }
 
     render(){
-        return (
-            <main role="main">
-                <div>
-                    <h2>Find a cozy space</h2>
-                    <p>Not all spaces are created equal in terms of coziness</p>
-                </div>
-            </main>
-        );
-    }
+        if (this.props.returningUser) {
+            return <Redirect to="/dashboard" />;
+        }
+            return (
+                <main role="main">
+                    <div>
+                        <h2>Find a cozy space</h2>
+                        <p>Not all public spaces are created equally cozy. FIND YOUR COZY PLACE BECAUSE THE DARK OF WINTER WILL GET YOU IF YOU DON'T.</p>
+                        <button onClick={() => {this.setReturnUser()}}>Become cozy</button>
+                    </div>
+                </main>
+            );
+        }
 }
 
 const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null
+    returningUser : state.auth.returningUser
 });
 
 export default connect(mapStateToProps)(LandingPage);
