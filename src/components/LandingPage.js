@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 import { clearAuth } from '../actions/auth';
 
 export class LandingPage extends Component {
-    logOut() {
-        this.props.dispatch(clearAuth());
-    }
 
     render(){
         let logOut;
