@@ -5,7 +5,7 @@ import Profile from './Profile';
 import AddAListingPage from './AddAListingPage';
 import LandingPage from './LandingPage';
 import { Route } from 'react-router-dom';
-import { Dashboard } from "./Dashboard.1";
+import { Dashboard } from "./Dashboard";
 import { Header } from './Header';
 
 class App extends Component {
