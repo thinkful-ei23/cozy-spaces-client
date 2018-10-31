@@ -2,27 +2,38 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { Link } from 'react-router-dom';
+import { clearAuthToken } from '../local-storage';
 
-export class Header extends Component {
-
+class Header extends Component {
   logOut() {
     this.props.dispatch(clearAuth());
+    clearAuthToken();
   }
 
-    render(){
-      let logOut;
-      if (this.props.loggedIn) {
-        logOut =  <button onClick={() => this.logOut()}>Log out</button>
-      }
-
-        return (
-          <div>
-            <div><Link to="/register">Register</Link></div>
-            <div><Link to="/login">Log in</Link></div>
-            {logOut}
-          </div>
-        );
+  render() {
+    let logOut;
+    console.log('test', this.props.loggedIn);
+    if (this.props.loggedIn) {
+      logOut = (
+        <button id="logoutButton" onClick={() => this.logOut()}>
+          Log out
+        </button>
+      );
     }
+
+    return (
+      <header>
+        <h1>Cozy Places</h1>
+        <div>
+          <Link to="/register">Register</Link>
+        </div>
+        <div>
+          <Link to="/login">Log in</Link>
+        </div>
+        {logOut}
+      </header>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
