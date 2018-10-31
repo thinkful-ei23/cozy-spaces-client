@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { Link } from 'react-router-dom';
 import { clearAuthToken } from '../local-storage';
 
 class Header extends Component {
+
   logOut() {
     this.props.dispatch(clearAuth());
     clearAuthToken();
@@ -37,7 +38,7 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-  loggedIn: state.auth.currentUser !== null
+  loggedIn: state.auth.currentUser
 });
 
 export default connect(mapStateToProps)(Header);
