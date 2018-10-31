@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
-import {fetchPlaces} from '../actions/places';
+import {fetchPlaces, fetchPlaceByID} from '../actions/places';
+import { Link } from 'react-router-dom';
 
 export class Dashboard extends Component {
     componentDidMount() {
         return (
             this.props.dispatch(fetchPlaces())
         );
+    }
+
+    fetchPlaceById(id) {
+        return this.props.dispatch(fetchPlaceByID(id));
     }
 
     render(){
@@ -19,6 +24,7 @@ export class Dashboard extends Component {
                 <span className="name">{place.name}</span><span className="type">{place.type}</span><br></br>
                 <span className="overallRating">{place.rating}</span>
             </div>
+            <Link to={`/places/${place.id}`} onClick={() => this.fetchPlaceById(place.id)}>Check out this place in detail</Link>
             </li>
             )}
         </ul>

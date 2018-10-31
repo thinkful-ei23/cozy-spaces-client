@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
+import { fetchPlaceByID } from '../actions/places';
 
-export class Dashboard extends Component {
+export class Listing extends Component {
 
-    render(){
+    componentWillMount() {
+        if (!this.props.detailedPlace) {
+            const id = this.props.match.params.id;
+            this.props.dispatch(fetchPlaceByID(id));
+        }
+    }
+
+    render() {
     let specificPlace = this.props.detailedPlace;
       return (
        <div className="listing">
@@ -14,11 +22,11 @@ export class Dashboard extends Component {
         <h3>Type of place: {specificPlace.type}</h3>
         <h3>Overall coziness: {specificPlace.overallRating}</h3>
         <ul>
-                <li>Warm lighting: {specificPlace.lightingRating}</li>
-                <li>Relaxed Music: {specificPlace.musicRating}</li>
-                <li>Soft fabrics in space (walls or floor): {specificPlace.fabricRating} </li>
-                <li>Comfy seating: {specificPlace.seatingRating}</li>
-                <li>Hot food/drink: {specificPlace.foodRating}</li>
+            <li>Warm lighting: {specificPlace.lightingRating}</li>
+            <li>Relaxed Music: {specificPlace.musicRating}</li>
+            <li>Soft fabrics in space (walls or floor): {specificPlace.fabricRating} </li>
+            <li>Comfy seating: {specificPlace.seatingRating}</li>
+            <li>Hot food/drink: {specificPlace.foodRating}</li>
         </ul>
        </div>
       );
@@ -26,7 +34,7 @@ export class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-    detailedPlace : state.places.detailedPlace
+    specificPlace : state.places.specificPlace
 });
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps)(Listing);

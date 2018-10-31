@@ -18,9 +18,26 @@ export const fetchPlacesRequest = () => ({
     type: FETCH_PLACES_REQUEST
 });
 
+export const FETCH_PLACE_BY_ID_REQUEST = 'FETCH_PLACE_BY_ID_REQUEST';
+export const fetchPlaceByIdRequest = () => ({
+    type: FETCH_PLACE_BY_ID_REQUEST
+});
+
+export const FETCH_PLACE_BY_ID_SUCCESS = 'FETCH_PLACE_BY_ID_SUCCESS';
+export const fetchPlaceByIdSuccess = (place) => ({
+    type: FETCH_PLACE_BY_ID_SUCCESS,
+    specificPlace: place
+});
+
+export const FETCH_PLACE_BY_ID_ERROR = 'FETCH_PLACE_BY_ID_ERROR';
+export const fetchPlaceByIdError = (error) => ({
+    type: FETCH_PLACE_BY_ID_ERROR,
+    error
+});
+
 export const fetchPlaces = () => dispatch => {
   dispatch(fetchPlacesRequest());
-  return fetch(`${API_BASE_URL}/places/`, {
+  return fetch(`${API_BASE_URL}/places`, {
     method: 'GET'
   })
     .then(res => normalizeResponseErrors(res))
@@ -30,3 +47,16 @@ export const fetchPlaces = () => dispatch => {
       dispatch(fetchPlacesError(error));
     });
 }
+
+export const fetchPlaceByID = (id) => dispatch => {
+    dispatch(fetchPlaceByIdRequest());
+    return fetch(`${API_BASE_URL}/places/${id}`, {
+      method: 'GET'
+    })
+      .then(res => normalizeResponseErrors(res))
+      .then(res => res.json()) 
+      .then((res) => dispatch(fetchPlacesSuccess(res)))
+      .catch(error => {
+        dispatch(fetchPlacesError(error));
+      });
+  }
