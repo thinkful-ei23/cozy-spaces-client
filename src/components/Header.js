@@ -18,9 +18,9 @@ class Header extends Component {
 
     let registerButton = <Link style={buttonStyle} to="/register">Register</Link>;
     let loginButton = <Link style={buttonStyle} to="/login">Log in</Link>;
+    let faqsButton = <Link style={buttonStyle} id="faqsButton" to="/faqs">FAQ</Link>;
     let logOutButton,
-    profileButton,
-    faqsButton;
+    profileButton;
 
     if (this.props.loggedIn) {
       logOutButton = (
@@ -28,13 +28,20 @@ class Header extends Component {
           Log out
         </button>
       );
+      profileButton = (
+        <Link style={buttonStyle} id="profileButton" to="/profile">Profile</Link>
+      )
+      loginButton = null;
+      registerButton = null;
     }
 
     return (
       <header>
         <h1>Cozy Places</h1>
-        {registerButton}
+        {faqsButton}
         {loginButton}
+        {registerButton}
+        {profileButton}
         {logOutButton}
       </header>
     );
