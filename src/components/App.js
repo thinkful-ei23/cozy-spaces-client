@@ -8,6 +8,7 @@ import LogIn from './Login';
 import Profile from './Profile';
 import AddAListingPage from './AddAListingPage';
 import LandingPage from './LandingPage';
+import Listing from './Listing';
 import Dashboard from "./Dashboard";
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
           <Route exact path="/login" component={LogIn} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/add-listing" component={AddAListingPage} />
+          <Route exact path="/places/:id" component={Listing} />
       </div>
     );
   }

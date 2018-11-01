@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
+
+import {fetchPlaces, fetchPlaceByID} from '../actions/places';
+import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-import {fetchPlaces} from '../actions/places';
+
 
 class Dashboard extends Component {
     componentDidMount() {
@@ -10,29 +13,41 @@ class Dashboard extends Component {
         );
     }
 
-    render(){
-      if (!this.props.returningUser) {
-        return <Redirect to="/" />;
-      }
-      return (
-       <div className="dashboard">
-        <ul>{(this.props.places).map(place =>
-            <li key={place.id}>
-            <div>{place.photos[0]}</div>
-            <div>
-                <span className="name">{place.name}</span><span className="type">{place.type}</span><br></br>
-                <span className="overallRating">{place.rating}</span>
-            </div>
-            </li>
-            )}
-        </ul>
-       </div>
-      );
+    setPlace(id) {
+        this.props.dispatch(fetchPlaceByID(id));
     }
+
+    render(){
+
+    if (this.props.places) {
+        if (!this.props.returningUser) {
+            return <Redirect to="/" />;
+        }
+        // {place.photos[0]} put this back
+        return (
+            <div className="dashboard">
+                <ul>{(this.props.places).map(place =>
+                    <li key={place._id}>
+                    <div>{place.photo}</div> 
+                    <div>
+                        <span className="name">{place.name}, </span><span className="type">{place.type}</span><br></br>
+                        <span className="overallRating">Overall cozy rating: {place.averageCozyness}</span>
+                    </div>
+                    <Link onClick={() => this.setPlace(place._id)} to={`/places/${place._id}`}>Check out this place in detail</Link>
+                    </li>
+                    )}
+                </ul>
+            </div>
+        );
+    } else {
+        return <p>Incoming coziness</p>;
+    }
+}
 }
 
 const mapStateToProps = state => ({
     places: state.places.places,
+    loggedIn: state.auth.currentUser !== null,
     returningUser: state.auth.returningUser
 });
 
