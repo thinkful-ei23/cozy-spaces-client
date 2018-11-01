@@ -20,7 +20,7 @@ class Listing extends Component {
         if (specificPlace) {
             return (<div className="listing">
             <h2>{specificPlace.name}</h2>
-            <h3>Type of place: {specificPlace.typeOfPlace}</h3>
+            <h3>Type of place: {specificPlace.type}</h3>
             <h3>Overall coziness: {specificPlace.averageCozyness}</h3>
             <h3>Address: {specificPlace.address}, {specificPlace.city}, {specificPlace.state}</h3>
             <ul>
