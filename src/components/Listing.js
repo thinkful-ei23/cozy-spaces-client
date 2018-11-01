@@ -17,7 +17,12 @@ class Listing extends Component {
     // </div>
 
     render() {
+    let ratings = null;  
+    if (this.propsloggedIn){
+     ratings = <UserRatings />
+    }
     let specificPlace = this.props.specificPlace;
+    console.log('this.props: ', this.props);
         if (specificPlace) {
             return (
           <Fragment>
@@ -34,7 +39,7 @@ class Listing extends Component {
                   <li>Hot food/drink: {specificPlace.hotFoodDrink}</li>
               </ul>
             </div>
-            <UserRatings />
+            {ratings}
           </Fragment>
             );  
         } else {
@@ -44,7 +49,8 @@ class Listing extends Component {
 }
 
 const mapStateToProps = state => ({
-    specificPlace : state.places.specificPlace
+    specificPlace : state.places.specificPlace,
+    loggedIn: state.auth.currentUser !== null
 });
 
 export default connect(mapStateToProps)(Listing);

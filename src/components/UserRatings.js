@@ -2,8 +2,9 @@ import React, { Fragment }  from 'react';
 import { connect } from 'react-redux'; 
 
 class UserRatings extends React.Component {
-
   render() {
+
+
     return (
       <Fragment>
         <h4>Your Ratings</h4>
