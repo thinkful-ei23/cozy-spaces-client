@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'; 
+
 import {fetchPlaces, fetchPlaceByID} from '../actions/places';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 
-class Dashboard extends Component {
 
-    componentWillMount() {
+class Dashboard extends Component {
+    componentDidMount() {
         return (
             this.props.dispatch(fetchPlaces())
         );
@@ -17,6 +18,7 @@ class Dashboard extends Component {
     }
 
     render(){
+
     if (this.props.places) {
         if (!this.props.returningUser) {
             return <Redirect to="/" />;
@@ -28,7 +30,7 @@ class Dashboard extends Component {
                     <li key={place._id}>
                     <div>{place.photo}</div> 
                     <div>
-                        <span className="name">{place.name}, </span><span className="type">{place.typeOfPlace}</span><br></br>
+                        <span className="name">{place.name}, </span><span className="type">{place.type}</span><br></br>
                         <span className="overallRating">Overall cozy rating: {place.averageCozyness}</span>
                     </div>
                     <Link onClick={() => this.setPlace(place._id)} to={`/places/${place._id}`}>Check out this place in detail</Link>
