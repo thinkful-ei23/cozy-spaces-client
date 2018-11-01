@@ -44,8 +44,14 @@ class App extends Component {
   }
 
   render() {
+
+    const centerPage = {
+      margin: '0 auto',
+      width: '800px'
+    }
+
     return (
-      <div className="app">
+      <div className="app" style={centerPage}>
           <Header />
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/dashboard" component={Dashboard} />
