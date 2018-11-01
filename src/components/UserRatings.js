@@ -9,11 +9,11 @@ class UserRatings extends React.Component {
       <Fragment>
         <h4>Your Ratings</h4>
         <ul>
-            <li>{this.props.userRatings.rating.warmLighting}</li>
-            <li>{this.props.userRatings.rating.relaxedMusic}</li>
-            <li>{this.props.userRatings.rating.softFabrics}</li>
-            <li>{this.props.userRatings.rating.comfySeating}</li>
-            <li>{this.props.userRatings.rating.hotFoodDrink}</li>
+            <li>{this.props.ratings.rating.warmLighting}</li>
+            <li>{this.props.ratings.rating.relaxedMusic}</li>
+            <li>{this.props.ratings.rating.softFabrics}</li>
+            <li>{this.props.ratings.rating.comfySeating}</li>
+            <li>{this.props.ratings.rating.hotFoodDrink}</li>
         </ul>
         </Fragment>
     );
@@ -22,7 +22,7 @@ class UserRatings extends React.Component {
 const mapStateToProps = state => {
   const { currentUser } = state.auth;
   return {
-    userRatings: currentUser.ratings
+    ratings: currentUser.ratings
   }
 };
 
