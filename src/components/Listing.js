@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux'; 
 import { fetchPlaceByID } from '../actions/places';
+import UserRatings from './UserRatings'
 
 class Listing extends Component {
 
@@ -18,19 +19,24 @@ class Listing extends Component {
     render() {
     let specificPlace = this.props.specificPlace;
         if (specificPlace) {
-            return (<div className="listing">
-            <h2>{specificPlace.name}</h2>
-            <h3>Type of place: {specificPlace.type}</h3>
-            <h3>Overall coziness: {specificPlace.averageCozyness}</h3>
-            <h3>Address: {specificPlace.address}, {specificPlace.city}, {specificPlace.state}</h3>
-            <ul>
-                <li>Warm lighting: {specificPlace.warmLighting}</li>
-                <li>Relaxed Music: {specificPlace.relaxedMusic}</li>
-                <li>Soft fabrics in space (walls or floor): {specificPlace.softFabrics} </li>
-                <li>Comfy seating: {specificPlace.comfySeating}</li>
-                <li>Hot food/drink: {specificPlace.hotFoodDrink}</li>
-            </ul>
-           </div>);
+            return (
+          <Fragment>
+            <div className="listing">
+              <h2>{specificPlace.name}</h2>
+              <h3>Type of place: {specificPlace.type}</h3>
+              <h3>Overall coziness: {specificPlace.averageCozyness}</h3>
+              <h3>Address: {specificPlace.address}, {specificPlace.city}, {specificPlace.state}</h3>
+              <ul>
+                  <li>Warm lighting: {specificPlace.warmLighting}</li>
+                  <li>Relaxed Music: {specificPlace.relaxedMusic}</li>
+                  <li>Soft fabrics in space (walls or floor): {specificPlace.softFabrics} </li>
+                  <li>Comfy seating: {specificPlace.comfySeating}</li>
+                  <li>Hot food/drink: {specificPlace.hotFoodDrink}</li>
+              </ul>
+            </div>
+            <UserRatings />
+          </Fragment>
+            );  
         } else {
             return <p>Loading</p>
         }
