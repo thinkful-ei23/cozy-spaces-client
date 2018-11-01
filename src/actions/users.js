@@ -46,3 +46,26 @@ export const registerUser = user => dispatch => {
             }
         });
 };
+
+export const deleteAccount = userId => (dispatch, getState) => {
+  const authToken = getState().auth.authToken;
+
+  return fetch(`${API_BASE_URL}/users/${userId}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+  .then(res => normalizeResponseErrors(res))
+  .then(res => res.json())
+  .catch(err => {
+    const { reason, message, location } = err;
+    if (reason === 'ValidationError') {
+      return Promise.reject(
+        new SubmissionError({
+          [location]: message
+        })
+      );
+    }
+  });
+};

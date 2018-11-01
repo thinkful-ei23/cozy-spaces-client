@@ -24,3 +24,9 @@ export const loadReturningUser= () => {
   const value = localStorage.getItem('returningUser');
   return JSON.parse(value);
 };
+
+export const clearReturningUser = () => {
+  try {
+    localStorage.removeItem('returningUser');
+  } catch (e) {}
+};
