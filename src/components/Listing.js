@@ -4,7 +4,7 @@ import { fetchPlaceByID } from '../actions/places';
 
 class Listing extends Component {
 
-    componentWillMount() {
+    componentDidMount() {
         if (!this.props.specificPlace) {
             const id = this.props.match.params.id;
             this.props.dispatch(fetchPlaceByID(id));
