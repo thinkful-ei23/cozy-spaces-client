@@ -20,10 +20,11 @@ class Header extends Component {
     let registerButton = <Link style={buttonStyle} to="/register">Register</Link>;
     let loginButton = <Link style={buttonStyle} to="/login">Log in</Link>;
     let faqsButton = <Link style={buttonStyle} id="faqsButton" to="/faqs">FAQ</Link>;
-    let logOutButton,
-    profileButton;
+    let logOutButton;
+    let profileButton;
 
     if (this.props.loggedIn) {
+      console.log('Logged in? ', true);
       logOutButton = (
         <button style={buttonStyle} id="logoutButton" onClick={() => this.logOut()}>
           Log out
@@ -34,6 +35,8 @@ class Header extends Component {
       )
       loginButton = null;
       registerButton = null;
+    } else {
+      console.log('Logged in? ', false);
     }
 
     return (
