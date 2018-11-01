@@ -22,7 +22,6 @@ class Header extends Component {
     let faqsButton = <Link style={buttonStyle} id="faqsButton" to="/learn-more">Learn more</Link>;
     let logOutButton;
     let profileButton;
-    let dashboardButton = <Link style={buttonStyle} id='dashboardButton' to="/dashboard">Dashboard</Link>;
 
     if (this.props.loggedIn) {
       console.log('Logged in? ', true);

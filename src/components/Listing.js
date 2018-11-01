@@ -19,16 +19,17 @@ class Listing extends Component {
     let specificPlace = this.props.specificPlace;
         if (specificPlace) {
             return (<div className="listing">
+            <img alt={`${specificPlace.photos[0].caption}`} src={`${specificPlace.photos[0].url}`} />
             <h2>{specificPlace.name}</h2>
             <h3>Type of place: {specificPlace.type}</h3>
             <h3>Overall coziness: {specificPlace.averageCozyness}</h3>
             <h3>Address: {specificPlace.address}, {specificPlace.city}, {specificPlace.state}</h3>
             <ul>
-                <li>Warm lighting: {specificPlace.warmLighting}</li>
-                <li>Relaxed Music: {specificPlace.relaxedMusic}</li>
-                <li>Soft fabrics in space (walls or floor): {specificPlace.softFabrics} </li>
-                <li>Comfy seating: {specificPlace.comfySeating}</li>
-                <li>Hot food/drink: {specificPlace.hotFoodDrink}</li>
+                <li>Warm lighting: {specificPlace.averageWarmLighting}</li>
+                <li>Relaxed Music: {specificPlace.averageRelaxedMusic}</li>
+                <li>Soft fabrics in space (walls or floor): {specificPlace.averageSoftFabrics} </li>
+                <li>Comfy seating: {specificPlace.averageComfySeating}</li>
+                <li>Hot food/drink: {specificPlace.averageHotFoodDrink}</li>
             </ul>
            </div>);
         } else {
