@@ -4,10 +4,17 @@ import { Link, Redirect } from 'react-router-dom';
 
 import RegistrationForm from './RegistrationForm';
 
-export function RegistrationPage(props) {
-    if (props.loggedIn) {
+export class RegistrationPage extends React.Component {
+
+    render() {
+    if (!this.props.informedUser) {
+        return <Redirect to="/learn-more" />;
+    }  
+
+    if (this.props.loggedIn) {
         return <Redirect to="/" />;
     }
+
 
     return (
         <main role="main">
@@ -17,9 +24,11 @@ export function RegistrationPage(props) {
         </main>
     );
 }
+}
 
 const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null
+    loggedIn: state.auth.currentUser !== null,
+    informedUser : state.auth.informedUser
 });
 
 export default connect(mapStateToProps)(RegistrationPage);

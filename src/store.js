@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import { loadAuthToken, loadReturningUser } from './local-storage';
+import { loadAuthToken, loadReturningUser, loadInformedUser } from './local-storage';
 import registerReducer from './reducers/register';
 import authReducer from './reducers/auth';
 import placeReducer from './reducers/places';
-import {refreshAuthToken, setAuthToken, setReturningUser} from './actions/auth'
+import {refreshAuthToken, setAuthToken, setReturningUser, setInformedUser} from './actions/auth'
 import { reducer as formReducer } from 'redux-form';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
@@ -37,6 +37,11 @@ if (authToken) {
 const returningUser = loadReturningUser();
 if (returningUser) {
   store.dispatch(setReturningUser());
+}
+
+const informedUser = loadInformedUser();
+if (informedUser) {
+  store.dispatch(setInformedUser());
 }
 
 export default store;

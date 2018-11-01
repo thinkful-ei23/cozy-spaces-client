@@ -19,7 +19,7 @@ class Header extends Component {
 
     let registerButton = <Link style={buttonStyle} to="/register">Register</Link>;
     let loginButton = <Link style={buttonStyle} to="/login">Log in</Link>;
-    let faqsButton = <Link style={buttonStyle} id="faqsButton" to="/faqs">FAQ</Link>;
+    let faqsButton = <Link style={buttonStyle} id="faqsButton" to="/learn-more">Learn more</Link>;
     let logOutButton;
     let profileButton;
 
@@ -41,7 +41,7 @@ class Header extends Component {
 
     return (
       <header>
-        <h1>Cozy Places</h1>
+        <h1>Cozy Spaces</h1>
         {faqsButton}
         {loginButton}
         {registerButton}
