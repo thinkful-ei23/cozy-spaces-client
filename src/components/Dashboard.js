@@ -28,7 +28,7 @@ class Dashboard extends Component {
             <div className="dashboard">
                 <ul>{(this.props.places).map(place =>
                     <li key={place._id}>
-                    <div>{place.photo}</div> 
+                    <img alt={`${place.photos[0].caption}`} src={`${place.photos[0].url}`} />
                     <div>
                         <span className="name">{place.name}, </span><span className="type">{place.type}</span><br></br>
                         <span className="overallRating">Overall cozy rating: {place.averageCozyness}</span>
