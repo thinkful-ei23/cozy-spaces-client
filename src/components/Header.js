@@ -40,12 +40,6 @@ class Header extends Component {
       console.log('Logged in? ', false);
     }
 
-    if (window.location.pathname === '/dashboard') {
-      console.log('Dashboard: ', true);
-    } else {
-      console.log('Dashboard: ', false);
-    }
-
     return (
       <header>
         <Link to="/dashboard"><h1>Cozy Spaces</h1></Link>
