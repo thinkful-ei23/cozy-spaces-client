@@ -30,3 +30,20 @@ export const clearReturningUser = () => {
     localStorage.removeItem('returningUser');
   } catch (e) {}
 };
+
+export const saveInformedUser = () => {
+  try {
+      localStorage.setItem('informedUser', 'true');
+  } catch (e) {}
+};
+
+export const loadInformedUser= () => {
+  const value = localStorage.getItem('informedUser');
+  return JSON.parse(value);
+};
+
+export const clearInformedUser = () => {
+  try {
+    localStorage.removeItem('informedUser');
+  } catch (e) {}
+};

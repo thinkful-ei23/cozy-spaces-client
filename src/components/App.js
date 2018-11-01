@@ -10,6 +10,7 @@ import AddAListingPage from './AddAListingPage';
 import LandingPage from './LandingPage';
 import Listing from './Listing';
 import Dashboard from "./Dashboard";
+import LearnAboutCozy from "./LearnAboutCozy";
 
 class App extends Component {
   render() {
@@ -23,6 +24,7 @@ class App extends Component {
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/add-listing" component={AddAListingPage} />
           <Route exact path="/places/:id" component={Listing} />
+          <Route exact path="/learn-more" component={LearnAboutCozy} />
       </div>
     );
   }

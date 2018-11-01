@@ -4,7 +4,8 @@ import {
   AUTH_ERROR,
   CLEAR_AUTH,
   SET_AUTH_TOKEN,
-  SET_RETURNING_USER
+  SET_RETURNING_USER,
+  SET_INFORMED_USER
  } from '../actions/auth';
  
  const initialState = {
@@ -12,7 +13,8 @@ import {
    error: null,
    currentUser: null,
    authToken : null,
-   returningUser : false
+   returningUser : false,
+   informedUser : false
  };
  
  export default function reducer(state = initialState, action) {
@@ -28,7 +30,9 @@ import {
      case CLEAR_AUTH:
         return {...state, currentUser: null, authToken: null};
      case SET_RETURNING_USER:
-        return {...state, returningUser: true}
+        return {...state, returningUser: true};
+     case SET_INFORMED_USER:
+        return {...state, informedUser: true}
      default: 
        return state;
    }

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import requiresLogin from "./requires-login";
 import { deleteAccount } from '../actions/users';
 import { clearAuth } from '../actions/auth';
-import { clearAuthToken, clearReturningUser } from '../local-storage';
+import { clearAuthToken, clearReturningUser, clearInformedUser } from '../local-storage';
 
 export class Profile extends Component {
 
@@ -12,6 +12,7 @@ export class Profile extends Component {
     .then(this.props.dispatch(clearAuth()))
     .then(clearAuthToken())
     .then(clearReturningUser())
+    .then(clearInformedUser())
 
   }
 
