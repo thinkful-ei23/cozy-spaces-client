@@ -5,31 +5,35 @@ import { fetchPlaceByID } from '../actions/places';
 class Listing extends Component {
 
     componentWillMount() {
-        if (!this.props.detailedPlace) {
+        if (!this.props.specificPlace) {
             const id = this.props.match.params.id;
             this.props.dispatch(fetchPlaceByID(id));
         }
     }
+    // add back in later
+    //  <div>
+    // {specificPlace.photos[0]}
+    // </div>
 
     render() {
-    let specificPlace = this.props.detailedPlace;
-      return (
-       <div className="listing">
-        <h2>{specificPlace.title}</h2>
-        <div>
-            {specificPlace.photos[0]}
-        </div>
-        <h3>Type of place: {specificPlace.type}</h3>
-        <h3>Overall coziness: {specificPlace.overallRating}</h3>
-        <ul>
-            <li>Warm lighting: {specificPlace.lightingRating}</li>
-            <li>Relaxed Music: {specificPlace.musicRating}</li>
-            <li>Soft fabrics in space (walls or floor): {specificPlace.fabricRating} </li>
-            <li>Comfy seating: {specificPlace.seatingRating}</li>
-            <li>Hot food/drink: {specificPlace.foodRating}</li>
-        </ul>
-       </div>
-      );
+    let specificPlace = this.props.specificPlace;
+        if (specificPlace) {
+            return (<div className="listing">
+            <h2>{specificPlace.name}</h2>
+            <h3>Type of place: {specificPlace.typeOfPlace}</h3>
+            <h3>Overall coziness: {specificPlace.averageCozyness}</h3>
+            <h3>Address: {specificPlace.address}, {specificPlace.city}, {specificPlace.state}</h3>
+            <ul>
+                <li>Warm lighting: {specificPlace.warmLighting}</li>
+                <li>Relaxed Music: {specificPlace.relaxedMusic}</li>
+                <li>Soft fabrics in space (walls or floor): {specificPlace.softFabrics} </li>
+                <li>Comfy seating: {specificPlace.comfySeating}</li>
+                <li>Hot food/drink: {specificPlace.hotFoodDrink}</li>
+            </ul>
+           </div>);
+        } else {
+            return <p>Loading</p>
+        }
     }
 }
 

@@ -3,12 +3,8 @@ import thunk from 'redux-thunk';
 import { loadAuthToken, loadReturningUser } from './local-storage';
 import registerReducer from './reducers/register';
 import authReducer from './reducers/auth';
-<<<<<<< HEAD
-import placeReducer from './reducers/auth';
-import {refreshAuthToken, setAuthToken} from './actions/auth'
-=======
+import placeReducer from './reducers/places';
 import {refreshAuthToken, setAuthToken, setReturningUser} from './actions/auth'
->>>>>>> development
 import { reducer as formReducer } from 'redux-form';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
