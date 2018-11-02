@@ -19,6 +19,7 @@ class Ratings extends React.Component {
           <ul>
               <li>{specificRating.warmLighting}</li>
               <li>{specificRating.relaxedMusic}</li>
+              <li>{specificRating.calmEnvironment}</li>
               <li>{specificRating.softFabrics}</li>
               <li>{specificRating.comfySeating}</li>
               <li>{specificRating.hotFoodDrink}</li>
