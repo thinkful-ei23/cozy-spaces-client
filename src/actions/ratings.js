@@ -1,5 +1,6 @@
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
+import {SubmissionError} from 'redux-form';
 
 export const FETCH_RATINGS_SUCCESS = 'FETCH_RATINGS_SUCCESS';
 export const fetchRatingsSuccess = ratings => ({
@@ -101,6 +102,18 @@ export const fetchRatingsByUser = (id) => (dispatch, getState) => {
       .then(res => res.json()) 
       .then((res) => dispatch(postRatingSuccess(res)))
       .catch(error => {
-        dispatch(postRatingError(error)); 
+          console.log('client side error');
+        const {reason, message, status, location} = error;
+        dispatch(postRatingError(error));
+            if (reason === 'ValidationError') {
+                console.log('in reason')
+                // Convert ValidationErrors into SubmissionErrors for Redux Form
+                // need help from TJ on how to get this submission error into the right place
+                return Promise.reject(
+                    new SubmissionError({
+                        'warmLighting' : message
+                    })
+                );
+            } 
       });
   }
