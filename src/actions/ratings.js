@@ -66,3 +66,4 @@ export const fetchRatingsByUser = (id) => (dispatch, getState) => {
         dispatch(fetchRatingsByUserError(error)); 
       });
   }
+

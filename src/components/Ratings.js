@@ -1,6 +1,6 @@
 import React, { Fragment }  from 'react';
 import { connect } from 'react-redux'; 
-import { fetchRatingsByUser } from '../actions/ratings';
+import { fetchRatingsByUser, editRating, deleteRating } from '../actions/ratings';
 
 class Ratings extends React.Component {
 
@@ -24,6 +24,7 @@ class Ratings extends React.Component {
             <li>Comfy seating: {specificRating.comfySeating}</li>
             <li>Hot food/drink: {specificRating.hotFoodDrink}</li>
           </ul>
+          <button onClick={() => this.props.dispatch(editRating(specificRating.id))}>Edit</button><button onClick={() => this.props.dispatch(deleteRating(specificRating.id))}>Delete</button>
         </Fragment>
       );
   } else {

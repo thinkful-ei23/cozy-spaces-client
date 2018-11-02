@@ -11,7 +11,8 @@ import {
    ratings: [],
    loading: false,
    error: null,
-   specificRating : null
+   specificRating : null,
+   editing: false
  };
  
  export default function reducer(state = initialState, action) {
