@@ -1,6 +1,6 @@
 import React, { Fragment }  from 'react';
 import { connect } from 'react-redux'; 
-import { fetchRatingsByUser, editRating, deleteRating } from '../actions/ratings';
+import { fetchRatingsByUser } from '../actions/ratings';
 
 class Ratings extends React.Component {
 
