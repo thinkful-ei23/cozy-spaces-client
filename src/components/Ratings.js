@@ -7,6 +7,7 @@ class Ratings extends React.Component {
   componentDidMount() {
     if (!this.props.specificPlace) {
         const id = this.props.match.params.id;
+        // place
         this.props.dispatch(fetchRatingsByUser(id));
     }
 }

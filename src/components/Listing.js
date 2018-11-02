@@ -19,7 +19,7 @@ class Listing extends Component {
     render() {
     let ratings = null;  
     if (this.propsloggedIn){
-     ratings = <UserRatings />
+     ratings = <UserRatings place={this.props.specificPlace} />
     }
     let specificPlace = this.props.specificPlace;
     console.log('this.props: ', this.props);
