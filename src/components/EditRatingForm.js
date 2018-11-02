@@ -2,9 +2,9 @@ import React, { Fragment }  from 'react';
 import {Field, reduxForm, focus} from 'redux-form'; 
 import Input from './Input';
 import { required } from '../validators';
-import { postRating } from '../actions/ratings';
+import { editRating } from '../actions/ratings';
 
-class RatingsForm extends React.Component {
+class EditRatingForm extends React.Component {
   onSubmit(values) {
     console.log(values);
     const rating = {
@@ -19,7 +19,7 @@ class RatingsForm extends React.Component {
       }
     }
     console.log(rating);
-    return this.props.dispatch(postRating(rating))
+    return this.props.dispatch(editRating(rating))
   }
 
   render() {
@@ -27,7 +27,7 @@ class RatingsForm extends React.Component {
     let success;
       return (
         <Fragment>
-          <h4>Rate the cozyness!</h4>
+          <h4>Change your mind? Edit your rating here</h4>
           <form  className="ratings-form"
             onSubmit={this.props.handleSubmit(values =>
                 this.onSubmit(values)
@@ -101,7 +101,7 @@ class RatingsForm extends React.Component {
 }
 
 export default reduxForm({
-  form: 'makeRating',
+  form: 'editRating',
   onSubmitFail: (errors, dispatch) =>
-      dispatch(focus('makeRating', Object.keys(errors)[0]))
-})(RatingsForm);
+      dispatch(focus('editRating', Object.keys(errors)[0]))
+})(EditRatingForm);

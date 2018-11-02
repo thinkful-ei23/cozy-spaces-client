@@ -7,7 +7,10 @@ import {
   FETCH_RATING_BY_ID_SUCCESS,
   POST_RATING_REQUEST,
   POST_RATING_ERROR,
-  POST_RATING_SUCCESS
+  POST_RATING_SUCCESS,
+  EDIT_RATING_REQUEST,
+  EDIT_RATING_ERROR,
+  EDIT_RATING_SUCCESS
 } from '../actions/ratings';
  
  const initialState = {
@@ -38,7 +41,13 @@ import {
      case POST_RATING_SUCCESS: 
        return {...state, loading: false};
      case POST_RATING_ERROR: 
-       return {...state, loading: false, error: action.error}
+       return {...state, loading: false, error: action.error};
+     case EDIT_RATING_REQUEST: 
+       return {...state, editing: true};
+     case EDIT_RATING_SUCCESS: 
+       return {...state, editing: false};
+     case EDIT_RATING_ERROR: 
+       return {...state, editing: false, error: action.error}
      default: 
        return state;
    }

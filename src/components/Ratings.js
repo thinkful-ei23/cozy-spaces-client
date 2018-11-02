@@ -1,6 +1,7 @@
 import React, { Fragment }  from 'react';
 import { connect } from 'react-redux'; 
-import { fetchRatingsByUser } from '../actions/ratings';
+import { fetchRatingsByUser, editRating } from '../actions/ratings';
+import EditRatingForm from './EditRatingForm';
 
 class Ratings extends React.Component {
 
@@ -11,8 +12,8 @@ class Ratings extends React.Component {
   }
 
   render() {
-    if (this.props.specificRating) {
-      let specificRating = this.props.specificRating.rating;
+    if (this.props.specificRating && !this.props.editing) {
+      let specificRating = this.props.specificRating.rating;      
       return (
         <Fragment>
           <h4>Your Ratings</h4>
@@ -24,10 +25,11 @@ class Ratings extends React.Component {
             <li>Comfy seating: {specificRating.comfySeating}</li>
             <li>Hot food/drink: {specificRating.hotFoodDrink}</li>
           </ul>
-          <button onClick={() => this.props.dispatch(editRating(specificRating.id))}>Edit</button><button onClick={() => this.props.dispatch(deleteRating(specificRating.id))}>Delete</button>
-        </Fragment>
+          <button onClick={() => this.props.dispatch(editRating())}>Edit</button><button onClick={() => console.log('delete button clicked')}>Delete</button>
+          {EditRatingForm}
+        </Fragment>  //click on edit button: open EditRatingsForm, populated with ratings that are already in state, when submit button is clicked, values are captured and put request is dispatched to edit db and form disappears, then another fetch get to update ratings shown
       );
-  } else {
+    } else {
     return <p>Loading</p>;
   }
 }
