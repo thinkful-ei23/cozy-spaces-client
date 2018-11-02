@@ -1,7 +1,7 @@
 import React, { Fragment }  from 'react';
 import { connect } from 'react-redux'; 
 import { fetchRatingsByUser, editRating } from '../actions/ratings';
-import EditRatingForm from './EditRatingForm';
+// import EditRatingForm from './EditRatingForm';
 
 class Ratings extends React.Component {
 
@@ -26,7 +26,7 @@ class Ratings extends React.Component {
             <li>Hot food/drink: {specificRating.hotFoodDrink}</li>
           </ul>
           <button onClick={() => this.props.dispatch(editRating())}>Edit</button><button onClick={() => console.log('delete button clicked')}>Delete</button>
-          {EditRatingForm}
+          {/* {EditRatingForm} */}
         </Fragment>  //click on edit button: open EditRatingsForm, populated with ratings that are already in state, when submit button is clicked, values are captured and put request is dispatched to edit db and form disappears, then another fetch get to update ratings shown
       );
     } else {

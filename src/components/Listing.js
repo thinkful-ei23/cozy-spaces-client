@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchPlaceByID } from '../actions/places';
 import Ratings from './Ratings'
 import RatingsForm from './RatingsForm'
+import EditRatingForm from './EditRatingForm';
 
 class Listing extends Component {
 
@@ -16,11 +17,13 @@ class Listing extends Component {
     render() {
     let ratings;
     let ratingsForm;
+    let editRatingForm;
     if (this.props.loggedIn){
      ratings = <Ratings />
      ratingsForm = <RatingsForm place={this.props.specificPlace} />
+     editRatingForm = <EditRatingForm />
     }
-    let specificPlace = this.props.specificPlace;
+    let specificPlace =EditRatingForm
         if (specificPlace) {
             return (
           <Fragment>
@@ -40,6 +43,7 @@ class Listing extends Component {
             </div>
             {ratings}
             {ratingsForm}
+            {editRatingForm}
           </Fragment>
             );  
 

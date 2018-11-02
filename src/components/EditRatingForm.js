@@ -101,7 +101,7 @@ class EditRatingForm extends React.Component {
 }
 
 export default reduxForm({
-  form: 'editRating',
+  form: 'EditRatingForm',
   onSubmitFail: (errors, dispatch) =>
-      dispatch(focus('editRating', Object.keys(errors)[0]))
+      dispatch(focus('EditRatingform', Object.keys(errors)[0]))
 })(EditRatingForm);
