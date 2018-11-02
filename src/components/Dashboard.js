@@ -46,7 +46,6 @@ class Dashboard extends Component {
         // {place.photos[0]} put this back
         return (
             <div className="dashboard">
-              <h1>Dashboard</h1>
               <button onClick={() => this.getLocation()}>Get Location</button>
               <p id='geolocation'></p>
                 <ul>{(this.props.places).map(place =>
