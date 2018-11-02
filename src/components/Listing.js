@@ -27,6 +27,7 @@ class Listing extends Component {
             <ul>
                 <li>Warm lighting: {specificPlace.averageWarmLighting}</li>
                 <li>Relaxed Music: {specificPlace.averageRelaxedMusic}</li>
+                <li>Calm Environment: {specificPlace.averageCalmEnvironment}</li>
                 <li>Soft fabrics in space (walls or floor): {specificPlace.averageSoftFabrics} </li>
                 <li>Comfy seating: {specificPlace.averageComfySeating}</li>
                 <li>Hot food/drink: {specificPlace.averageHotFoodDrink}</li>
