@@ -18,7 +18,7 @@ class Listing extends Component {
     let ratingsForm;
     if (this.props.loggedIn){
      ratings = <Ratings />
-     ratingsForm = <RatingsForm />
+     ratingsForm = <RatingsForm place={this.props.specificPlace} />
     }
     let specificPlace = this.props.specificPlace;
         if (specificPlace) {
