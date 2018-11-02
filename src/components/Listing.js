@@ -30,6 +30,7 @@ class Listing extends Component {
                 <li>Soft fabrics in space (walls or floor): {specificPlace.averageSoftFabrics} </li>
                 <li>Comfy seating: {specificPlace.averageComfySeating}</li>
                 <li>Hot food/drink: {specificPlace.averageHotFoodDrink}</li>
+                <li>Comments: {specificPlace.comments}</li>
             </ul>
            </div>);
         } else {
