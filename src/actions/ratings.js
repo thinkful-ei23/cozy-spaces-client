@@ -35,6 +35,24 @@ export const fetchRatingsByUserError = (error) => ({
     error
 });
 
+
+export const POST_RATING_REQUEST = 'POST_RATING_REQUEST';
+export const postRatingRequest = () => ({
+    type: POST_RATING_REQUEST
+});
+
+export const POST_RATING_SUCCESS = 'POST_RATING_SUCCESS';
+export const postRatingSuccess = (rating) => ({
+    type: POST_RATING_SUCCESS,
+    rating
+});
+
+export const POST_RATING_ERROR = 'POST_RATING_ERROR';
+export const postRatingError = (error) => ({
+    type: POST_RATING_ERROR,
+    error
+});
+
 export const fetchRatings = () => dispatch => {
   dispatch(fetchRatingsRequest());
   fetch(`${API_BASE_URL}/ratings`, {
@@ -67,3 +85,21 @@ export const fetchRatingsByUser = (id) => (dispatch, getState) => {
       });
   }
 
+  export const postRating = (rating) => (dispatch, getState) => {
+    console.log('in post rating');
+    const authToken = getState().auth.authToken;
+    dispatch(postRatingRequest());
+    return fetch(`${API_BASE_URL}/ratings`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${authToken}`
+        },
+        body: JSON.stringify(rating)
+    })
+      .then(res => normalizeResponseErrors(res))
+      .then(res => res.json()) 
+      .then((res) => dispatch(postRatingSuccess(res)))
+      .catch(error => {
+        dispatch(postRatingError(error)); 
+      });
+  }

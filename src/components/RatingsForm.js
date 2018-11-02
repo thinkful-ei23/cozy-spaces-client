@@ -1,23 +1,30 @@
 import React, { Fragment }  from 'react';
 import {Field, reduxForm, focus} from 'redux-form'; 
 import Input from './Input';
-import { isTrimmed } from '../validators';
+import { required } from '../validators';
+import { postRating } from '../actions/ratings';
 
 class RatingsForm extends React.Component {
   onSubmit(values) {
     console.log(values);
-    // const { username, email, password} = values;
-    // const user = { username, email, password};
-    // return this.props.dispatch(registerUser(user))
-    //     .then(() => this.props.dispatch(login(username, password, email)))
-    //     .then(() => this.props.dispatch(storeReturningUser()));
+    const rating = {
+      placesLink : this.props.place._id,
+      rating : {
+        warmLighting: parseInt(values.warmLighting, 10),
+        relaxedMusic: parseInt(values.relaxedMusic, 10),
+        calmEnvironment: parseInt(values.calmEnvironment, 10),
+        softFabrics: parseInt(values.softFabrics, 10),
+        comfySeating: parseInt(values.comfySeating, 10),
+        hotFoodDrink: parseInt(values.hotFoodDrink, 10)
+      }
+    }
+    console.log(rating);
+    return this.props.dispatch(postRating(rating))
   }
-  
+
   render() {
     let error;
     let success;
-    if (this.props.specificRating) {
-      let specificRating = this.props.specificRating.rating;
       return (
         <Fragment>
           <h4>Rate the cozyness!</h4>
@@ -29,51 +36,57 @@ class RatingsForm extends React.Component {
             {success}
             <Field
                 component={Input}
-                type="text"
+                type="number"
                 name="warmLighting"
-                validate={isTrimmed}
                 label="Warm Lighting"
-                value={specificRating.warmLighting}
+                min='0'
+                max='5'
+                validate={[required]}
               />
             <Field
                 component={Input}
-                type="Input"
+                type="number"
                 name="relaxedMusic"
-                validate={isTrimmed}
                 label="Relaxed Music"
-                value={specificRating.relaxedMusic}
+                min='0'
+                max='5'
+                validate={[required]}
               />
             <Field
                 component={Input}
-                type="Input"
+                type="number"
                 name="calmEnvironment"  
-                validate={isTrimmed}
                 label="Calm environment"
-                value={specificRating.calmEnvironment}
+                min='0'
+                max='5'
+                validate={[required]}
               />
             <Field
                 component={Input}
-                type="Input"
+                type="number"
                 name="softFabrics"
-                validate={isTrimmed}
                 label="Soft fabrics in space (walls or floor)"
-                value={specificRating.softFabrics}
+                min='0'
+                max='5'
+                validate={[required]}
               />
             <Field
                 component={Input}
-                type="Input"
+                type="number"
                 name="comfySeating"
-                validate={isTrimmed}
                 label="Comfy Seating"
-                value={specificRating.comfySeating}
+                min='0'
+                max='5'
+                validate={[required]}
               />
             <Field
                 component={Input}
-                type="Input"
+                type="number"
                 name="hotFoodDrink"
-                validate={isTrimmed}
                 label="Hot Food and Drink"
-                value={specificRating.hotFoodDrink}
+                min='0'
+                max='5'
+                validate={[required]}
               />
             <button
               className="btn-sub"
@@ -84,9 +97,6 @@ class RatingsForm extends React.Component {
           </form>
         </Fragment>
       );
-  } else {
-    return <p>Loading</p>;
-  }
 }
 }
 
