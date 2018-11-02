@@ -19,12 +19,28 @@ class RatingsForm extends React.Component {
       }
     }
     console.log(rating);
-    return this.props.dispatch(postRating(rating))
+    return this.props.dispatch(postRating(rating));
   }
 
   render() {
     let error;
     let success;
+    console.log(this.props.error)
+    if (this.props.submitFailed) {
+        error = (
+             <div className="form-error" aria-live="polite">
+               {this.props.error}
+             </div>
+        );
+    }
+
+    if (this.props.submitSucceeded) {
+        success = (
+        <div className="form-success" aria-live="polite">
+            <p>Submit succeeded</p>
+        </div>
+        );
+    }
       return (
         <Fragment>
           <h4>Rate the cozyness!</h4>
@@ -38,6 +54,7 @@ class RatingsForm extends React.Component {
                 component={Input}
                 type="number"
                 name="warmLighting"
+                id="warmLighting"
                 label="Warm Lighting"
                 min='0'
                 max='5'
@@ -102,6 +119,8 @@ class RatingsForm extends React.Component {
 
 export default reduxForm({
   form: 'makeRating',
-  onSubmitFail: (errors, dispatch) =>
-      dispatch(focus('makeRating', Object.keys(errors)[0]))
-})(RatingsForm);
+  onSubmitFail: (error, dispatch) =>{
+      console.log(error);
+      // this is the line that is messing up
+      dispatch(focus('makeRating', Object.keys(error)[0]))
+}})(RatingsForm);

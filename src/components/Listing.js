@@ -51,7 +51,8 @@ class Listing extends Component {
 
 const mapStateToProps = state => ({
     specificPlace : state.places.specificPlace,
-    loggedIn : state.auth.currentUser
+    loggedIn : state.auth.currentUser,
+    ratingError : state.ratings.error
 });
 
 export default connect(mapStateToProps)(Listing);
