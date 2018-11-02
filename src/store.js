@@ -4,6 +4,7 @@ import { loadAuthToken, loadReturningUser, loadInformedUser } from './local-stor
 import registerReducer from './reducers/register';
 import authReducer from './reducers/auth';
 import placeReducer from './reducers/places';
+import ratingReducer from './reducers/ratings';
 import {refreshAuthToken, setAuthToken, setReturningUser, setInformedUser} from './actions/auth'
 import { reducer as formReducer } from 'redux-form';
 import {composeWithDevTools} from 'redux-devtools-extension';
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   form: formReducer,
   register: registerReducer,
   auth: authReducer,
-  places: placeReducer
+  places: placeReducer,
+  ratings: ratingReducer
 });
 
 // const store = createStore(
