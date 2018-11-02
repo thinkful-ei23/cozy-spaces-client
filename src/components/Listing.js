@@ -11,13 +11,9 @@ class Listing extends Component {
             this.props.dispatch(fetchPlaceByID(id));
         }
     }
-    // add back in later
-    //  <div>
-    // {specificPlace.photos[0]}
-    // </div>
 
     render() {
-    let ratings = null;  
+    let ratings;
     if (this.propsloggedIn){
      ratings = <UserRatings place={this.props.specificPlace} />
     }
@@ -42,6 +38,7 @@ class Listing extends Component {
             {ratings}
           </Fragment>
             );  
+
         } else {
             return <p>Loading</p>
         }
@@ -50,7 +47,7 @@ class Listing extends Component {
 
 const mapStateToProps = state => ({
     specificPlace : state.places.specificPlace,
-    loggedIn: state.auth.currentUser !== null
+    loggedIn : state.auth.currentUser
 });
 
 export default connect(mapStateToProps)(Listing);

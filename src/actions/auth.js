@@ -2,7 +2,7 @@ import jwtDecode from 'jwt-decode';
 import {SubmissionError} from 'redux-form';
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
-import {saveAuthToken, clearAuthToken, saveReturningUser} from '../local-storage';
+import {saveAuthToken, clearAuthToken, saveReturningUser, saveInformedUser} from '../local-storage';
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = authToken => ({
@@ -37,6 +37,11 @@ export const setReturningUser = () => ({
     type: SET_RETURNING_USER
 });
 
+export const SET_INFORMED_USER = 'SET_INFORMED_USER';
+export const setInformedUser = () => ({
+    type: SET_INFORMED_USER
+});
+
 // Stores the auth token in state and localStorage, and decodes and stores
 // the user data stored in the token
 const storeAuthInfo = (authToken, dispatch) => {
@@ -49,6 +54,11 @@ const storeAuthInfo = (authToken, dispatch) => {
 export const storeReturningUser = () => (dispatch) => {
     dispatch(setReturningUser());
     saveReturningUser();
+};
+
+export const storeInformedUser = () => (dispatch) => {
+    dispatch(setInformedUser());
+    saveInformedUser();
 };
 
 export const login = (username, password) => dispatch => {
