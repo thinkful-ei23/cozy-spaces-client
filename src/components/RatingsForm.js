@@ -1,11 +1,21 @@
 import React, { Fragment }  from 'react';
-import { connect } from 'react-redux'; 
+import {Field, reduxForm, focus} from 'redux-form'; 
 import Input from './Input';
 import { isTrimmed } from '../validators';
 
-class Ratings extends React.Component {
-
+class RatingsForm extends React.Component {
+  onSubmit(values) {
+    console.log(values);
+    // const { username, email, password} = values;
+    // const user = { username, email, password};
+    // return this.props.dispatch(registerUser(user))
+    //     .then(() => this.props.dispatch(login(username, password, email)))
+    //     .then(() => this.props.dispatch(storeReturningUser()));
+  }
+  
   render() {
+    let error;
+    let success;
     if (this.props.specificRating) {
       let specificRating = this.props.specificRating.rating;
       return (
@@ -80,9 +90,8 @@ class Ratings extends React.Component {
 }
 }
 
-const mapStateToProps = state => ({
-  specificPlace: state.places.specificPlace,
-  specificRating : state.ratings.specificRating
-});
-
-export default connect(mapStateToProps)(Ratings);
+export default reduxForm({
+  form: 'makeRating',
+  onSubmitFail: (errors, dispatch) =>
+      dispatch(focus('makeRating', Object.keys(errors)[0]))
+})(RatingsForm);

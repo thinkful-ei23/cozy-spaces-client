@@ -2,6 +2,7 @@ import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux'; 
 import { fetchPlaceByID } from '../actions/places';
 import Ratings from './Ratings'
+import RatingsForm from './RatingsForm'
 
 class Listing extends Component {
 
@@ -14,8 +15,10 @@ class Listing extends Component {
 
     render() {
     let ratings;
+    let ratingsForm;
     if (this.props.loggedIn){
      ratings = <Ratings />
+     ratingsForm = <RatingsForm />
     }
     let specificPlace = this.props.specificPlace;
         if (specificPlace) {
@@ -36,6 +39,7 @@ class Listing extends Component {
               </ul>
             </div>
             {ratings}
+            {ratingsForm}
           </Fragment>
             );  
 
