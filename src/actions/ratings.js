@@ -48,10 +48,16 @@ export const fetchRatings = () => dispatch => {
     });
 }
 
-export const fetchRatingsByUser = (id) => dispatch => {
+export const fetchRatingsByUser = (id) => (dispatch, getState) => {
+    console.log('in fetch ratings');
+    const authToken = getState().auth.authToken;
     dispatch(fetchRatingsByUserRequest());
     return fetch(`${API_BASE_URL}/ratings/${id}`, {
-      method: 'GET'
+      method: 'GET',
+      headers: {
+        // Provide our existing token as credentials to get a new one
+        Authorization: `Bearer ${authToken}`
+    }
     })
       .then(res => normalizeResponseErrors(res))
       .then(res => res.json()) 

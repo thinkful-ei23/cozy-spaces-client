@@ -5,35 +5,35 @@ import { fetchRatingsByUser } from '../actions/ratings';
 class Ratings extends React.Component {
 
   componentDidMount() {
-    if (!this.props.specificPlace) {
-        const id = this.props.match.params.id;
-        // place
-        this.props.dispatch(fetchRatingsByUser(id));
-    }
-}
+    console.log('in component did mount');
+    const placeId = this.props.specificPlace._id;
+    this.props.dispatch(fetchRatingsByUser(placeId));
+  }
 
   render() {
-console.log('this.props: ', this.props);
-
-    return (
-      <Fragment>
-        <h4>Your Ratings</h4>
-        <ul>
-            <li>{this.props.ratings.rating.warmLighting}</li>
-            <li>{this.props.ratings.rating.relaxedMusic}</li>
-            <li>{this.props.ratings.rating.softFabrics}</li>
-            <li>{this.props.ratings.rating.comfySeating}</li>
-            <li>{this.props.ratings.rating.hotFoodDrink}</li>
-        </ul>
-        </Fragment>
-    );
+    if (this.props.specificRating) {
+      let specificRating = this.props.specificRating.rating;
+      return (
+        <Fragment>
+          <h4>Your Ratings</h4>
+          <ul>
+              <li>{specificRating.warmLighting}</li>
+              <li>{specificRating.relaxedMusic}</li>
+              <li>{specificRating.softFabrics}</li>
+              <li>{specificRating.comfySeating}</li>
+              <li>{specificRating.hotFoodDrink}</li>
+          </ul>
+          </Fragment>
+      );
+  } else {
+    return <p>Loading</p>;
   }
 }
-const mapStateToProps = state => {
-  const { currentUser } = state.auth;
-  return {
-    ratings: currentUser.ratings
-  }
-};
+}
+
+const mapStateToProps = state => ({
+  specificPlace: state.places.specificPlace,
+  specificRating : state.ratings.specificRating
+});
 
 export default connect(mapStateToProps)(Ratings);

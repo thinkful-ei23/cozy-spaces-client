@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux'; 
 import { fetchPlaceByID } from '../actions/places';
-import UserRatings from './UserRatings'
+import Ratings from './Ratings'
 
 class Listing extends Component {
 
@@ -14,11 +14,10 @@ class Listing extends Component {
 
     render() {
     let ratings;
-    if (this.propsloggedIn){
-     ratings = <UserRatings place={this.props.specificPlace} />
+    if (this.props.loggedIn){
+     ratings = <Ratings />
     }
     let specificPlace = this.props.specificPlace;
-    console.log('this.props: ', this.props);
         if (specificPlace) {
             return (
           <Fragment>
@@ -28,11 +27,12 @@ class Listing extends Component {
               <h3>Overall coziness: {specificPlace.averageCozyness}</h3>
               <h3>Address: {specificPlace.address}, {specificPlace.city}, {specificPlace.state}</h3>
               <ul>
-                  <li>Warm lighting: {specificPlace.warmLighting}</li>
-                  <li>Relaxed Music: {specificPlace.relaxedMusic}</li>
-                  <li>Soft fabrics in space (walls or floor): {specificPlace.softFabrics} </li>
-                  <li>Comfy seating: {specificPlace.comfySeating}</li>
-                  <li>Hot food/drink: {specificPlace.hotFoodDrink}</li>
+                  <li>Warm lighting: {specificPlace.averageWarmLighting}</li>
+                  <li>Relaxed Music: {specificPlace.averageRelaxedMusic}</li>
+                  <li>Calm Environment: {specificPlace.averageCalmEnvironment}</li>
+                  <li>Soft fabrics in space (walls or floor): {specificPlace.averageSoftFabrics} </li>
+                  <li>Comfy seating: {specificPlace.averageComfySeating}</li>
+                  <li>Hot food/drink: {specificPlace.averageHotFoodDrink}</li>
               </ul>
             </div>
             {ratings}
