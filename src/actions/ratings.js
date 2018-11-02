@@ -86,12 +86,13 @@ export const fetchRatingsByUser = (id) => (dispatch, getState) => {
   }
 
   export const postRating = (rating) => (dispatch, getState) => {
-    console.log('in post rating');
+    console.log('rating', rating);
     const authToken = getState().auth.authToken;
     dispatch(postRatingRequest());
     return fetch(`${API_BASE_URL}/ratings`, {
       method: 'POST',
       headers: {
+        'content-type': 'application/json',
         Authorization: `Bearer ${authToken}`
         },
         body: JSON.stringify(rating)
