@@ -17,13 +17,14 @@ class Ratings extends React.Component {
         <Fragment>
           <h4>Your Ratings</h4>
           <ul>
-              <li>{specificRating.warmLighting}</li>
-              <li>{specificRating.relaxedMusic}</li>
-              <li>{specificRating.softFabrics}</li>
-              <li>{specificRating.comfySeating}</li>
-              <li>{specificRating.hotFoodDrink}</li>
+            <li>Warm lighting: {specificRating.warmLighting}</li>
+            <li>Relaxed Music: {specificRating.relaxedMusic}</li>
+            <li>Calm Environment: {specificRating.calmEnvironment}</li>
+            <li>Soft fabrics in space (walls or floor): {specificRating.softFabrics} </li>
+            <li>Comfy seating: {specificRating.comfySeating}</li>
+            <li>Hot food/drink: {specificRating.hotFoodDrink}</li>
           </ul>
-          </Fragment>
+        </Fragment>
       );
   } else {
     return <p>Loading</p>;
