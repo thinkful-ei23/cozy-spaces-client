@@ -17,13 +17,13 @@ class Listing extends Component {
     render() {
     let ratings;
     let ratingsForm;
-    let editRatingForm;
+    let editRatingForm; 
     if (this.props.loggedIn){
      ratings = <Ratings />
      ratingsForm = <RatingsForm place={this.props.specificPlace} />
      editRatingForm = <EditRatingForm />
     }
-    let specificPlace =EditRatingForm
+    let specificPlace = this.props.specificPlace
         if (specificPlace) {
             return (
           <Fragment>
