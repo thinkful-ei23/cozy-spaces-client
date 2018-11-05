@@ -4,6 +4,8 @@ import { fetchPlaceByID } from '../actions/places';
 import Ratings from './Ratings'
 import RatingsForm from './RatingsForm'
 import { fetchRatingsByUser } from '../actions/ratings';
+import EditRatingForm from './EditRatingForm';
+import { toggleEditRating } from '../actions/ratings';
 
 class Listing extends Component {
 
@@ -16,12 +18,18 @@ class Listing extends Component {
     render() {
     let ratings;
     let ratingsFormPost;
+    let ratingsFormEdit;
+
     if (this.props.loggedIn){
         ratings = <Ratings />
-    }
-
-    if (!this.props.specificRating) {
-        ratingsFormPost = <RatingsForm place={this.props.specificPlace} />
+        if (!this.props.specificRating) {
+            ratingsFormPost = <RatingsForm place={this.props.specificPlace} />
+        } else {
+            ratingsFormEdit = this.props.editing ? 
+            <div><EditRatingForm rating={this.props.specificRating} place={this.props.specificPlace}/><button onClick={() => this.props.dispatch(toggleEditRating())}>Cancel</button></div> :
+            <button onClick={() => this.props.dispatch(toggleEditRating())}>Edit rating</button>; 
+            // <button onClick={() => console.log('delete button clicked')}>Delete</button> */}
+        }
     }
 
     let specificPlace = this.props.specificPlace;
@@ -44,6 +52,7 @@ class Listing extends Component {
             </div>
             {ratings}
             {ratingsFormPost}
+            {ratingsFormEdit}
           </Fragment>
             );  
 
@@ -57,7 +66,8 @@ const mapStateToProps = state => ({
     specificPlace : state.places.specificPlace,
     loggedIn : state.auth.currentUser,
     ratingError : state.ratings.error,
-    specificRating : state.ratings.specificRating
+    specificRating : state.ratings.specificRating,
+    editing : state.ratings.editing
 });
 
 export default connect(mapStateToProps)(Listing);

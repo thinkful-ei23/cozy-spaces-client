@@ -7,14 +7,19 @@ import {
   FETCH_RATING_BY_ID_SUCCESS,
   POST_RATING_REQUEST,
   POST_RATING_ERROR,
-  POST_RATING_SUCCESS
+  POST_RATING_SUCCESS,
+  TOGGLE_EDIT_RATING,
+  EDIT_RATING_REQUEST,
+  EDIT_RATING_ERROR,
+  EDIT_RATING_SUCCESS
 } from '../actions/ratings';
  
  const initialState = {
    ratings: [],
    loading: false,
    error: null,
-   specificRating : null
+   specificRating : null,
+   editing: false
  };
  
  export default function reducer(state = initialState, action) {
@@ -37,6 +42,14 @@ import {
      case POST_RATING_SUCCESS: 
        return {...state, loading: false};
      case POST_RATING_ERROR: 
+       return {...state, loading: false, error: action.error};
+     case TOGGLE_EDIT_RATING: 
+       return {...state, editing: !(state.editing)};
+     case EDIT_RATING_REQUEST: 
+       return {...state, loading: true};
+     case EDIT_RATING_SUCCESS: 
+       return {...state, loading: false};
+     case EDIT_RATING_ERROR: 
        return {...state, loading: false, error: action.error}
      default: 
        return state;

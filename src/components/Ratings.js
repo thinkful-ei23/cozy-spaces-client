@@ -1,7 +1,11 @@
 import React, { Fragment }  from 'react';
 import { connect } from 'react-redux'; 
+import { fetchRatingsByUser, toggleEditRating } from '../actions/ratings';
 
 class Ratings extends React.Component {
+
+  //let editRatingForm = <EditRatingForm place={this.props.specificPlace}/>
+  // this.props.editing
 
   render() {
     let ratingError;
@@ -29,7 +33,8 @@ class Ratings extends React.Component {
             <li>Comfy seating: {specificRating.comfySeating}</li>
             <li>Hot food/drink: {specificRating.hotFoodDrink}</li>
           </ul>
-        </Fragment>
+          {/* <button onClick={() => this.props.dispatch(toggleEditRating())}>Edit ratin</button><button onClick={() => console.log('delete button clicked')}>Delete</button> */}
+        </Fragment>  //click on edit button: open EditRatingsForm, populated with ratings that are already in state, when submit button is clicked, values are captured and put request is dispatched to edit db and form disappears, then another fetch get to update ratings shown
       );
   } else if (this.props.ratingError) {
     return <p>{ratingError}</p>;
@@ -42,7 +47,8 @@ class Ratings extends React.Component {
 const mapStateToProps = state => ({
   specificPlace: state.places.specificPlace,
   specificRating : state.ratings.specificRating,
-  ratingError: state.ratings.error
+  ratingError: state.ratings.error,
+  editing: state.ratings.editing
 });
 
 export default connect(mapStateToProps)(Ratings);
