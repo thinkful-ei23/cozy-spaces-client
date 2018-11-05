@@ -36,7 +36,6 @@ class Listing extends Component {
             <div>
                 <EditRatingForm rating={this.props.specificRating} place={this.props.specificPlace}/>
                 <button onClick={() => this.props.dispatch(toggleEditRating())}>Cancel</button>
-                <button onClick={() => this.deleteRating()}>Delete</button>
             </div> 
             :
             <div>
