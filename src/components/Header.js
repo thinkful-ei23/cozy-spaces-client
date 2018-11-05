@@ -12,10 +12,6 @@ class Header extends Component {
     clearAuthToken();
   }
 
-  clearData() {
-    this.props.dispatch(clearSpecificRatingData());
-  }
-
   render() {
 
     const buttonStyle = {
