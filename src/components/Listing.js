@@ -3,27 +3,36 @@ import { connect } from 'react-redux';
 import { fetchPlaceByID } from '../actions/places';
 import Ratings from './Ratings'
 import RatingsForm from './RatingsForm'
-
+import { fetchRatingsByUser } from '../actions/ratings';
+import EditRatingForm from './EditRatingForm';
+import { toggleEditRating } from '../actions/ratings';
 
 class Listing extends Component {
 
     componentDidMount() {
-        if (!this.props.specificPlace) {
             const id = this.props.match.params.id;
-            this.props.dispatch(fetchPlaceByID(id));
-        }
+            this.props.dispatch(fetchPlaceByID(id))
+            .then(() => this.props.dispatch(fetchRatingsByUser(id)));
     }
 
     render() {
     let ratings;
-    let ratingsForm;
-    // let editRatingForm; 
+    let ratingsFormPost;
+    let ratingsFormEdit;
+
     if (this.props.loggedIn){
-     ratings = <Ratings />
-     ratingsForm = <RatingsForm place={this.props.specificPlace} />
-    //  editRatingForm = <EditRatingForm />
+        ratings = <Ratings />
+        if (!this.props.specificRating) {
+            ratingsFormPost = <RatingsForm place={this.props.specificPlace} />
+        } else {
+            ratingsFormEdit = this.props.editing ? 
+            <div><EditRatingForm rating={this.props.specificRating} place={this.props.specificPlace}/><button onClick={() => this.props.dispatch(toggleEditRating())}>Cancel</button></div> :
+            <button onClick={() => this.props.dispatch(toggleEditRating())}>Edit rating</button>; 
+            // <button onClick={() => console.log('delete button clicked')}>Delete</button> */}
+        }
     }
-    let specificPlace = this.props.specificPlace
+
+    let specificPlace = this.props.specificPlace;
         if (specificPlace) {
             return (
           <Fragment>
@@ -42,8 +51,8 @@ class Listing extends Component {
               </ul>
             </div>
             {ratings}
-            {ratingsForm}
-            {/* {editRatingForm} */}
+            {ratingsFormPost}
+            {ratingsFormEdit}
           </Fragment>
             );  
 
@@ -56,7 +65,9 @@ class Listing extends Component {
 const mapStateToProps = state => ({
     specificPlace : state.places.specificPlace,
     loggedIn : state.auth.currentUser,
-    ratingError : state.ratings.error
+    ratingError : state.ratings.error,
+    specificRating : state.ratings.specificRating,
+    editing : state.ratings.editing
 });
 
 export default connect(mapStateToProps)(Listing);

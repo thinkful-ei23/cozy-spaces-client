@@ -3,6 +3,7 @@ import {Field, reduxForm, /*focus*/} from 'redux-form';
 import Input from './Input';
 import { required } from '../validators';
 import { editRating, toggleEditRating } from '../actions/ratings';
+import { fetchRatingsByUser } from '../actions/ratings';
 
 class EditRatingForm extends React.Component {
   onSubmit(values) {
@@ -19,7 +20,9 @@ class EditRatingForm extends React.Component {
       }
     }
     console.log('Edited rating: ', rating);
-    return this.props.dispatch(editRating(rating))
+    console.log('this.props.rating._id', this.props.rating._id);
+    return this.props.dispatch(editRating(rating, this.props.rating._id))
+    .then(() => this.props.dispatch(fetchRatingsByUser(this.props.place._id)));
   }
 
   render() {
@@ -93,11 +96,6 @@ class EditRatingForm extends React.Component {
               type="submit"
               disabled={this.props.pristine || this.props.submitting}>
               Rate it
-            </button>
-            <button onClick={() => this.props.dispatch(toggleEditRating())}
-              className="btn-cancel"
-              type="button">
-              Cancel
             </button>
           </form>
         </Fragment>
