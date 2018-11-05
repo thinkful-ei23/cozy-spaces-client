@@ -5,7 +5,7 @@ import Ratings from './Ratings'
 import RatingsForm from './RatingsForm'
 import { fetchRatingsByUser } from '../actions/ratings';
 import EditRatingForm from './EditRatingForm';
-import { toggleEditRating } from '../actions/ratings';
+import { toggleEditRating, deleteRating } from '../actions/ratings';
 
 class Listing extends Component {
 
@@ -13,6 +13,12 @@ class Listing extends Component {
             const id = this.props.match.params.id;
             return this.props.dispatch(fetchPlaceByID(id))
             .then(() => this.props.dispatch(fetchRatingsByUser(id)));
+    }
+
+    deleteRating() {
+        const id = this.props.match.params.id;
+        return this.props.dispatch(deleteRating(this.props.specificPlace._id))
+        .then(() => this.props.dispatch(fetchRatingsByUser(id)));
     }
 
     render() {
@@ -25,10 +31,18 @@ class Listing extends Component {
         if (!this.props.specificRating) {
             ratingsFormPost = <RatingsForm place={this.props.specificPlace} />
         } else {
-            ratingsFormEdit = this.props.editing ? 
-            <div><EditRatingForm rating={this.props.specificRating} place={this.props.specificPlace}/><button onClick={() => this.props.dispatch(toggleEditRating())}>Cancel</button></div> :
-            <button onClick={() => this.props.dispatch(toggleEditRating())}>Edit rating</button>; 
-            // <button onClick={() => console.log('delete button clicked')}>Delete</button> */}
+            ratingsFormEdit = this.props.editing 
+            ? 
+            <div>
+                <EditRatingForm rating={this.props.specificRating} place={this.props.specificPlace}/>
+                <button onClick={() => this.props.dispatch(toggleEditRating())}>Cancel</button>
+                <button onClick={() => this.deleteRating()}>Delete</button>
+            </div> 
+            :
+            <div>
+                <button onClick={() => this.props.dispatch(toggleEditRating())}>Edit rating</button>
+                <button onClick={() => this.deleteRating()}>Delete</button>
+            </div>; 
         }
     }
 
