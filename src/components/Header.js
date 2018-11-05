@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { Link } from 'react-router-dom';
 import { clearAuthToken } from '../local-storage';
+import { clearSpecificRatingData } from '../actions/ratings';
 
 class Header extends Component {
 
@@ -11,15 +12,19 @@ class Header extends Component {
     clearAuthToken();
   }
 
+  clearData() {
+    this.props.dispatch(clearSpecificRatingData());
+  }
+
   render() {
 
     const buttonStyle = {
       margin: '5px'
     }
 
-    let registerButton = <Link style={buttonStyle} to="/register">Register</Link>;
-    let loginButton = <Link style={buttonStyle} to="/login">Log in</Link>;
-    let faqsButton = <Link style={buttonStyle} id="faqsButton" to="/learn-more">Learn more</Link>;
+    let registerButton = <Link onClick={() => this.clearData()} style={buttonStyle} to="/register">Register</Link>;
+    let loginButton = <Link onClick={() => this.clearData()} style={buttonStyle} to="/login">Log in</Link>;
+    let faqsButton = <Link onClick={() => this.clearData()} style={buttonStyle} id="faqsButton" to="/learn-more">Learn more</Link>;
     let logOutButton;
     let profileButton;
 
@@ -31,7 +36,7 @@ class Header extends Component {
         </button>
       );
       profileButton = (
-        <Link style={buttonStyle} id="profileButton" to="/profile">Profile</Link>
+        <Link onClick={() => this.clearData()} style={buttonStyle} id="profileButton" to="/profile">Profile</Link>
       )
       loginButton = null;
       registerButton = null;
@@ -41,7 +46,7 @@ class Header extends Component {
 
     return (
       <header>
-        <Link to="/dashboard"><h1>Cozy Spaces</h1></Link>
+        <Link onClick={() => this.clearData()} to="/dashboard"><h1>Cozy Spaces</h1></Link>
         {faqsButton}
         {loginButton}
         {registerButton}

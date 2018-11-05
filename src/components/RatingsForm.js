@@ -51,7 +51,6 @@ class RatingsForm extends React.Component {
                 this.onSubmit(values)
             )}>
             {error}
-            {success}
             <Field
                 component={Input}
                 type="number"
