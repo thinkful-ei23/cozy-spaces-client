@@ -16,7 +16,9 @@ class Listing extends Component {
     }
 
     deleteRating() {
-        
+        const id = this.props.match.params.id;
+        return this.props.dispatch(deleteRating(this.props.specificPlace._id))
+        .then(() => this.props.dispatch(fetchRatingsByUser(id)));
     }
 
     render() {
@@ -34,12 +36,12 @@ class Listing extends Component {
             <div>
                 <EditRatingForm rating={this.props.specificRating} place={this.props.specificPlace}/>
                 <button onClick={() => this.props.dispatch(toggleEditRating())}>Cancel</button>
-                <button onClick={() => this.props.dispatch(deleteRating(this.props.specificPlace._id))}>Delete</button>
+                <button onClick={() => this.deleteRating()}>Delete</button>
             </div> 
             :
             <div>
                 <button onClick={() => this.props.dispatch(toggleEditRating())}>Edit rating</button>
-                <button onClick={() => this.props.dispatch(deleteRating(this.props.specificPlace._id))}>Delete</button>
+                <button onClick={() => this.deleteRating()}>Delete</button>
             </div>; 
         }
     }
