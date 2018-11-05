@@ -15,6 +15,10 @@ class Listing extends Component {
             .then(() => this.props.dispatch(fetchRatingsByUser(id)));
     }
 
+    deleteRating() {
+        
+    }
+
     render() {
     let ratings;
     let ratingsFormPost;
@@ -25,10 +29,18 @@ class Listing extends Component {
         if (!this.props.specificRating) {
             ratingsFormPost = <RatingsForm place={this.props.specificPlace} />
         } else {
-            ratingsFormEdit = this.props.editing ? 
-            <div><EditRatingForm rating={this.props.specificRating} place={this.props.specificPlace}/><button onClick={() => this.props.dispatch(toggleEditRating())}>Cancel</button></div> :
-            <button onClick={() => this.props.dispatch(toggleEditRating())}>Edit rating</button>; 
-            // <button onClick={() => console.log('delete button clicked')}>Delete</button> */}
+            ratingsFormEdit = this.props.editing 
+            ? 
+            <div>
+                <EditRatingForm rating={this.props.specificRating} place={this.props.specificPlace}/>
+                <button onClick={() => this.props.dispatch(toggleEditRating())}>Cancel</button>
+                <button onClick={() => console.log('delete button clicked')}>Delete rating</button>
+            </div> 
+            :
+            <div>
+                <button onClick={() => this.props.dispatch(toggleEditRating())}>Edit rating</button>
+                <button onClick={() => console.log('delete button clicked')}>Delete rating</button>
+            </div>; 
         }
     }
 
