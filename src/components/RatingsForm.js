@@ -26,21 +26,12 @@ class RatingsForm extends React.Component {
 
   render() {
     let error;
-    let success;
     console.log(this.props.error)
     if (this.props.submitFailed) {
         error = (
              <div className="form-error" aria-live="polite">
                {this.props.error}
              </div>
-        );
-    }
-
-    if (this.props.submitSucceeded) {
-        success = (
-        <div className="form-success" aria-live="polite">
-            <p>Submit succeeded</p>
-        </div>
         );
     }
       return (
@@ -51,7 +42,6 @@ class RatingsForm extends React.Component {
                 this.onSubmit(values)
             )}>
             {error}
-            {success}
             <Field
                 component={Input}
                 type="number"

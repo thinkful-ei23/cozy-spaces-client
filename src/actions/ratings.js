@@ -126,7 +126,7 @@ export const fetchRatingsByUser = (id) => (dispatch, getState) => {
       .then((res) => dispatch(postRatingSuccess(res)))
       .catch(error => {
           console.log('client side error');
-        const {reason, message, status, location} = error;
+        const {reason, message, location} = error;
         dispatch(postRatingError(error));
             if (reason === 'ValidationError') {
                 console.log('in reason')

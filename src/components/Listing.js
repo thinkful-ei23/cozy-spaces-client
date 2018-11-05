@@ -11,7 +11,7 @@ class Listing extends Component {
 
     componentDidMount() {
             const id = this.props.match.params.id;
-            this.props.dispatch(fetchPlaceByID(id))
+            return this.props.dispatch(fetchPlaceByID(id))
             .then(() => this.props.dispatch(fetchRatingsByUser(id)));
     }
 

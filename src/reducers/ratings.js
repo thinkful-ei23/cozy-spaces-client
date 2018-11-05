@@ -11,7 +11,7 @@ import {
   TOGGLE_EDIT_RATING,
   EDIT_RATING_REQUEST,
   EDIT_RATING_ERROR,
-  EDIT_RATING_SUCCESS
+  EDIT_RATING_SUCCESS,
 } from '../actions/ratings';
  
  const initialState = {
