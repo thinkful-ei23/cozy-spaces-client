@@ -6,13 +6,11 @@ import RatingsForm from './RatingsForm'
 import { fetchRatingsByUser } from '../actions/ratings';
 import EditRatingForm from './EditRatingForm';
 import { toggleEditRating } from '../actions/ratings';
-import { clearSpecificRatingData } from '../actions/ratings';
 
 class Listing extends Component {
 
     componentDidMount() {
             const id = this.props.match.params.id;
-            this.props.dispatch(clearSpecificRatingData())
             return this.props.dispatch(fetchPlaceByID(id))
             .then(() => this.props.dispatch(fetchRatingsByUser(id)));
     }

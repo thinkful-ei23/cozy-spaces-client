@@ -76,11 +76,6 @@ export const editRatingError = (error) => ({
     error
 });
 
-export const CLEAR_SPECIFIC_RATING_DATA = 'CLEAR_SPECIFIC_RATING_DATA';
-export const clearSpecificRatingData = () => ({
-    type: CLEAR_SPECIFIC_RATING_DATA
-});
-
 export const fetchRatings = () => dispatch => {
   dispatch(fetchRatingsRequest());
   fetch(`${API_BASE_URL}/ratings`, {
