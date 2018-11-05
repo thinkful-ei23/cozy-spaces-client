@@ -53,7 +53,7 @@ import {
      case EDIT_RATING_ERROR: 
        return {...state, loading: false, error: action.error}
      case CLEAR_SPECIFIC_RATING_DATA: 
-       return {...state, specificRating: null}
+       return {...state, specificRating: null, editing: false}
      default: 
        return state;
    }

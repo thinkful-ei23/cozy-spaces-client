@@ -22,9 +22,9 @@ class Header extends Component {
       margin: '5px'
     }
 
-    let registerButton = <Link onClick={() => this.clearData()} style={buttonStyle} to="/register">Register</Link>;
-    let loginButton = <Link onClick={() => this.clearData()} style={buttonStyle} to="/login">Log in</Link>;
-    let faqsButton = <Link onClick={() => this.clearData()} style={buttonStyle} id="faqsButton" to="/learn-more">Learn more</Link>;
+    let registerButton = <Link style={buttonStyle} to="/register">Register</Link>;
+    let loginButton = <Link style={buttonStyle} to="/login">Log in</Link>;
+    let faqsButton = <Link style={buttonStyle} id="faqsButton" to="/learn-more">Learn more</Link>;
     let logOutButton;
     let profileButton;
 
@@ -36,7 +36,7 @@ class Header extends Component {
         </button>
       );
       profileButton = (
-        <Link onClick={() => this.clearData()} style={buttonStyle} id="profileButton" to="/profile">Profile</Link>
+        <Link  style={buttonStyle} id="profileButton" to="/profile">Profile</Link>
       )
       loginButton = null;
       registerButton = null;
@@ -46,7 +46,7 @@ class Header extends Component {
 
     return (
       <header>
-        <Link onClick={() => this.clearData()} to="/dashboard"><h1>Cozy Spaces</h1></Link>
+        <Link to="/dashboard"><h1>Cozy Spaces</h1></Link>
         {faqsButton}
         {loginButton}
         {registerButton}
