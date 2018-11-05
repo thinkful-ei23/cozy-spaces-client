@@ -2,7 +2,7 @@ import React, { Fragment }  from 'react';
 import {Field, reduxForm, /*focus*/} from 'redux-form'; 
 import Input from './Input';
 import { required } from '../validators';
-import { editRating, toggleEditRating } from '../actions/ratings';
+import { editRating } from '../actions/ratings';
 import { fetchRatingsByUser } from '../actions/ratings';
 
 class EditRatingForm extends React.Component {
