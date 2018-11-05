@@ -19,8 +19,7 @@ import {
    loading: false,
    error: null,
    specificRating : null,
-   editing: false,
-   editSubmissionWorking: false
+   editing: false
  };
  
  export default function reducer(state = initialState, action) {
@@ -47,11 +46,11 @@ import {
      case TOGGLE_EDIT_RATING: 
        return {...state, editing: !(state.editing)};
      case EDIT_RATING_REQUEST: 
-       return {...state, editSubmissionWorking: true};
+       return {...state, loading: true};
      case EDIT_RATING_SUCCESS: 
-       return {...state, editSubmissionWorking: false};
+       return {...state, loading: false};
      case EDIT_RATING_ERROR: 
-       return {...state, editSubmissionWorking: false, error: action.error}
+       return {...state, loading: false, error: action.error}
      default: 
        return state;
    }

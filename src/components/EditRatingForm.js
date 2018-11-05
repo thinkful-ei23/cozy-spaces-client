@@ -1,5 +1,5 @@
 import React, { Fragment }  from 'react';
-import {Field, reduxForm, focus} from 'redux-form'; 
+import {Field, reduxForm, /*focus*/} from 'redux-form'; 
 import Input from './Input';
 import { required } from '../validators';
 import { editRating, toggleEditRating } from '../actions/ratings';
@@ -8,7 +8,7 @@ class EditRatingForm extends React.Component {
   onSubmit(values) {
     console.log('Edited values: ', values);
     const rating = {
-      placesLink : this.props.place._id,
+      placesLink : this.props.places.specificPlace._id,
       rating : {
         warmLighting: parseInt(values.warmLighting, 10),
         relaxedMusic: parseInt(values.relaxedMusic, 10),
@@ -107,6 +107,6 @@ class EditRatingForm extends React.Component {
 
 export default reduxForm({
   form: 'EditRatingForm',
-  onSubmitFail: (errors, dispatch) =>
-      dispatch(focus('EditRatingform', Object.keys(errors)[0]))
+  // onSubmitFail: (errors, dispatch) =>
+  //     dispatch(focus('EditRatingform', Object.keys(errors)[0]))
 })(EditRatingForm);

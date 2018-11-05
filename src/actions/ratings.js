@@ -127,22 +127,22 @@ export const fetchRatingsByUser = (id) => (dispatch, getState) => {
       });
   }
 
-  export const editRating = (/*rating*/) => (dispatch, getState) => {
-    // console.log('editrating', rating);
-    // const authToken = getState().auth.authToken;
+  export const editRating = (rating) => (dispatch, getState) => {
+    console.log('editrating', rating);
+    const authToken = getState().auth.authToken;
     dispatch(editRatingRequest());
-    // return fetch(`${API_BASE_URL}/ratings`, {
-    //   method: 'PUT',
-    //   headers: {
-    //     'content-type': 'application/json',
-    //     Authorization: `Bearer ${authToken}`
-    //     },
-    //     body: JSON.stringify(rating)
-    // })
-    //   .then(res => normalizeResponseErrors(res))
-    //   .then(res => res.json()) 
-    //   .then((res) => dispatch(editRatingSuccess(res)))
-    //   .catch(error => {
-    //     dispatch(editRatingError(error)); 
-    //   });
+    return fetch(`${API_BASE_URL}/ratings`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer ${authToken}`
+        },
+        body: JSON.stringify(rating)
+    })
+      .then(res => normalizeResponseErrors(res))
+      .then(res => res.json()) 
+      .then((res) => dispatch(editRatingSuccess(res)))
+      .catch(error => {
+        dispatch(editRatingError(error)); 
+      });
   }
