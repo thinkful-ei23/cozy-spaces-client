@@ -160,3 +160,27 @@ export const fetchRatingsByUser = (id) => (dispatch, getState) => {
         dispatch(editRatingError(error)); 
       });
   }
+
+  export const deleteRating = (placeID) => (dispatch, getState) => {
+    const authToken = getState().auth.authToken;
+    console.log('placeID: ', placeID);
+    console.log('authToken: ', authToken);
+    return fetch(`${API_BASE_URL}/ratings/${placeID}`, {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${authToken}`
+      }
+    })
+    .then(res => normalizeResponseErrors(res))
+    .then(res => res.json())
+    .catch(err => {
+      const { reason, message, location } = err;
+      if (reason === 'ValidationError') {
+        return Promise.reject(
+          new SubmissionError({
+            [location]: message
+          })
+        );
+      }
+    });
+  };
