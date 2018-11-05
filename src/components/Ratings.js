@@ -1,21 +1,26 @@
 import React, { Fragment }  from 'react';
 import { connect } from 'react-redux'; 
-import { fetchRatingsByUser } from '../actions/ratings';
 
 class Ratings extends React.Component {
 
-  componentDidMount() {
-    console.log('in component did mount');
-    const placeId = this.props.specificPlace._id;
-    this.props.dispatch(fetchRatingsByUser(placeId));
-  }
-
   render() {
-    if (this.props.specificRating) {
+    let ratingError;
+
+    if (this.props.ratingError) {
+      let ratingStatus = this.props.ratingError.status;
+      if (ratingStatus === 404) {
+        ratingError = <p>You have not yet rated this location</p>
+      } else {
+        ratingError = <p>{this.props.ratingError.message}</p>;
+      }
+    }
+
+    if (this.props.specificRating && !this.props.ratingError) {
       let specificRating = this.props.specificRating.rating;
       return (
         <Fragment>
           <h4>Your Ratings</h4>
+          {ratingError}
           <ul>
             <li>Warm lighting: {specificRating.warmLighting}</li>
             <li>Relaxed Music: {specificRating.relaxedMusic}</li>
@@ -26,6 +31,8 @@ class Ratings extends React.Component {
           </ul>
         </Fragment>
       );
+  } else if (this.props.ratingError) {
+    return <p>{ratingError}</p>;
   } else {
     return <p>Loading</p>;
   }
@@ -34,7 +41,8 @@ class Ratings extends React.Component {
 
 const mapStateToProps = state => ({
   specificPlace: state.places.specificPlace,
-  specificRating : state.ratings.specificRating
+  specificRating : state.ratings.specificRating,
+  ratingError: state.ratings.error
 });
 
 export default connect(mapStateToProps)(Ratings);

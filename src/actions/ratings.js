@@ -69,6 +69,7 @@ export const fetchRatings = () => dispatch => {
 
 export const fetchRatingsByUser = (id) => (dispatch, getState) => {
     console.log('in fetch ratings');
+    // actually fetches by place
     const authToken = getState().auth.authToken;
     dispatch(fetchRatingsByUserRequest());
     return fetch(`${API_BASE_URL}/ratings/${id}`, {
@@ -111,7 +112,7 @@ export const fetchRatingsByUser = (id) => (dispatch, getState) => {
                 // need help from TJ on how to get this submission error into the right place
                 return Promise.reject(
                     new SubmissionError({
-                        'warmLighting' : message
+                        [location] : message
                     })
                 );
             } 

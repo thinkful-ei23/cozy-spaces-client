@@ -3,23 +3,27 @@ import { connect } from 'react-redux';
 import { fetchPlaceByID } from '../actions/places';
 import Ratings from './Ratings'
 import RatingsForm from './RatingsForm'
+import { fetchRatingsByUser } from '../actions/ratings';
 
 class Listing extends Component {
 
     componentDidMount() {
-        if (!this.props.specificPlace) {
             const id = this.props.match.params.id;
-            this.props.dispatch(fetchPlaceByID(id));
-        }
+            this.props.dispatch(fetchPlaceByID(id))
+            .then(() => this.props.dispatch(fetchRatingsByUser(id)));
     }
 
     render() {
     let ratings;
-    let ratingsForm;
+    let ratingsFormPost;
     if (this.props.loggedIn){
-     ratings = <Ratings />
-     ratingsForm = <RatingsForm place={this.props.specificPlace} />
+        ratings = <Ratings />
     }
+
+    if (!this.props.specificRating) {
+        ratingsFormPost = <RatingsForm place={this.props.specificPlace} />
+    }
+
     let specificPlace = this.props.specificPlace;
         if (specificPlace) {
             return (
@@ -39,7 +43,7 @@ class Listing extends Component {
               </ul>
             </div>
             {ratings}
-            {ratingsForm}
+            {ratingsFormPost}
           </Fragment>
             );  
 
@@ -52,7 +56,8 @@ class Listing extends Component {
 const mapStateToProps = state => ({
     specificPlace : state.places.specificPlace,
     loggedIn : state.auth.currentUser,
-    ratingError : state.ratings.error
+    ratingError : state.ratings.error,
+    specificRating : state.ratings.specificRating
 });
 
 export default connect(mapStateToProps)(Listing);
