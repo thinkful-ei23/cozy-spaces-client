@@ -34,7 +34,7 @@ import {
      case FETCH_RATING_BY_ID_REQUEST: 
        return {...state, loading: true};
      case FETCH_RATING_BY_ID_ERROR: 
-       return {...state, loading: false, error: action.error};
+       return {...state, loading: false, error: action.error, specificRating: null};
      case FETCH_RATING_BY_ID_SUCCESS: 
        return {...state, loading: false, specificRating: action.rating, error: null}
      case POST_RATING_REQUEST : 
