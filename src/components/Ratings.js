@@ -32,8 +32,7 @@ class Ratings extends React.Component {
             <li>Comfy seating: {specificRating.comfySeating}</li>
             <li>Hot food/drink: {specificRating.hotFoodDrink}</li>
           </ul>
-          {/* <button onClick={() => this.props.dispatch(toggleEditRating())}>Edit ratin</button><button onClick={() => console.log('delete button clicked')}>Delete</button> */}
-        </Fragment>  //click on edit button: open EditRatingsForm, populated with ratings that are already in state, when submit button is clicked, values are captured and put request is dispatched to edit db and form disappears, then another fetch get to update ratings shown
+        </Fragment> 
       );
   } else if (this.props.ratingError) {
     return <p>{ratingError}</p>;

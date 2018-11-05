@@ -5,7 +5,7 @@ import Ratings from './Ratings'
 import RatingsForm from './RatingsForm'
 import { fetchRatingsByUser } from '../actions/ratings';
 import EditRatingForm from './EditRatingForm';
-import { toggleEditRating } from '../actions/ratings';
+import { toggleEditRating, deleteRating } from '../actions/ratings';
 
 class Listing extends Component {
 
@@ -34,12 +34,12 @@ class Listing extends Component {
             <div>
                 <EditRatingForm rating={this.props.specificRating} place={this.props.specificPlace}/>
                 <button onClick={() => this.props.dispatch(toggleEditRating())}>Cancel</button>
-                <button onClick={() => console.log('delete button clicked')}>Delete rating</button>
+                <button onClick={() => this.props.dispatch(deleteRating(this.props.specificPlace._id))}>Delete</button>
             </div> 
             :
             <div>
                 <button onClick={() => this.props.dispatch(toggleEditRating())}>Edit rating</button>
-                <button onClick={() => console.log('delete button clicked')}>Delete rating</button>
+                <button onClick={() => this.props.dispatch(deleteRating(this.props.specificPlace._id))}>Delete</button>
             </div>; 
         }
     }
