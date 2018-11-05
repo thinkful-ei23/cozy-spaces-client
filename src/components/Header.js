@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { Link } from 'react-router-dom';
 import { clearAuthToken } from '../local-storage';
-import { clearSpecificRatingData } from '../actions/ratings';
 
 class Header extends Component {
 

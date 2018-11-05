@@ -1,6 +1,5 @@
 import React, { Fragment }  from 'react';
 import { connect } from 'react-redux'; 
-import { fetchRatingsByUser, toggleEditRating } from '../actions/ratings';
 
 class Ratings extends React.Component {
 

@@ -12,7 +12,6 @@ import {
   EDIT_RATING_REQUEST,
   EDIT_RATING_ERROR,
   EDIT_RATING_SUCCESS,
-  CLEAR_SPECIFIC_RATING_DATA
 } from '../actions/ratings';
  
  const initialState = {
@@ -52,8 +51,6 @@ import {
        return {...state, loading: false};
      case EDIT_RATING_ERROR: 
        return {...state, loading: false, error: action.error}
-     case CLEAR_SPECIFIC_RATING_DATA: 
-       return {...state, specificRating: null, editing: false}
      default: 
        return state;
    }
