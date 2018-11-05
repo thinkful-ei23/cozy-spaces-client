@@ -2,11 +2,11 @@ import React, { Fragment }  from 'react';
 import {Field, reduxForm, focus} from 'redux-form'; 
 import Input from './Input';
 import { required } from '../validators';
-import { editRating } from '../actions/ratings';
+import { editRating, toggleEditRating } from '../actions/ratings';
 
 class EditRatingForm extends React.Component {
   onSubmit(values) {
-    console.log(values);
+    console.log('Edited values: ', values);
     const rating = {
       placesLink : this.props.place._id,
       rating : {
@@ -18,7 +18,7 @@ class EditRatingForm extends React.Component {
         hotFoodDrink: parseInt(values.hotFoodDrink, 10)
       }
     }
-    console.log(rating);
+    console.log('Edited rating: ', rating);
     return this.props.dispatch(editRating(rating))
   }
 
@@ -93,6 +93,11 @@ class EditRatingForm extends React.Component {
               type="submit"
               disabled={this.props.pristine || this.props.submitting}>
               Rate it
+            </button>
+            <button onClick={() => this.props.dispatch(toggleEditRating())}
+              className="btn-cancel"
+              type="button">
+              Cancel
             </button>
           </form>
         </Fragment>

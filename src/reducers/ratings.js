@@ -8,6 +8,7 @@ import {
   POST_RATING_REQUEST,
   POST_RATING_ERROR,
   POST_RATING_SUCCESS,
+  TOGGLE_EDIT_RATING,
   EDIT_RATING_REQUEST,
   EDIT_RATING_ERROR,
   EDIT_RATING_SUCCESS
@@ -18,7 +19,8 @@ import {
    loading: false,
    error: null,
    specificRating : null,
-   editing: false
+   editing: false,
+   editSubmissionWorking: false
  };
  
  export default function reducer(state = initialState, action) {
@@ -42,12 +44,14 @@ import {
        return {...state, loading: false};
      case POST_RATING_ERROR: 
        return {...state, loading: false, error: action.error};
+     case TOGGLE_EDIT_RATING: 
+       return {...state, editing: !(state.editing)};
      case EDIT_RATING_REQUEST: 
-       return {...state, editing: true};
+       return {...state, editSubmissionWorking: true};
      case EDIT_RATING_SUCCESS: 
-       return {...state, editing: false};
+       return {...state, editSubmissionWorking: false};
      case EDIT_RATING_ERROR: 
-       return {...state, editing: false, error: action.error}
+       return {...state, editSubmissionWorking: false, error: action.error}
      default: 
        return state;
    }

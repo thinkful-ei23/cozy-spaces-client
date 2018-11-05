@@ -53,6 +53,11 @@ export const postRatingError = (error) => ({
     error
 });
 
+export const TOGGLE_EDIT_RATING = 'TOGGLE_EDIT_RATING';
+export const toggleEditRating = () => ({
+    type: TOGGLE_EDIT_RATING
+});
+
 export const EDIT_RATING_REQUEST = 'EDIT_RATING_REQUEST';
 export const editRatingRequest = () => ({
     type: EDIT_RATING_REQUEST
