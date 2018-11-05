@@ -143,6 +143,7 @@ export const fetchRatingsByUser = (id) => (dispatch, getState) => {
   export const editRating = (rating) => (dispatch, getState) => {
     console.log('editrating', rating);
     const authToken = getState().auth.authToken;
+    dispatch(toggleEditRating())
     dispatch(editRatingRequest());
     return fetch(`${API_BASE_URL}/ratings`, {
       method: 'PUT',
