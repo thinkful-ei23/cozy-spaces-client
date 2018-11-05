@@ -11,7 +11,8 @@ import {
   TOGGLE_EDIT_RATING,
   EDIT_RATING_REQUEST,
   EDIT_RATING_ERROR,
-  EDIT_RATING_SUCCESS
+  EDIT_RATING_SUCCESS,
+  CLEAR_SPECIFIC_RATING_DATA
 } from '../actions/ratings';
  
  const initialState = {
@@ -34,7 +35,7 @@ import {
      case FETCH_RATING_BY_ID_REQUEST: 
        return {...state, loading: true};
      case FETCH_RATING_BY_ID_ERROR: 
-       return {...state, loading: false, error: action.error};
+       return {...state, loading: false, error: action.error, specificRating: null};
      case FETCH_RATING_BY_ID_SUCCESS: 
        return {...state, loading: false, specificRating: action.rating, error: null}
      case POST_RATING_REQUEST : 
@@ -51,6 +52,8 @@ import {
        return {...state, loading: false};
      case EDIT_RATING_ERROR: 
        return {...state, loading: false, error: action.error}
+     case CLEAR_SPECIFIC_RATING_DATA: 
+       return {...state, specificRating: null, editing: false}
      default: 
        return state;
    }
