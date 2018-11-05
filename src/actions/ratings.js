@@ -54,6 +54,28 @@ export const postRatingError = (error) => ({
     error
 });
 
+export const TOGGLE_EDIT_RATING = 'TOGGLE_EDIT_RATING';
+export const toggleEditRating = () => ({
+    type: TOGGLE_EDIT_RATING
+});
+
+export const EDIT_RATING_REQUEST = 'EDIT_RATING_REQUEST';
+export const editRatingRequest = () => ({
+    type: EDIT_RATING_REQUEST
+});
+
+export const EDIT_RATING_SUCCESS = 'EDIT_RATING_SUCCESS';
+export const editRatingSuccess = (rating) => ({
+    type: EDIT_RATING_SUCCESS,
+    rating
+});
+
+export const EDIT_RATING_ERROR = 'EDIT_RATING_ERROR';
+export const editRatingError = (error) => ({
+    type: EDIT_RATING_ERROR,
+    error
+});
+
 export const fetchRatings = () => dispatch => {
   dispatch(fetchRatingsRequest());
   fetch(`${API_BASE_URL}/ratings`, {
@@ -115,5 +137,25 @@ export const fetchRatingsByUser = (id) => (dispatch, getState) => {
                     })
                 );
             } 
+      });
+  }
+
+  export const editRating = (rating) => (dispatch, getState) => {
+    console.log('editrating', rating);
+    const authToken = getState().auth.authToken;
+    dispatch(editRatingRequest());
+    return fetch(`${API_BASE_URL}/ratings`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+        Authorization: `Bearer ${authToken}`
+        },
+        body: JSON.stringify(rating)
+    })
+      .then(res => normalizeResponseErrors(res))
+      .then(res => res.json()) 
+      .then((res) => dispatch(editRatingSuccess(res)))
+      .catch(error => {
+        dispatch(editRatingError(error)); 
       });
   }

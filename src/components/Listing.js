@@ -4,6 +4,7 @@ import { fetchPlaceByID } from '../actions/places';
 import Ratings from './Ratings'
 import RatingsForm from './RatingsForm'
 
+
 class Listing extends Component {
 
     componentDidMount() {
@@ -16,11 +17,13 @@ class Listing extends Component {
     render() {
     let ratings;
     let ratingsForm;
+    // let editRatingForm; 
     if (this.props.loggedIn){
      ratings = <Ratings />
      ratingsForm = <RatingsForm place={this.props.specificPlace} />
+    //  editRatingForm = <EditRatingForm />
     }
-    let specificPlace = this.props.specificPlace;
+    let specificPlace = this.props.specificPlace
         if (specificPlace) {
             return (
           <Fragment>
@@ -40,6 +43,7 @@ class Listing extends Component {
             </div>
             {ratings}
             {ratingsForm}
+            {/* {editRatingForm} */}
           </Fragment>
             );  
 
