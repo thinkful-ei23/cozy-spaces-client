@@ -30,7 +30,7 @@ class Ratings extends React.Component {
       );
     } else if (this.props.specificRating && this.props.editing) {
       let specificRating = this.props.specificRating.rating; 
-      let editRatingForm = <EditRatingForm />
+      let editRatingForm = <EditRatingForm place={this.props.specificPlace}/>
       return (
         <Fragment>
           <h4>Your Ratings</h4>

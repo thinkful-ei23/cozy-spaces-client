@@ -8,7 +8,7 @@ class EditRatingForm extends React.Component {
   onSubmit(values) {
     console.log('Edited values: ', values);
     const rating = {
-      placesLink : this.props.places.specificPlace._id,
+      placesLink : this.props.place._id,
       rating : {
         warmLighting: parseInt(values.warmLighting, 10),
         relaxedMusic: parseInt(values.relaxedMusic, 10),
