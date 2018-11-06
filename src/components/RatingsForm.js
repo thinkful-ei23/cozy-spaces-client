@@ -9,7 +9,7 @@ class RatingsForm extends React.Component {
   onSubmit(values) {
     console.log(values);
     const rating = {
-      placesLink : this.props.place._id,
+      placesId : this.props.place._id,
       rating : {
         warmLighting: parseInt(values.warmLighting, 10),
         relaxedMusic: parseInt(values.relaxedMusic, 10),

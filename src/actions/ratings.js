@@ -89,12 +89,12 @@ export const fetchRatings = () => dispatch => {
     });
 }
 
-export const fetchRatingsByUser = (id) => (dispatch, getState) => {
+export const fetchRatingsByUser = (placeId) => (dispatch, getState) => {
     console.log('in fetch ratings');
     // actually fetches by place
     const authToken = getState().auth.authToken;
     dispatch(fetchRatingsByUserRequest());
-    return fetch(`${API_BASE_URL}/ratings/${id}`, {
+    return fetch(`${API_BASE_URL}/ratings/${placeId}`, {
       method: 'GET',
       headers: {
         // Provide our existing token as credentials to get a new one
@@ -141,12 +141,12 @@ export const fetchRatingsByUser = (id) => (dispatch, getState) => {
       });
   }
 
-  export const editRating = (rating, ratingID) => (dispatch, getState) => {
+  export const editRating = (rating, placeId) => (dispatch, getState) => {
     console.log('editrating', rating);
     const authToken = getState().auth.authToken;
     dispatch(toggleEditRating())
     dispatch(editRatingRequest());
-    return fetch(`${API_BASE_URL}/ratings/${ratingID}`, {
+    return fetch(`${API_BASE_URL}/ratings/${placeId}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
