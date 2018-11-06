@@ -11,7 +11,7 @@ import GoogleMap from './components/GoogleMap';
 
 ReactDOM.render(<Router>
   <Provider store={store}>
-    <App />
+    <GoogleMap />
   </Provider>
   </Router>, document.getElementById('root'));
 
