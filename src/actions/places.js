@@ -35,6 +35,18 @@ export const fetchPlaceByIdError = (error) => ({
     error
 });
 
+export const FETCH_PLACE_INFO_SUCCESS = 'FETCH_PLACE_INFO_SUCCESS';
+export const fetchPlaceInfoSuccess = (info) => ({
+    type: FETCH_PLACE_INFO_SUCCESS,
+    info
+});
+
+// export const FETCH_PLACE_BY_ID_ERROR = 'FETCH_PLACE_BY_ID_ERROR';
+// export const fetchPlaceByIdError = (error) => ({
+//     type: FETCH_PLACE_BY_ID_ERROR,
+//     error
+// });
+
 export const fetchPlaces = () => dispatch => {
   dispatch(fetchPlacesRequest());
   fetch(`${API_BASE_URL}/places`, {
@@ -47,6 +59,18 @@ export const fetchPlaces = () => dispatch => {
       dispatch(fetchPlacesError(error));
     });
 }
+
+export const fetchPlaceInfo = (lat, lng) => dispatch => {
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`, {
+      method: 'GET'
+    })
+      .then(res => normalizeResponseErrors(res))
+      .then(res => res.json()) 
+      .then((res) => dispatch(fetchPlaceInfoSuccess(res)))
+      .catch(error => {
+        // dispatch(fetchPlacesError(error));
+      });
+  }
 
 export const fetchPlaceByID = (id) => dispatch => {
     dispatch(fetchPlaceByIdRequest());
