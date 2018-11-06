@@ -64,10 +64,10 @@ class Listing extends Component {
                   <li>Hot food/drink: {specificPlace.averageHotFoodDrink}</li>
               </ul>
             </div>
+            <Comments />
             {ratings}
             {ratingsFormPost}
             {ratingsFormEdit}
-            <Comments />
           </Fragment>
             );  
 
