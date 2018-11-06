@@ -95,7 +95,7 @@ class EditRatingForm extends React.Component {
                 component={Input}
                 type="textarea"
                 name="comment"
-                label="comment"
+                label="Comments"
               />
             <button
               className="btn-sub"
