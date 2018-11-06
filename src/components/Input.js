@@ -28,6 +28,8 @@ export default class Input extends React.Component {
                     id={this.props.input.name}
                     type={this.props.type}
                     ref={input => (this.input = input)}
+                    min={this.props.min}
+                    max={this.props.max}
                 />
                 <div>
                     {error}

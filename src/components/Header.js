@@ -31,7 +31,7 @@ class Header extends Component {
         </button>
       );
       profileButton = (
-        <Link style={buttonStyle} id="profileButton" to="/profile">Profile</Link>
+        <Link  style={buttonStyle} id="profileButton" to="/profile">Profile</Link>
       )
       loginButton = null;
       registerButton = null;
