@@ -10,9 +10,9 @@ import { toggleEditRating, deleteRating } from '../actions/ratings';
 class Listing extends Component {
 
     componentDidMount() {
-            const id = this.props.match.params.id;
-            return this.props.dispatch(fetchPlaceByID(id))
-            .then(() => this.props.dispatch(fetchRatingsByUser(id)));
+        const id = this.props.match.params.id;
+        return this.props.dispatch(fetchPlaceByID(id))
+        .then(() => this.props.dispatch(fetchRatingsByUser(id)));
     }
 
     deleteRating() {
@@ -36,7 +36,6 @@ class Listing extends Component {
             <div>
                 <EditRatingForm rating={this.props.specificRating} place={this.props.specificPlace}/>
                 <button onClick={() => this.props.dispatch(toggleEditRating())}>Cancel</button>
-                <button onClick={() => this.deleteRating()}>Delete</button>
             </div> 
             :
             <div>

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import {fetchPlaces, fetchPlaceByID} from '../actions/places';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
+import Search from './Search'
 
 
 class Dashboard extends Component {
@@ -48,6 +49,7 @@ class Dashboard extends Component {
             <div className="dashboard">
               <button onClick={() => this.getLocation()}>Get Location</button>
               <p id='geolocation'></p>
+              <Search />
                 <ul>{(this.props.places).map(place =>
                     <li key={place._id}>
                     <img alt={`${place.photos[0].caption}`} src={`${place.photos[0].url}`} />

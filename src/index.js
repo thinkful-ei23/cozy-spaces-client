@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import store from './store';
 import {BrowserRouter as Router} from 'react-router-dom';
+import GoogleMap from './components/GoogleMap';
 
 ReactDOM.render(<Router>
   <Provider store={store}>
