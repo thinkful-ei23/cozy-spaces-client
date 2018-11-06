@@ -91,6 +91,12 @@ class EditRatingForm extends React.Component {
                 max='5'
                 validate={[required]}
               />
+            <Field
+                component={Input}
+                type="textarea"
+                name="comment"
+                label="comment"
+              />
             <button
               className="btn-sub"
               type="submit"

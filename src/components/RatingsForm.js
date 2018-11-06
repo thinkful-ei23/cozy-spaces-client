@@ -5,6 +5,7 @@ import { required } from '../validators';
 import { postRating } from '../actions/ratings';
 import { fetchRatingsByUser } from '../actions/ratings';
 
+
 class RatingsForm extends React.Component {
   onSubmit(values) {
     console.log(values);
@@ -96,6 +97,12 @@ class RatingsForm extends React.Component {
                 min='0'
                 max='5'
                 validate={[required]}
+              />
+            <Field
+                component={Input}
+                type="textarea"
+                name="comment"
+                label="comment"
               />
             <button
               className="btn-sub"
