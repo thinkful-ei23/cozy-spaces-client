@@ -12,8 +12,6 @@ class Dashboard extends Component {
         return (
             this.props.dispatch(fetchPlaces())
         );
-
-        
     }
 
     setPlace(id) {
@@ -44,15 +42,15 @@ class Dashboard extends Component {
         if (!this.props.returningUser) {
             return <Redirect to="/" />;
         }
-        // {place.photos[0]} put this back
+        
         return (
             <div className="dashboard">
               <button onClick={() => this.getLocation()}>Get Location</button>
               <p id='geolocation'></p>
-              <Search />
                 <ul>{(this.props.places).map(place =>
                     <li key={place._id}>
-                    <img alt={`${place.photos[0].caption}`} src={`${place.photos[0].url}`} />
+                    {/* <img alt={`${place.photos[0].caption}`} src={`${place.photos[0].url}`} /> */}
+                    {/* This needs to be commented out temporarily because new listings don't have photos */}
                     <div>
                         <span className="name">{place.name}, </span><span className="type">{place.type}</span><br></br>
                         <span className="overallRating">Overall cozy rating: {place.averageCozyness}</span>

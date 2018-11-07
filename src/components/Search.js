@@ -5,7 +5,7 @@ import requiresLogin from "./requires-login";
 export class Search extends Component {
     onSubmit(e) {
       e.preventDefault();
-      const answer = this.input.value;
+      // const answer = this.input.value;
     }
 
     render(){

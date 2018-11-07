@@ -1,6 +1,9 @@
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom'
 import { connect } from 'react-redux';
+import { fetchPlaceInfo, postPlace } from '../actions/places';
+import { Redirect } from 'react-router-dom';
 
 export class MapContainer extends Component {
   constructor(props) {
@@ -10,16 +13,7 @@ export class MapContainer extends Component {
       activeMarker: {},
       selectedPlace: {}
     }
-    this.saveData = this.saveData.bind(this);
   }
-
-//  name: { type: String, required: true },
-// type: { type: String, required: true },
-// address: { type: String, required: true },
-// city: { type: String, required: true }, // we provide this?
-// state: { type: String, required: true }, // we provide this?
-// zipcode: { type: String, required: true, default: '' }, // we provide this?
-// position : we provide this
 
 
   onMapClicked(mapProps, map, clickEvent) {
@@ -35,6 +29,7 @@ export class MapContainer extends Component {
     }
     this.setState({activeMarker: {position: {lat: latitude, lng: longitude}}})
     // this might not be exactly right
+    console.log(this.state);
   }
 
   onMarkerClick(props, marker, e) {
@@ -54,46 +49,53 @@ export class MapContainer extends Component {
     // ...
   }
 
-  saveData() {
-    console.log('here');
-    var name = escape(document.getElementById('name').value);
-    var address = escape(document.getElementById('address').value);
-    var type = document.getElementById('typeOfPlace').value;
-    var latlng = this.state.activeMarker.getPosition();
-    var url = 'phpsqlinfo_addrow.php?name=' + name + '&address=' + address +
-              '&type=' + type + '&lat=' + latlng.lat() + '&lng=' + latlng.lng();
-    console.log(name, address, type);
-    // downloadUrl(url, function(data, responseCode) {
-
-    //   if (responseCode == 200 && data.length <= 1) {
-    //     this.infowindow.close();
-    //     this.messagewindow.open(this.map, this.marker);
-    //   }
-    // });
+  onInfoWindowOpen(props, e) {
+    const form = (
+    <form>
+      <div>
+        <label htmlFor="name">Name:</label>
+        <input type="text" id="name"></input> 
+      </div>
+      <div>
+        <label htmlFor="address">Address:</label>
+        <input type='text' id='address'></input> 
+      </div>
+      <div>
+        <label htmlFor="typeOfPlace">Type of Place:</label>
+        <input type='text' id='typeOfPlace'></input> 
+      </div>
+      <button value='Save' onClick={e => this.saveData(e)}>Add listing</button>
+    </form>);
+    ReactDOM.render(React.Children.only(form), document.getElementById("form"));
   }
 
-  //   this.infowindow = new google.maps.InfoWindow({
-  //     content: document.getElementById('form')
-  //   });
+  saveData(e) {
+    e.preventDefault();
+    let name = escape(document.getElementById('name').value);
+    let address = escape(document.getElementById('address').value);
+    let type = document.getElementById('typeOfPlace').value;
+    let lat = this.state.activeMarker.internalPosition.lat();
+    let lng = this.state.activeMarker.internalPosition.lng();
+    return this.props.dispatch(fetchPlaceInfo(lat, lng)).then(info => {
+      const place = {
+        name,
+        type,
+        address,
+        city: info.address_components[1].long_name,
+        state: info.address_components[3].long_name,
+        zipcode: info.address_components[0].long_name,
+        position: {lat, lng}
+      }
+      console.log(place);
+      return this.props.dispatch(postPlace(place));
+    });
 
-  //   this.messagewindow = new google.maps.InfoWindow({
-  //     content: document.getElementById('message')
-  //   });
-
-
-
-  // }
-
-// callback(results, status) {
-//   if (status == google.maps.places.PlacesServiceStatus.OK) {
-//     for (var i = 0; i < results.length; i++) {
-//       var place = results[i];
-//       console.log((results[i]));
-//     }
-//   }
-// }
+  }
 
   render() {
+    if (this.props.specificPlace) {
+      return <Redirect to={`/places/${this.props.specificPlace._id}`} />
+    }
     let marker;
     if (this.state.activeMarker) {
       // make some markers appear
@@ -101,30 +103,13 @@ export class MapContainer extends Component {
           name={'Current location'} position={this.state.activeMarker.position}/>
     }
 
-    let form;
-    if (this.state.showingInfoWindow) {
-      form = 
-      <div id="form">
-        <table>
-          <tr><td>Name:</td> <td><input type='text' id='name'/> </td> </tr>
-          <tr><td>Address:</td> <td><input type='text' id='address'/> </td> </tr>
-          <tr><td>Type of Place:</td> <td><input type='text' id='typeOfPlace'/> </td> </tr>
-          <tr><td></td><td><button onClick={this.saveData}></button>
-            <input type='button' value='Save' onClick={() => {
-            console.log('bleh');
-            this.saveData()}}/></td></tr>
-        </table>
-      </div>
-    }
-
     const style = {
         width: '500px',
         height: '500px'
-    }
-
-    let success = <div id="message">Location saved</div>;
+    };
 
     return (
+      <div>
       <Map google={this.props.google}
       style={style}
       initialCenter={{
@@ -137,14 +122,24 @@ export class MapContainer extends Component {
         {marker}
         <InfoWindow
           marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}>
-            {form}
+          visible={this.state.showingInfoWindow}
+          onOpen={e => {
+            this.onInfoWindowOpen(this.props, e);
+          }}
+          >
+          <div id="form" />
         </InfoWindow>
       </Map>
+      </div>
     );
   }
 }
 
+const mapStateToProps = state => ({
+  info: state.places.info,
+  specificPlace: state.places.specificPlace
+});
+
 export default GoogleApiWrapper({
   apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-})(connect()(MapContainer))
+})(connect(mapStateToProps)(MapContainer))
