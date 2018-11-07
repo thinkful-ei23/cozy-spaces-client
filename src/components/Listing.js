@@ -6,6 +6,7 @@ import RatingsForm from './RatingsForm'
 import { fetchRatingsByUser } from '../actions/ratings';
 import EditRatingForm from './EditRatingForm';
 import { toggleEditRating, deleteRating } from '../actions/ratings';
+import Comments from './Comments'
 
 class Listing extends Component {
 
@@ -63,6 +64,7 @@ class Listing extends Component {
                   <li>Hot food/drink: {specificPlace.averageHotFoodDrink}</li>
               </ul>
             </div>
+            <Comments />
             {ratings}
             {ratingsFormPost}
             {ratingsFormEdit}
