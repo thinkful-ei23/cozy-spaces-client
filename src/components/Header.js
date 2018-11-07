@@ -22,6 +22,7 @@ class Header extends Component {
     let faqsButton = <Link style={buttonStyle} id="faqsButton" to="/learn-more">Learn more</Link>;
     let logOutButton;
     let profileButton;
+    let addAListingLink;
 
     if (this.props.loggedIn) {
       console.log('Logged in? ', true);
@@ -33,6 +34,9 @@ class Header extends Component {
       profileButton = (
         <Link  style={buttonStyle} id="profileButton" to="/profile">Profile</Link>
       )
+      addAListingLink  = (
+        <Link  style={buttonStyle} id="addListingLink" to="/add-listing">Add a cozy space</Link>
+      )
       loginButton = null;
       registerButton = null;
     } else {
@@ -43,6 +47,7 @@ class Header extends Component {
       <header>
         <Link to="/dashboard"><h1>Cozy Spaces</h1></Link>
         {faqsButton}
+        {addAListingLink}
         {loginButton}
         {registerButton}
         {profileButton}
