@@ -17,6 +17,7 @@ class ReportListings extends React.Component {
       placeId: this.props.specificPlace._id
     }
     return this.props.dispatch(reportPlace(report))
+    .then(() => this.props.dispatch(fetchPlaceByID(report.placeId)))
   }
 
   unReportPlace() {
@@ -24,6 +25,7 @@ class ReportListings extends React.Component {
       placeId: this.props.specificPlace._id
     }
     return this.props.dispatch(unReportPlace(report))
+    .then(() => this.props.dispatch(fetchPlaceByID(report.placeId)))
   }
 
   render() {

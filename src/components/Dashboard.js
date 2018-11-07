@@ -50,7 +50,7 @@ class Dashboard extends Component {
               <p id='geolocation'></p>
                 <ul>{(this.props.places).map(place =>
                     <li key={place._id}>
-                    <img alt={`${place.photos[0].caption}`} src={`${place.photos[0].url}`} />
+                    {/* <img alt={`${place.photos[0].caption}`} src={`${place.photos[0].url}`} /> */}
                     <div>
                         <span className="name">{place.name}, </span><span className="type">{place.type}</span><br></br>
                         <span className="overallRating">Overall cozy rating: {place.averageCozyness}</span>
