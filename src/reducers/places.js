@@ -8,7 +8,7 @@ import {
   POST_PLACE_REQUEST,
   POST_PLACE_ERROR,
   POST_PLACE_SUCCESS,
-  FETCH_PLACE_INFO_SUCCESS
+  CLEAR_SPECIFIC_PLACE,
 } from '../actions/places';
  
  const initialState = {
@@ -16,7 +16,6 @@ import {
    loading: false,
    error: null,
    specificPlace : null,
-   info: null
  };
  
  export default function reducer(state = initialState, action) {
@@ -40,8 +39,8 @@ import {
        return {...state, loading: false, error: action.error};
      case POST_PLACE_SUCCESS: 
        return {...state, loading: false, specificPlace: action.place, error: null}
-     case FETCH_PLACE_INFO_SUCCESS: 
-       return {...state, loading: false, info: action.info}
+       case CLEAR_SPECIFIC_PLACE: 
+       return {...state, specificPlace: null}
      default: 
        return state;
    }

@@ -1,6 +1,11 @@
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
 
+export const CLEAR_SPECIFIC_PLACE = 'CLEAR_SPECIFIC_PLACE';
+export const clearSpecificPlace = () => ({
+    type: CLEAR_SPECIFIC_PLACE,
+});
+
 export const FETCH_PLACES_SUCCESS = 'FETCH_PLACES_SUCCESS';
 export const fetchPlacesSuccess = places => ({
     type: FETCH_PLACES_SUCCESS,
@@ -53,9 +58,8 @@ export const postPlaceRequest = () => ({
 });
 
 export const FETCH_PLACE_INFO_SUCCESS = 'FETCH_PLACE_INFO_SUCCESS';
-export const fetchPlaceInfoSuccess = (info) => ({
+export const fetchPlaceInfoSuccess = () => ({
     type: FETCH_PLACE_INFO_SUCCESS,
-    info
 });
 
 // export const FETCH_PLACE_BY_ID_ERROR = 'FETCH_PLACE_BY_ID_ERROR';
@@ -87,6 +91,21 @@ export const fetchPlaceInfo = (lat, lng) => dispatch => {
           let info = res.results.filter(element => element.types[0] === 'postal_code')[0];
           dispatch(fetchPlaceInfoSuccess(info))
           return info;
+      })
+      .catch(error => {
+        // dispatch(fetchPlacesError(error));
+      });
+  }
+
+
+  export const fetchLatLng = (zipcode) => dispatch => {
+    return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipcode}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`, {
+      method: 'GET'
+    })
+      .then(res => normalizeResponseErrors(res))
+      .then(res => res.json()) 
+      .then((res) => {
+          return res.results[0].geometry.location;
       })
       .catch(error => {
         // dispatch(fetchPlacesError(error));

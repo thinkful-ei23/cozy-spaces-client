@@ -2,7 +2,7 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux';
-import { fetchPlaceInfo, postPlace } from '../actions/places';
+import { fetchPlaceInfo, postPlace, fetchLatLng } from '../actions/places';
 import { Redirect } from 'react-router-dom';
 
 export class MapContainer extends Component {
@@ -11,8 +11,36 @@ export class MapContainer extends Component {
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
-      selectedPlace: {}
+      selectedPlace: {},
+      currentLocation: {},
+      geolocationError: false 
     }
+    this.componentDidMount = this.componentDidMount.bind(this);
+    this.handleLocationError = this.handleLocationError.bind(this);
+  }
+
+  componentDidMount() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => this.setPosition(position), () => {
+        this.handleLocationError(true);
+      });
+    } else {
+      // Browser doesn't support Geolocation
+      this.handleLocationError(false);
+    }
+  }
+
+  setPosition(position) {
+    var pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
+    console.log(pos);
+    this.setState({currentLocation: pos, geoLocationError: false});
+  }
+
+  handleLocationError(browserHasGeolocation) {
+    this.setState({geolocationError: true});
   }
 
 
@@ -70,6 +98,7 @@ export class MapContainer extends Component {
   }
 
   saveData(e) {
+    this.setState({geolocationError: false});
     e.preventDefault();
     let name = escape(document.getElementById('name').value);
     let address = escape(document.getElementById('address').value);
@@ -89,18 +118,40 @@ export class MapContainer extends Component {
       console.log(place);
       return this.props.dispatch(postPlace(place));
     });
+  }
 
+  sendZip(e) {
+    e.preventDefault();
+    let zip = document.getElementById('zip-geo').value;
+    console.log(zip);
+    this.props.dispatch(fetchLatLng(zip)).then((latLng) => {
+      this.setState({ currentLocation: latLng})
+    });
   }
 
   render() {
     if (this.props.specificPlace) {
       return <Redirect to={`/places/${this.props.specificPlace._id}`} />
     }
+
     let marker;
+    let geolocationForm;
+    let geoLocationError;
+
     if (this.state.activeMarker) {
       // make some markers appear
       marker = <Marker onClick={(props, marker, e) => this.onMarkerClick(props, marker, e)}
           name={'Current location'} position={this.state.activeMarker.position}/>
+    }
+
+    if (this.state.geolocationError) {
+      geoLocationError = <p>'Error: The Geolocation service failed'</p>;
+      // make some markers appear
+      geolocationForm = <form>
+        <label htmlFor="zip-geo">Enter a zip-code instead</label>
+        <input id="zip-geo" type="text" pattern="[0-9]{5}" title="Five digit zip code" />
+        <button onClick={(e) => this.sendZip(e)}>Submit</button>
+        </form>;
     }
 
     const style = {
@@ -110,13 +161,18 @@ export class MapContainer extends Component {
 
     return (
       <div>
+      <div>
+        {geoLocationError}
+        {geolocationForm}
+      </div>
       <Map google={this.props.google}
       style={style}
       initialCenter={{
         lat: 45.6387281,
         lng: -122.6614861
       }}
-      zoom={15}
+      center={this.state.currentLocation}
+      zoom={12}
       onReady={this.fetchPlaces}
       onClick={(mapProps, map, clickEvent) => this.onMapClicked(mapProps, map, clickEvent)}>
         {marker}
