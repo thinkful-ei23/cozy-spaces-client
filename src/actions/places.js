@@ -68,9 +68,10 @@ export const fetchPlaceInfoSuccess = () => ({
 //     error
 // });
 
-export const fetchPlaces = () => dispatch => {
+export const fetchPlaces = (filter) => dispatch => {
+console.log(filter);
   dispatch(fetchPlacesRequest());
-  fetch(`${API_BASE_URL}/places`, {
+  fetch(`${API_BASE_URL}/places?lat=${filter.lat}&lng=${filter.lng}`, {
     method: 'GET'
   })
     .then(res => normalizeResponseErrors(res))

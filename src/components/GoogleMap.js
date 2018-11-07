@@ -105,6 +105,7 @@ export class MapContainer extends Component {
     let type = document.getElementById('typeOfPlace').value;
     let lat = this.state.activeMarker.internalPosition.lat();
     let lng = this.state.activeMarker.internalPosition.lng();
+    console.log('lng', typeof lng);
     return this.props.dispatch(fetchPlaceInfo(lat, lng)).then(info => {
       const place = {
         name,
@@ -113,7 +114,9 @@ export class MapContainer extends Component {
         city: info.address_components[1].long_name,
         state: info.address_components[3].long_name,
         zipcode: info.address_components[0].long_name,
-        position: {lat, lng}
+        location: {type: 'Point',
+        coordinates: [lng, lat]
+        }
       }
       console.log(place);
       return this.props.dispatch(postPlace(place));
