@@ -99,10 +99,7 @@ class Dashboard extends Component {
                 <ul>{(this.props.places).map(place =>
                     <li key={place._id}>
                     {/* <img alt={`${place.photos[0].caption}`} src={`${place.photos[0].url}`} /> */}
-<<<<<<< HEAD
-=======
                     {/* This needs to be commented out temporarily because new listings don't have photos */}
->>>>>>> development
                     <div>
                         <span className="name">{place.name}, </span><span className="type">{place.type}</span><br></br>
                         <span className="overallRating">Overall cozy rating: {place.averageCozyness}</span>
