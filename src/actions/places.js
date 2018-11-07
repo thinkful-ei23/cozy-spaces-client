@@ -35,6 +35,22 @@ export const fetchPlaceByIdError = (error) => ({
     error
 });
 
+export const REPORT_PLACE_REQUEST = 'REPORT_PLACE_REQUEST';
+export const reportPlaceRequest = () => ({
+  type: REPORT_PLACE_REQUEST
+});
+
+export const REPORT_PLACE_SUCCESS = 'REPORT_PLACE_SUCCESS';
+export const reportPlaceSuccess = () => ({
+  type: REPORT_PLACE_SUCCESS
+});
+
+export const REPORT_PLACE_ERROR = 'REPORT_PLACE_ERROR';
+export const reportPlaceError = (error) => ({
+  type: REPORT_PLACE_ERROR,
+  error
+});
+
 export const fetchPlaces = () => dispatch => {
   dispatch(fetchPlacesRequest());
   fetch(`${API_BASE_URL}/places`, {
@@ -48,10 +64,15 @@ export const fetchPlaces = () => dispatch => {
     });
 }
 
-export const fetchPlaceByID = (id) => dispatch => {
+export const fetchPlaceByID = (id) => (dispatch, getState) => {
     dispatch(fetchPlaceByIdRequest());
+    const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/places/${id}`, {
-      method: 'GET'
+      method: 'GET',
+      headers: {
+        // Provide our existing token as credentials to get a new one
+        Authorization: `Bearer ${authToken}`
+    }
     })
       .then(res => normalizeResponseErrors(res))
       .then(res => res.json()) 
@@ -59,4 +80,44 @@ export const fetchPlaceByID = (id) => dispatch => {
       .catch(error => {
         dispatch(fetchPlaceByIdError(error));
       });
-  }
+}
+
+export const reportPlace = (placeId) => (dispatch, getState) => {
+  dispatch(reportPlaceRequest());
+  const authToken = getState().auth.authToken;
+  console.log(placeId);
+  return fetch(`${API_BASE_URL}/report`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    },
+    body: JSON.stringify(placeId)
+  })
+  .then(res => normalizeResponseErrors(res))
+  .then(res => res.json())
+  .then((res) => dispatch(reportPlaceSuccess(res)))
+  .catch(error => {
+    dispatch(reportPlaceError(error));
+  });
+}
+
+export const unReportPlace = (placeId) => (dispatch, getState) => {
+  dispatch(reportPlaceRequest());
+  const authToken = getState().auth.authToken;
+  console.log(placeId);
+  return fetch(`${API_BASE_URL}/report`, {
+    method: 'DELETE',
+    headers: {
+      'content-type': 'application/json',
+      Authorization: `Bearer ${authToken}`
+    },
+    body: JSON.stringify(placeId)
+  })
+  .then(res => normalizeResponseErrors(res))
+  .then(res => res.json())
+  .then((res) => dispatch(reportPlaceSuccess(res)))
+  .catch(error => {
+    dispatch(reportPlaceError(error));
+  });
+}

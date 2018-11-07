@@ -1,10 +1,11 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux'; 
-import { fetchPlaceByID } from '../actions/places';
-import Ratings from './Ratings'
-import RatingsForm from './RatingsForm'
-import { fetchRatingsByUser } from '../actions/ratings';
+import Ratings from './Ratings';
+import RatingsForm from './RatingsForm';
 import EditRatingForm from './EditRatingForm';
+import ReportListing from './ReportListing';
+import { fetchPlaceByID, reportPlace, unReportPlace } from '../actions/places';
+import { fetchRatingsByUser } from '../actions/ratings';
 import { toggleEditRating, deleteRating } from '../actions/ratings';
 import Comments from './Comments'
 
@@ -26,9 +27,11 @@ class Listing extends Component {
     let ratings;
     let ratingsFormPost;
     let ratingsFormEdit;
+    let reportButton;
 
     if (this.props.loggedIn){
         ratings = <Ratings />
+        reportButton = <ReportListing />
         if (!this.props.specificRating) {
             ratingsFormPost = <RatingsForm place={this.props.specificPlace} />
         } else {
@@ -68,6 +71,7 @@ class Listing extends Component {
             {ratings}
             {ratingsFormPost}
             {ratingsFormEdit}
+            {reportButton}
           </Fragment>
             );  
 
@@ -80,9 +84,10 @@ class Listing extends Component {
 const mapStateToProps = state => ({
     specificPlace : state.places.specificPlace,
     loggedIn : state.auth.currentUser,
+    currentUser : state.auth.currentUser,
     ratingError : state.ratings.error,
     specificRating : state.ratings.specificRating,
-    editing : state.ratings.editing
+    editing : state.ratings.editing,
 });
 
 export default connect(mapStateToProps)(Listing);
