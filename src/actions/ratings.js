@@ -89,7 +89,7 @@ export const fetchRatings = () => dispatch => {
     });
 }
 
-export const fetchRatingsByUser = (placeId) => (dispatch, getState) => {
+export const fetchRatingsByPlaceId = (placeId) => (dispatch, getState) => {
     console.log('in fetch ratings');
     // actually fetches by place
     const authToken = getState().auth.authToken;

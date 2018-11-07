@@ -3,7 +3,7 @@ import {Field, reduxForm, /*focus*/} from 'redux-form';
 import Input from './Input';
 import { required } from '../validators';
 import { editRating } from '../actions/ratings';
-import { fetchRatingsByUser } from '../actions/ratings';
+import { fetchRatingsByPlaceId } from '../actions/ratings';
 
 class EditRatingForm extends React.Component {
   onSubmit(values) {
@@ -23,7 +23,7 @@ class EditRatingForm extends React.Component {
     console.log('Edited rating: ', rating);
     console.log('this.props.rating._id', this.props.rating._id);
     return this.props.dispatch(editRating(rating, this.props.rating._id))
-    .then(() => this.props.dispatch(fetchRatingsByUser(this.props.place._id)));
+    .then(() => this.props.dispatch(fetchRatingsByPlaceId(this.props.place._id)));
   }
 
   render() {
