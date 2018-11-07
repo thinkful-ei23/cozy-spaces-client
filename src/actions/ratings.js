@@ -19,20 +19,20 @@ export const fetchRatingsRequest = () => ({
     type: FETCH_RATINGS_REQUEST
 });
 
-export const FETCH_RATING_BY_ID_REQUEST = 'FETCH_RATING_BY_ID_REQUEST';
-export const fetchRatingsByUserRequest = () => ({
-    type: FETCH_RATING_BY_ID_REQUEST
+export const FETCH_RATING_BY_PLACEID_REQUEST = 'FETCH_RATING_BY_PLACEID_REQUEST';
+export const fetchRatingsByPlaceIdRequest = () => ({
+    type: FETCH_RATING_BY_PLACEID_REQUEST
 });
 
-export const FETCH_RATING_BY_ID_SUCCESS = 'FETCH_RATING_BY_ID_SUCCESS';
-export const fetchRatingsByUserSuccess = (rating) => ({
-    type: FETCH_RATING_BY_ID_SUCCESS,
+export const FETCH_RATING_BY_PLACEID_SUCCESS = 'FETCH_RATING_BY_PLACEID_SUCCESS';
+export const fetchRatingsByPlaceIdSuccess = (rating) => ({
+    type: FETCH_RATING_BY_PLACEID_SUCCESS,
     rating
 });
 
-export const FETCH_RATING_BY_ID_ERROR = 'FETCH_RATING_BY_ID_ERROR';
-export const fetchRatingsByUserError = (error) => ({
-    type: FETCH_RATING_BY_ID_ERROR,
+export const FETCH_RATING_BY_PLACEID_ERROR = 'FETCH_RATING_BY_PLACEID_ERROR';
+export const fetchRatingsByPlaceIdError = (error) => ({
+    type: FETCH_RATING_BY_PLACEID_ERROR,
     error
 });
 
@@ -89,11 +89,11 @@ export const fetchRatings = () => dispatch => {
     });
 }
 
-export const fetchRatingsByUser = (placeId) => (dispatch, getState) => {
+export const fetchRatingsByPlaceId = (placeId) => (dispatch, getState) => {
     console.log('in fetch ratings');
     // actually fetches by place
     const authToken = getState().auth.authToken;
-    dispatch(fetchRatingsByUserRequest());
+    dispatch(fetchRatingsByPlaceIdRequest());
     return fetch(`${API_BASE_URL}/ratings/${placeId}`, {
       method: 'GET',
       headers: {
@@ -103,9 +103,9 @@ export const fetchRatingsByUser = (placeId) => (dispatch, getState) => {
     })
       .then(res => normalizeResponseErrors(res))
       .then(res => res.json()) 
-      .then((res) => dispatch(fetchRatingsByUserSuccess(res)))
+      .then((res) => dispatch(fetchRatingsByPlaceIdSuccess(res)))
       .catch(error => {
-        dispatch(fetchRatingsByUserError(error)); 
+        dispatch(fetchRatingsByPlaceIdError(error)); 
       });
   }
 

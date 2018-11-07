@@ -3,7 +3,8 @@ import {Field, reduxForm, /*focus*/} from 'redux-form';
 import Input from './Input';
 import { required } from '../validators';
 import { editRating } from '../actions/ratings';
-import { fetchRatingsByUser } from '../actions/ratings';
+import { fetchRatingsByPlaceId } from '../actions/ratings';
+import { fetchPlaceByID } from '../actions/places';
 
 class EditRatingForm extends React.Component {
   onSubmit(values) {
@@ -16,13 +17,15 @@ class EditRatingForm extends React.Component {
         calmEnvironment: parseInt(values.calmEnvironment, 10),
         softFabrics: parseInt(values.softFabrics, 10),
         comfySeating: parseInt(values.comfySeating, 10),
-        hotFoodDrink: parseInt(values.hotFoodDrink, 10)
+        hotFoodDrink: parseInt(values.hotFoodDrink, 10),
+        comment: values.comment
       }
     }
     console.log('Edited rating: ', rating);
     console.log('this.props.rating._id', this.props.rating._id);
     return this.props.dispatch(editRating(rating, this.props.rating._id))
-    .then(() => this.props.dispatch(fetchRatingsByUser(this.props.place._id)));
+    .then(() => this.props.dispatch(fetchRatingsByPlaceId(this.props.place._id)))
+    .then(() => this.props.dispatch(fetchPlaceByID(this.props.place._id)))
   }
 
   render() {
@@ -90,6 +93,12 @@ class EditRatingForm extends React.Component {
                 min='0'
                 max='5'
                 validate={[required]}
+              />
+            <Field
+                component={Input}
+                type="textarea"
+                name="comment"
+                label="Comments"
               />
             <button
               className="btn-sub"

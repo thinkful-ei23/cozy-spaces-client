@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchPlaceByID } from '../actions/places';
 import Ratings from './Ratings'
 import RatingsForm from './RatingsForm'
-import { fetchRatingsByUser } from '../actions/ratings';
+import { fetchRatingsByPlaceId } from '../actions/ratings';
 import EditRatingForm from './EditRatingForm';
 import { toggleEditRating, deleteRating } from '../actions/ratings';
 import Comments from './Comments'
@@ -11,15 +11,15 @@ import Comments from './Comments'
 class Listing extends Component {
 
     componentDidMount() {
-        const id = this.props.match.params.id;
-        return this.props.dispatch(fetchPlaceByID(id))
-        .then(() => this.props.dispatch(fetchRatingsByUser(id)));
+            const id = this.props.match.params.id;
+            return this.props.dispatch(fetchPlaceByID(id))
+            .then(() => this.props.dispatch(fetchRatingsByPlaceId(id)));
     }
 
     deleteRating() {
         const id = this.props.match.params.id;
         return this.props.dispatch(deleteRating(this.props.specificPlace._id))
-        .then(() => this.props.dispatch(fetchRatingsByUser(id)));
+        .then(() => this.props.dispatch(fetchRatingsByPlaceId(id)));
     }
 
     render() {

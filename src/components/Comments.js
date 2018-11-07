@@ -8,8 +8,8 @@ class Comments extends React.Component {
     return (
       <div className="comments">
         <h4>Comments from Cozy Spaces visitors</h4>
-          <ul>{(this.props.userComments).map(userComment =>
-              <li key={userComment._id} className="comment">{userComment.comment}</li>
+          <ul>{(this.props.ratings).map(rating =>
+              <li key={rating._id} className="comment">{rating.rating.comment}</li>
               )}
           </ul>
           <p><Link to="/register">Have a comment to share? Join the cozy force!</Link></p>
@@ -19,7 +19,8 @@ class Comments extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  userComments: state.places.specificPlace.userComments
+  ratings: state.places.specificPlace.ratings,
+  // userComments: state.places.specificPlace.userComments
 });
 
 export default connect(mapStateToProps)(Comments);
