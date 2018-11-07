@@ -1,6 +1,11 @@
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
 
+export const CLEAR_SPECIFIC_PLACE = 'CLEAR_SPECIFIC_PLACE';
+export const clearSpecificPlace = () => ({
+    type: CLEAR_SPECIFIC_PLACE,
+});
+
 export const FETCH_PLACES_SUCCESS = 'FETCH_PLACES_SUCCESS';
 export const fetchPlacesSuccess = places => ({
     type: FETCH_PLACES_SUCCESS,
@@ -35,6 +40,34 @@ export const fetchPlaceByIdError = (error) => ({
     error
 });
 
+export const POST_PLACE_SUCCESS = 'POST_PLACE_SUCCESS';
+export const postPlaceSuccess = (place) => ({
+    type: POST_PLACE_SUCCESS,
+    place
+});
+
+export const POST_PLACE_ERROR = 'POST_PLACE_ERROR';
+export const postPlaceError = (error) => ({
+    type: POST_PLACE_ERROR,
+    error
+});
+
+export const POST_PLACE_REQUEST = 'POST_PLACE_REQUEST';
+export const postPlaceRequest = () => ({
+    type: POST_PLACE_REQUEST,
+});
+
+export const FETCH_PLACE_INFO_SUCCESS = 'FETCH_PLACE_INFO_SUCCESS';
+export const fetchPlaceInfoSuccess = () => ({
+    type: FETCH_PLACE_INFO_SUCCESS,
+});
+
+// export const FETCH_PLACE_BY_ID_ERROR = 'FETCH_PLACE_BY_ID_ERROR';
+// export const fetchPlaceByIdError = (error) => ({
+//     type: FETCH_PLACE_BY_ID_ERROR,
+//     error
+// });
+
 export const fetchPlaces = () => dispatch => {
   dispatch(fetchPlacesRequest());
   fetch(`${API_BASE_URL}/places`, {
@@ -48,6 +81,37 @@ export const fetchPlaces = () => dispatch => {
     });
 }
 
+export const fetchPlaceInfo = (lat, lng) => dispatch => {
+    return fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`, {
+      method: 'GET'
+    })
+      .then(res => normalizeResponseErrors(res))
+      .then(res => res.json()) 
+      .then((res) => {
+          let info = res.results.filter(element => element.types[0] === 'postal_code')[0];
+          dispatch(fetchPlaceInfoSuccess(info))
+          return info;
+      })
+      .catch(error => {
+        // dispatch(fetchPlacesError(error));
+      });
+  }
+
+
+  export const fetchLatLng = (zipcode) => dispatch => {
+    return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${zipcode}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`, {
+      method: 'GET'
+    })
+      .then(res => normalizeResponseErrors(res))
+      .then(res => res.json()) 
+      .then((res) => {
+          return res.results[0].geometry.location;
+      })
+      .catch(error => {
+        // dispatch(fetchPlacesError(error));
+      });
+  }
+
 export const fetchPlaceByID = (id) => dispatch => {
     dispatch(fetchPlaceByIdRequest());
     return fetch(`${API_BASE_URL}/places/${id}`, {
@@ -55,8 +119,28 @@ export const fetchPlaceByID = (id) => dispatch => {
     })
       .then(res => normalizeResponseErrors(res))
       .then(res => res.json()) 
-      .then((res) => dispatch(fetchPlaceByIdSuccess(res)))
+      .then((res) => {
+          dispatch(fetchPlaceByIdSuccess(res))
+          res.json()
+      })
       .catch(error => {
         dispatch(fetchPlaceByIdError(error));
+      });
+  }
+
+export const postPlace = (place) => dispatch => {
+    dispatch(postPlaceRequest());
+    return fetch(`${API_BASE_URL}/places`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          },
+          body: JSON.stringify(place)
+      })
+      .then(res => normalizeResponseErrors(res))
+      .then(res => res.json()) 
+      .then((res) => dispatch(postPlaceSuccess(res)))
+      .catch(error => {
+        dispatch(postPlaceError(error));
       });
   }
