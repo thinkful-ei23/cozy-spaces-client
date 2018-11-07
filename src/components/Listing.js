@@ -1,18 +1,11 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux'; 
-<<<<<<< HEAD
 import Ratings from './Ratings';
 import RatingsForm from './RatingsForm';
-=======
-import { fetchPlaceByID } from '../actions/places';
-import Ratings from './Ratings'
-import RatingsForm from './RatingsForm'
-import { fetchRatingsByPlaceId } from '../actions/ratings';
->>>>>>> development
 import EditRatingForm from './EditRatingForm';
 import ReportListing from './ReportListing';
 import { fetchPlaceByID, reportPlace, unReportPlace } from '../actions/places';
-import { fetchRatingsByUser } from '../actions/ratings';
+import { fetchRatingsByPlaceId } from '../actions/ratings';
 import { toggleEditRating, deleteRating } from '../actions/ratings';
 import Comments from './Comments'
 
