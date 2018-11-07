@@ -16,7 +16,8 @@ class EditRatingForm extends React.Component {
         calmEnvironment: parseInt(values.calmEnvironment, 10),
         softFabrics: parseInt(values.softFabrics, 10),
         comfySeating: parseInt(values.comfySeating, 10),
-        hotFoodDrink: parseInt(values.hotFoodDrink, 10)
+        hotFoodDrink: parseInt(values.hotFoodDrink, 10),
+        comment: values.comment
       }
     }
     console.log('Edited rating: ', rating);

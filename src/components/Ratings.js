@@ -31,6 +31,7 @@ class Ratings extends React.Component {
             <li>Soft fabrics in space (walls or floor): {specificRating.softFabrics} </li>
             <li>Comfy seating: {specificRating.comfySeating}</li>
             <li>Hot food/drink: {specificRating.hotFoodDrink}</li>
+            <li>Comments: {specificRating.comment}</li>
           </ul>
         </Fragment> 
       );
