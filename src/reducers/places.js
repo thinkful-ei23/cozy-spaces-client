@@ -5,6 +5,9 @@ import {
   FETCH_PLACE_BY_ID_REQUEST,
   FETCH_PLACE_BY_ID_ERROR,
   FETCH_PLACE_BY_ID_SUCCESS,
+  REPORT_PLACE_REQUEST,
+  REPORT_PLACE_SUCCESS,
+  REPORT_PLACE_ERROR,
   POST_PLACE_REQUEST,
   POST_PLACE_ERROR,
   POST_PLACE_SUCCESS,
@@ -39,8 +42,14 @@ import {
        return {...state, loading: false, error: action.error};
      case POST_PLACE_SUCCESS: 
        return {...state, loading: false, specificPlace: action.place, error: null}
-       case CLEAR_SPECIFIC_PLACE: 
+     case CLEAR_SPECIFIC_PLACE: 
        return {...state, specificPlace: null}
+     case REPORT_PLACE_REQUEST:
+       return { ...state, loading: true };
+     case REPORT_PLACE_SUCCESS:
+       return { ...state, loading: false, error: null };
+     case REPORT_PLACE_ERROR:
+       return { ...state, loading: false, error: action.error };
      default: 
        return state;
    }
