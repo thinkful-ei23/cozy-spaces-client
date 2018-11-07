@@ -3,7 +3,8 @@ import {Field, reduxForm, focus} from 'redux-form';
 import Input from './Input';
 import { required } from '../validators';
 import { postRating } from '../actions/ratings';
-import { fetchRatingsByUser } from '../actions/ratings';
+import { fetchRatingsByPlaceId } from '../actions/ratings';
+
 
 class RatingsForm extends React.Component {
   onSubmit(values) {
@@ -16,12 +17,13 @@ class RatingsForm extends React.Component {
         calmEnvironment: parseInt(values.calmEnvironment, 10),
         softFabrics: parseInt(values.softFabrics, 10),
         comfySeating: parseInt(values.comfySeating, 10),
-        hotFoodDrink: parseInt(values.hotFoodDrink, 10)
+        hotFoodDrink: parseInt(values.hotFoodDrink, 10),
+        comment: values.comment
       }
     }
     console.log(rating);
     return this.props.dispatch(postRating(rating))
-    .then(() => this.props.dispatch(fetchRatingsByUser(this.props.place._id)));
+    .then(() => this.props.dispatch(fetchRatingsByPlaceId(this.props.place._id)));
   }
 
   render() {
@@ -96,6 +98,12 @@ class RatingsForm extends React.Component {
                 min='0'
                 max='5'
                 validate={[required]}
+              />
+            <Field
+                component={Input}
+                type="textarea"
+                name="comment"
+                label="Comments"
               />
             <button
               className="btn-sub"

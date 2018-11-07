@@ -1,7 +1,14 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux'; 
+<<<<<<< HEAD
 import Ratings from './Ratings';
 import RatingsForm from './RatingsForm';
+=======
+import { fetchPlaceByID } from '../actions/places';
+import Ratings from './Ratings'
+import RatingsForm from './RatingsForm'
+import { fetchRatingsByPlaceId } from '../actions/ratings';
+>>>>>>> development
 import EditRatingForm from './EditRatingForm';
 import ReportListing from './ReportListing';
 import { fetchPlaceByID, reportPlace, unReportPlace } from '../actions/places';
@@ -14,13 +21,13 @@ class Listing extends Component {
     componentDidMount() {
             const id = this.props.match.params.id;
             return this.props.dispatch(fetchPlaceByID(id))
-            .then(() => this.props.dispatch(fetchRatingsByUser(id)));
+            .then(() => this.props.dispatch(fetchRatingsByPlaceId(id)));
     }
 
     deleteRating() {
         const id = this.props.match.params.id;
         return this.props.dispatch(deleteRating(this.props.specificPlace._id))
-        .then(() => this.props.dispatch(fetchRatingsByUser(id)));
+        .then(() => this.props.dispatch(fetchRatingsByPlaceId(id)));
     }
 
     render() {

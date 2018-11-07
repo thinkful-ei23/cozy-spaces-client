@@ -2,9 +2,9 @@ import {
   FETCH_RATINGS_SUCCESS,
   FETCH_RATINGS_ERROR,
   FETCH_RATINGS_REQUEST,
-  FETCH_RATING_BY_ID_REQUEST,
-  FETCH_RATING_BY_ID_ERROR,
-  FETCH_RATING_BY_ID_SUCCESS,
+  FETCH_RATING_BY_PLACEID_REQUEST,
+  FETCH_RATING_BY_PLACEID_ERROR,
+  FETCH_RATING_BY_PLACEID_SUCCESS,
   POST_RATING_REQUEST,
   POST_RATING_ERROR,
   POST_RATING_SUCCESS,
@@ -31,11 +31,11 @@ import {
        return {...state, loading: false, error: action.error};
      case FETCH_RATINGS_REQUEST:
        return {...state, loading: true};
-     case FETCH_RATING_BY_ID_REQUEST: 
+     case FETCH_RATING_BY_PLACEID_REQUEST: 
        return {...state, loading: true};
-     case FETCH_RATING_BY_ID_ERROR: 
+     case FETCH_RATING_BY_PLACEID_ERROR: 
        return {...state, loading: false, error: action.error, specificRating: null};
-     case FETCH_RATING_BY_ID_SUCCESS: 
+     case FETCH_RATING_BY_PLACEID_SUCCESS: 
        return {...state, loading: false, specificRating: action.rating, error: null}
      case POST_RATING_REQUEST : 
        return {...state, loading: true};

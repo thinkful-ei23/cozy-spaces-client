@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import GoogleMap from './GoogleMap';
+
+import {clearSpecificPlace} from '../actions/places';
 
 export class AddAListingPage extends Component {
 
-    render(){
+  componentWillMount() {
+    this.props.dispatch(clearSpecificPlace())
+  }
 
+    render(){
+      // need to use the geolocation of the person to center the google map
         return (
-            <p>This is a stub for the add a listing page</p>
+          <div>
+            <h3>Click on the map to add a listing</h3>
+           <GoogleMap/>
+           </div>
         );
     }
 }
