@@ -4,6 +4,7 @@ import Input from './Input';
 import { required } from '../validators';
 import { postRating } from '../actions/ratings';
 import { fetchRatingsByPlaceId } from '../actions/ratings';
+import { fetchPlaceByID, reportPlace, unReportPlace } from '../actions/places';
 
 
 class RatingsForm extends React.Component {
@@ -23,7 +24,8 @@ class RatingsForm extends React.Component {
     }
     console.log(rating);
     return this.props.dispatch(postRating(rating))
-    .then(() => this.props.dispatch(fetchRatingsByPlaceId(this.props.place._id)));
+    .then(() => this.props.dispatch(fetchRatingsByPlaceId(this.props.place._id)))
+    .then(() => this.props.dispatch(fetchPlaceByID(rating.placesId)))
   }
 
   render() {
