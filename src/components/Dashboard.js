@@ -1,125 +1,154 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'; 
+import { connect } from 'react-redux';
 
-import {fetchPlaces, fetchPlaceByID} from '../actions/places';
+import { fetchPlaces, fetchPlaceByID } from '../actions/places';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-import Search from './Search'
+import Search from './Search';
 import { fetchPlaceInfo, postPlace, fetchLatLng } from '../actions/places';
 
-
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentLocation: {},
+      geolocationError: false
+    };
+    this.componentDidMount = this.componentDidMount.bind(this);
+  }
 
-    constructor(props) {
-        super(props);
-        this.state = { 
-          currentLocation: {},
-          geolocationError: false 
+  componentDidMount() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => this.setPosition(position),
+        () => {
+          this.handleLocationError(true);
         }
-        this.componentDidMount = this.componentDidMount.bind(this);
+      );
+    } else {
+      this.handleLocationError(false);
     }
 
-    componentDidMount() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((position) => this.setPosition(position), () => {
-              this.handleLocationError(true);
-            });
-          } else {
-            this.handleLocationError(false);
+    // return (
+    //     this.props.dispatch(fetchPlaces())
+    // );
+  }
+
+  setPlace(id) {
+    this.props.dispatch(fetchPlaceByID(id));
+  }
+
+  getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => this.setPosition(position),
+        () => {
+          this.handleLocationError(true);
         }
-
-        // return (
-        //     this.props.dispatch(fetchPlaces())
-        // );
+      );
+    } else {
+      // Browser doesn't support Geolocation
+      this.handleLocationError(false);
     }
+  }
 
-    setPlace(id) {
-        this.props.dispatch(fetchPlaceByID(id));
-    }
+  setPosition(position) {
+    var pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    };
+    console.log(pos);
+    this.setState({ currentLocation: pos, geoLocationError: false });
+    this.props.dispatch(fetchPlaces(pos));
+    // send this filter to get places
+  }
 
-    getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((position) => this.setPosition(position), () => {
-              this.handleLocationError(true);
-            });
-          } else {
-            // Browser doesn't support Geolocation
-            this.handleLocationError(false);
-          }
-    }
+  handleLocationError(browserHasGeolocation) {
+    this.setState({ geolocationError: true });
+  }
 
-    setPosition(position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-        console.log(pos);
-        this.setState({currentLocation: pos, geoLocationError: false});
-        this.props.dispatch(fetchPlaces(pos))
-        // send this filter to get places
-    }
-    
-    handleLocationError(browserHasGeolocation) {
-        this.setState({geolocationError: true});
-    }
+  sendZip(e) {
+    e.preventDefault();
+    let zip = document.getElementById('zip-geo').value;
+    console.log(zip);
+    this.props.dispatch(fetchLatLng(zip)).then(latLng => {
+      // send this filter to get places
+      this.setState({ currentLocation: latLng });
+      this.props.dispatch(fetchPlaces(latLng));
+    });
+  }
 
-    sendZip(e) {
-        e.preventDefault();
-        let zip = document.getElementById('zip-geo').value;
-        console.log(zip);
-        this.props.dispatch(fetchLatLng(zip)).then((latLng) => {
-          // send this filter to get places
-          this.setState({ currentLocation: latLng})
-          this.props.dispatch(fetchPlaces(latLng))
-        });
-    }
-
-    render(){
+  render() {
     let geoLocationError;
 
     if (this.props.places) {
-        if (!this.props.returningUser) {
-            return <Redirect to="/" />;
-        }
+      if (!this.props.returningUser) {
+        return <Redirect to="/" />;
+      }
 
-        if (this.state.geolocationError) {
-            geoLocationError = <p>'Error: The Geolocation service failed'</p>;
-          }
-        
-        return (
-            <div className="dashboard">
-                <div id='geolocation'>
-                    {geoLocationError}
-                    <form>
-                        <label htmlFor="zip-geo">Enter a zipcode to find locations: </label>
-                        <input id="zip-geo" type="text" pattern="[0-9]{5}" title="Five digit zip code" />
-                        <button onClick={(e) => this.sendZip(e)}>Submit</button>
-                    </form>
+      if (this.state.geolocationError) {
+        geoLocationError = <p>'Error: The Geolocation service failed'</p>;
+      }
+
+      return (
+        <div className="dashboard">
+          <div id="geolocation">
+            {geoLocationError}
+            <form>
+              <label htmlFor="zip-geo">
+                Enter a zipcode to find locations:{' '}
+              </label>
+              <input
+                id="zip-geo"
+                type="text"
+                pattern="[0-9]{5}"
+                title="Five digit zip code"
+              />
+              <button onClick={e => this.sendZip(e)}>Submit</button>
+            </form>
+          </div>
+          <ul>
+            {this.props.places.map(place => (
+              <li key={place._id}>
+                <img
+                  alt={`${place.photos[0].caption}`}
+                  src={`${place.photos[0].url}`}
+                />
+                {/* This needs to be commented out temporarily because new listings don't have photos */}
+                <div className='topBottomMarginhalf1'>
+                  <div className='topBottomMargin1'>
+                    <p className="inline leftRightPadding">
+                      <span className="name">{place.name}, </span>
+                      <span className="type">{place.type}</span>
+                    </p>
+                    <p className="inline leftRightPadding">
+                      <span className="overallRating">
+                        Overall cozy rating: {place.averageCozyness}
+                      </span>
+                    </p>
+                  </div>
+                  <Link
+                    onClick={() => this.setPlace(place._id)}
+                    to={`/places/${place._id}`}
+                  >
+                    Check out this place in detail
+                  </Link>
                 </div>
-                <ul>{(this.props.places).map(place =>
-                    <li key={place._id}>
-                    {/* <img alt={`${place.photos[0].caption}`} src={`${place.photos[0].url}`} /> */}
-                    {/* This needs to be commented out temporarily because new listings don't have photos */}
-                    <div>
-                        <span className="name">{place.name}, </span><span className="type">{place.type}</span><br></br>
-                        <span className="overallRating">Overall cozy rating: {place.averageCozyness}</span>
-                    </div>
-                    <Link onClick={() => this.setPlace(place._id)} to={`/places/${place._id}`}>Check out this place in detail</Link>
-                    </li>
-                    )}
-                </ul>
-            </div>
-        );
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
     } else {
-        return <p>Incoming coziness</p>;
+      return <p>Incoming coziness</p>;
     }
-}
+  }
 }
 
 const mapStateToProps = state => ({
-    places: state.places.places,
-    loggedIn: state.auth.currentUser !== null,
-    returningUser: state.auth.returningUser
+  places: state.places.places,
+  loggedIn: state.auth.currentUser !== null,
+  returningUser: state.auth.returningUser
 });
 
 export default connect(mapStateToProps)(Dashboard);

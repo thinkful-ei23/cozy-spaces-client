@@ -47,7 +47,9 @@ class ReportListings extends React.Component {
           );
         }
       }
+      return ''
     }
+    return ''
   }
 }
 
