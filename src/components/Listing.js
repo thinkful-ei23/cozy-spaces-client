@@ -20,7 +20,8 @@ class Listing extends Component {
     deleteRating() {
         const id = this.props.match.params.id;
         return this.props.dispatch(deleteRating(this.props.specificPlace._id))
-        .then(() => this.props.dispatch(fetchRatingsByPlaceId(id)));
+        .then(() => this.props.dispatch(fetchRatingsByPlaceId(id)))
+        .then(() => this.props.dispatch(fetchPlaceByID(id)));
     }
 
     render() {
