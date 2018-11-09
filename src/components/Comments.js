@@ -5,6 +5,12 @@ import { Link } from 'react-router-dom';
 class Comments extends React.Component {
 
   render() {
+    let registerLink;
+
+    if (!this.props.loggedIn) {
+      registerLink =  <p><Link to="/register">Have a comment to share? Join the cozy force!</Link></p>;
+    }
+
     return (
       <div className="comments">
         <h4>Comments from Cozy Spaces visitors</h4>
@@ -12,7 +18,7 @@ class Comments extends React.Component {
               <li key={rating._id} className="comment">{rating.rating.comment}</li>
               )}
           </ul>
-          <p><Link to="/register">Have a comment to share? Join the cozy force!</Link></p>
+          {registerLink}
       </div>
     )
   }
@@ -20,6 +26,7 @@ class Comments extends React.Component {
 
 const mapStateToProps = state => ({
   ratings: state.places.specificPlace.ratings,
+  loggedIn: state.auth.currentUser !== null
   // userComments: state.places.specificPlace.userComments
 });
 
