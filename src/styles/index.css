@@ -32,12 +32,12 @@
 
 
 body {
-  background-color: var(--main-orange);
+  background-color: rgb(65, 12, 3);
   margin: 0;
-  padding: 0.8rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  /* padding: 0.8rem; */
+   font-family: 'Rock Salt', cursive; /*'Qwigley', cursive; "Segoe Script", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -69,6 +69,7 @@ li {
   padding: 0.4rem;
   margin: 0.4rem 0.2rem;
   text-align: center;
+  font-size: 15px;
 }
 
 li a {
@@ -77,6 +78,39 @@ li a {
 }
 li a:hover {
   color: var(--tan);
+}
+
+label {
+  color:rgb(236, 161, 63);
+}
+
+header, #geolocation {
+  background-color: rgb(46, 8, 1);
+  font-size: 15px;
+}
+
+header a {
+  color: rgb(236, 161, 63);
+  text-decoration: none;
+  font-size: 10px;
+}
+
+header a:hover  {
+  color: white;
+}
+
+button, input {
+  background-color:  rgb(236, 161, 63);
+  color: white;
+}
+
+h1 {
+  margin-left: 15px;
+  padding-top: 5px;
+  margin-block-start: 0;
+  font-size: 50px;
+  font-weight: normal;
+
 }
 
 
