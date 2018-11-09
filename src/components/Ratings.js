@@ -11,9 +11,9 @@ class Ratings extends React.Component {
     if (this.props.ratingError) {
       let ratingStatus = this.props.ratingError.status;
       if (ratingStatus === 404) {
-        ratingError = <p>You have not yet rated this location</p>;
+        ratingError = 'You have not yet rated this location';
       } else {
-        ratingError = <p>{this.props.ratingError.message}</p>;
+        ratingError = this.props.ratingError.message;
       }
     }
 
