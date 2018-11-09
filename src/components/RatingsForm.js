@@ -4,7 +4,7 @@ import Input from './Input';
 import { required } from '../validators';
 import { postRating } from '../actions/ratings';
 import { fetchRatingsByPlaceId } from '../actions/ratings';
-import { fetchPlaceByID, reportPlace, unReportPlace } from '../actions/places';
+import { fetchPlaceByID } from '../actions/places';
 
 
 class RatingsForm extends React.Component {
@@ -30,7 +30,6 @@ class RatingsForm extends React.Component {
 
   render() {
     let error;
-    console.log(this.props.error)
     if (this.props.submitFailed) {
         error = (
              <div className="form-error" aria-live="polite">
