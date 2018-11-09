@@ -46,7 +46,11 @@ class ReportListings extends React.Component {
             reportPlaceButton = <button onClick={() => this.reportPlace()}>Report</button>
           );
         }
+      } else {
+        return <p></p>;
       }
+    } else {
+      return <p></p>;
     }
   }
 }

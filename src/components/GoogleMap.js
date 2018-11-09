@@ -100,19 +100,26 @@ export class MapContainer extends Component {
   saveData(e) {
     this.setState({geolocationError: false});
     e.preventDefault();
-    let name = escape(document.getElementById('name').value);
-    let address = escape(document.getElementById('address').value);
+    let name = document.getElementById('name').value;
+    let address = document.getElementById('address').value;
     let type = document.getElementById('typeOfPlace').value;
     let lat = this.state.activeMarker.internalPosition.lat();
     let lng = this.state.activeMarker.internalPosition.lng();
     console.log('lng', typeof lng);
     return this.props.dispatch(fetchPlaceInfo(lat, lng)).then(info => {
+      console.log('address components', info.address_components);
+      let state;
+      if (info.address_components.length === 5) {
+        state = info.address_components[3].long_name;
+      } else {
+        state = info.address_components[2].long_name;
+      }
       const place = {
         name,
         type,
         address,
         city: info.address_components[1].long_name,
-        state: info.address_components[3].long_name,
+        state,
         zipcode: info.address_components[0].long_name,
         location: {type: 'Point',
         coordinates: [lng, lat]
