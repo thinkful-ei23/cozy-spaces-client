@@ -143,7 +143,7 @@ export const fetchPlaceByID = (id) => (dispatch, getState) => {
       .then(res => res.json()) 
       .then((res) => {
           dispatch(fetchPlaceByIdSuccess(res))
-          res.json();
+          return res;
       })
       .catch(error => {
           console.log(error);
