@@ -14,7 +14,11 @@ class Listing extends Component {
     const id = this.props.match.params.id;
     return this.props
       .dispatch(fetchPlaceByID(id))
-      .then(() => this.props.dispatch(fetchRatingsByPlaceId(id)));
+      .then(() => {
+        if (this.props.loggedIn) {
+            this.props.dispatch(fetchRatingsByPlaceId(id))
+        }
+    });
   }
 
   deleteRating() {
@@ -98,7 +102,6 @@ class Listing extends Component {
 const mapStateToProps = state => ({
   specificPlace: state.places.specificPlace,
   loggedIn: state.auth.currentUser,
-  currentUser: state.auth.currentUser,
   ratingError: state.ratings.error,
   specificRating: state.ratings.specificRating,
   editing: state.ratings.editing

@@ -38,19 +38,17 @@ class ReportListings extends React.Component {
           return convertedAndStrippedReport === this.props.currentUser.id;
         });
         if (found) {
-          return (reportPlaceButton = (
-            <button onClick={() => this.unReportPlace()}>Delete Report</button>
-          ));
+          reportPlaceButton = <button onClick={() => this.unReportPlace()}>Delete Report</button>;
+          return reportPlaceButton;
         } else {
-          return (reportPlaceButton = (
-            <button onClick={() => this.reportPlace()}>Report</button>
-          ));
+          reportPlaceButton = <button onClick={() => this.reportPlace()}>Report</button>
+          return reportPlaceButton;
         }
       } else {
-        return <p></p>;
+        return '';
       }
     } else {
-      return <p></p>;
+      return '';
     }
   }
 }
