@@ -38,7 +38,7 @@ class Dashboard extends Component {
       navigator.geolocation.getCurrentPosition(position => this.setPosition(position),
         () => {
           this.handleLocationError(true);
-        }, {maximumAge:600000, timeout:5000, enableHighAccuracy: true}
+        }
       );
     } else {
       // Browser doesn't support Geolocation
