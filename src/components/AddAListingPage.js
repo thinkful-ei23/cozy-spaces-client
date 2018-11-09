@@ -14,7 +14,7 @@ export class AddAListingPage extends Component {
       // need to use the geolocation of the person to center the google map
         return (
           <div>
-            <h3>Click on the map to add a listing</h3>
+            <h3>Click on the map and the marker to add a listing</h3>
            <GoogleMap/>
            </div>
         );
