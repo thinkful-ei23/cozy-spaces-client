@@ -14,8 +14,14 @@ class Comments extends React.Component {
     return (
       <div className="comments">
         <h4>Comments from Cozy Spaces visitors</h4>
-          <ul>{(this.props.ratings).map(rating =>
-              <li key={rating._id} className="comment">{rating.rating.comment}</li>
+          <ul>
+              {(this.props.ratings).reduce((acc, rating) => {
+                if (rating.rating.comment !== null) {
+                  acc.push (<li key={rating._id} className="comment">{rating.rating.comment}</li>);
+                }
+                return acc;
+              },[]
+              
               )}
           </ul>
           {registerLink}
