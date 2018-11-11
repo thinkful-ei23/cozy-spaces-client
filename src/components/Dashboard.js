@@ -87,7 +87,7 @@ class Dashboard extends Component {
       if (this.props.places.length >= 1) {
       places = this.props.places.map(place => (
         <li key={place._id}>
-          {/* <img alt={`${place.photos[0].caption}`} src={`${place.photos[0].url}`} /> */}
+          <img alt={`${place.photos[0].caption}`} src={`${place.photos[0].url}`} />
           {/* This needs to be commented out temporarily because new listings don't have photos */}
           <div>
             <span className="name">{place.name}, </span>
