@@ -8,6 +8,7 @@ import ReportListing from './ReportListing';
 import { fetchPlaceByID } from '../actions/places';
 import { fetchRatingsByPlaceId } from '../actions/ratings';
 import { toggleEditRating, deleteRating } from '../actions/ratings';
+import { toggleAddPhoto } from '../actions/photos';
 
 class Listing extends Component {
   componentDidMount() {
@@ -67,6 +68,7 @@ class Listing extends Component {
       return (
         <Fragment>
           <div className="listing">
+            <img alt={`${specificPlace.photos[0].caption}`} src={`${specificPlace.photos[0].url}`} />
             <h2>{specificPlace.name}</h2>
             <h3>Type of place: {specificPlace.type}</h3>
             <h3>Overall coziness: {specificPlace.averageCozyness}</h3>
@@ -87,6 +89,9 @@ class Listing extends Component {
             </ul>
           </div>
           <Comments />
+          <button onClick={() => this.props.dispatch(toggleAddPhoto())}>
+              Add a photo
+            </button>
           {ratings}
           {ratingsFormPost}
           {ratingsFormEdit}
