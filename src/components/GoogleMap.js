@@ -56,7 +56,6 @@ export class MapContainer extends Component {
       })
     }
     this.setState({activeMarker: {position: {lat: latitude, lng: longitude}}})
-    // this.onMarkerClick(null, this.state.activeMarker)
   }
 
   onMarkerClick(props, marker, e) {
