@@ -6,6 +6,9 @@ import { Redirect } from 'react-router-dom';
 import { fetchLatLng } from '../actions/places';
 import { fetchPlaces, fetchPlaceByID } from '../actions/places';
 
+import '../styles/dashboard.css';
+
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -152,19 +155,19 @@ class Dashboard extends Component {
               onClick={() => this.setPlace(place._id)}
               to={`/places/${place._id}`}
             >
-              <img
+            <img
                 alt={`${place.photos[0].caption}`}
                 src={`${place.photos[0].url}`}
-              />
+                />
               {/* This needs to be commented out temporarily because new listings don't have photos */}
               <div className="place-card-content">
                 <h2 className="inline name">{place.name}</h2>
                 <div className="place-card-content-r1">
                   <p className="inline type">
-                    Type of Place: {place.type}
+                    Type: {place.type}
                   </p>
                   <p className="overallRating">
-                    Overall cozy rating: {place.averageCozyness}
+                    Cozy Rating: {place.averageCozyness}
                   </p>
                 </div>
 
@@ -202,7 +205,7 @@ class Dashboard extends Component {
                   onChange={this.handleChange}
                   title="Five digit zip code"
                   />
-                <button type='submit'>Submit</button>
+                <button className='button' type='submit'>Submit</button>
                 {error}
               </div>
 

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { Link } from 'react-router-dom';
 import { clearAuthToken } from '../local-storage';
+import '../styles/header.css';
+
 
 class Header extends Component {
   logOut() {
@@ -12,17 +14,25 @@ class Header extends Component {
 
   componentDidMount() {
     let mainNav = document.getElementById('main-nav');
-    let navbarToggle = document.getElementById('navbar-toggle');
     mainNav.style.display = "none";
+    let profileNav = document.getElementById('profile-nav');
+    profileNav.style.display = "none";
   }
 
-  toggleNavbar() {
+  toggleMainNavbar() {
     let mainNav = document.getElementById('main-nav');
-    let navbarToggle = document.getElementById('navbar-toggle');
     if (mainNav.style.display === 'none') {
       mainNav.style.display = 'block';
     } else {
       mainNav.style.display = 'none';
+    }
+  }
+  toggleProfileNavbar() {
+    let profileNav = document.getElementById('profile-nav');
+    if (profileNav.style.display === 'none') {
+      profileNav.style.display = 'block';
+    } else {
+      profileNav.style.display = 'none';
     }
   }
 
@@ -30,17 +40,17 @@ class Header extends Component {
 
 
     let registerButton = (
-      <Link to="/register">
+      <Link className='block' to="/register">
         Register
       </Link>
     );
     let loginButton = (
-      <Link to="/login">
+      <Link className='block' to="/login">
         Log in
       </Link>
     );
     let faqsButton = (
-      <Link id="faqsButton" to="/learn-more">
+      <Link className='block' id="faqsButton" to="/learn-more">
         Learn more
       </Link>
     );
@@ -51,6 +61,7 @@ class Header extends Component {
     if (this.props.loggedIn) {
       logOutButton = (
         <button
+          className='block'
           id="logoutButton"
           onClick={() => this.logOut()}
         >
@@ -58,12 +69,12 @@ class Header extends Component {
         </button>
       );
       profileButton = (
-        <Link id="profileButton" to="/profile">
+        <Link className='block' id="profileButton" to="/profile">
           Profile
         </Link>
       );
       addAListingLink = (
-        <Link id="addListingLink" to="/add-listing">
+        <Link className='block' id="addListingLink" to="/add-listing">
           Add a cozy space
         </Link>
       );
@@ -74,8 +85,9 @@ class Header extends Component {
     return (
       <header>
         <div className='header-icons'>
-          <div className='inline icons-group1'>
-            <a href='https://github.com/thinkful-ei23/cozy-spaces-client'>
+        <span id='navbar-toggle' className='bars-icon' onClick={() => this.toggleMainNavbar()}><i className="fas fa-bars"/></span>
+          <div className='icons-group1'>
+            <a className='inline' href='https://github.com/thinkful-ei23/cozy-spaces-client'>
               <i className="fab fa-github social-icons" />
             </a>
             <a href="https://twitter.com/CozySpaces">
@@ -88,14 +100,16 @@ class Header extends Component {
               <i className="fab fa-youtube social-icons" />
             </a>
           </div>
-          <span id='navbar-toggle' className='profile-icon' onClick={() => this.toggleNavbar()}><i className='fas fa-user-circle'></i></span>
+          <span id='navbar-toggle' className='profile-icon' onClick={() => this.toggleProfileNavbar()}><i className='fas fa-user-circle'></i></span>
         </div>
         <div id='main-nav'>
-          {faqsButton}
-          {addAListingLink}
+        {faqsButton}
+        {addAListingLink}
+        </div>
+        <div id='profile-nav'>
+          {profileButton}
           {loginButton}
           {registerButton}
-          {profileButton}
           {logOutButton}
         </div>
         <Link to="/dashboard">

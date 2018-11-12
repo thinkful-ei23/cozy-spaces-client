@@ -1,0 +1,36 @@
+header {
+  background-color: var(--maroon);
+  font-size: 16px;
+  padding: 16px;
+}
+
+header .header-icons .bars-icon path {
+  color: var(--main-orange);
+  cursor: pointer;
+}
+header .bars-icon:hover path {
+  color: var(--romance);
+}
+
+header a {
+  color: var(--romance);
+  font-size: 18px;
+  margin: 8px 0;
+  text-align: center;
+}
+
+header a:hover  {
+  color: var(--main-orange);
+}
+header button {
+  margin: 0 auto;
+}
+
+header .profile-icon {
+  color: var(--main-orange);
+  cursor: pointer;
+  font-size: 24px;
+}
+header .profile-icon:hover {
+  color: var(--romance);
+}

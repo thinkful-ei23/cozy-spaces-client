@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    <footer>
+    <footer className='topMargin16px'>
       <a className="social-icons" href="https://github.com/thinkful-ei23/cozy-spaces-client">
         <i className="fab fa-github social-icons" />
       </a>

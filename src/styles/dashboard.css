@@ -1,0 +1,41 @@
+/* SPECIFIC STYLING FOR ELEMENTS */
+.dashboard-places-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.dashboard-places {
+  width: 800px;
+}
+.geolocation {
+  margin: 8px auto;
+  width: auto;
+}
+.geolocation-form {
+  display: flex;
+  flex-direction: column;
+}
+.geolocation-form-label {
+  align-self: center;
+  padding: 4px 0;
+}
+.geolocation-form-input {
+  align-self: center;
+}
+.geolocation-form-input input {
+  width: 200px;
+}
+
+li {
+  background-color: var(--maroon);
+  border: solid 1px var(--main-orange);
+  box-shadow: var(--shadow);
+  color: white;
+  list-style: none;
+  margin: 10px auto;
+  text-align: center;
+}
+
+ul {
+  padding: 0;
+}

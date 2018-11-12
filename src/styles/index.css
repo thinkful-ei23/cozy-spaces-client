@@ -16,8 +16,8 @@
 
 body {
   background-color: var(--seal-brown);
+  color: var(--romance);
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
   margin: 0 10px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -35,19 +35,19 @@ a {
 a:hover {
   color: var(--main-orange);
 }
-
 button {
   all: unset;
-  display: inline-block;
-  padding: 8px 20px;
-  background: var(--main-orange);
+  /* display: inline-block; */
+  /* padding: 8px 20px; */
+  /* background: var(--main-orange); */
   color: var(--romance);
-  box-shadow: 0 12px 12px -6px rgba(black, .5);
+  font-size: 18px;
+  /* box-shadow: 0 12px 12px -6px rgba(black, .5); */
   /* transform: scale(1); */
   /* transition: transform ease-in-out 250ms, box-shadow ease-in-out 250ms; */
 }
 button:hover {
-  background: var(--romance);
+  /* background: var(--romance); */
   cursor: pointer;
   color: var(--main-orange)
   /* transform: scale(1.125); */
@@ -67,40 +67,17 @@ h1 {
   margin-top: 32px;
   text-align: center;
 }
+h2 {
+  font-size: 26px;
+}
 
-header {
-  background-color: var(--maroon);
+
+p {
   font-size: 16px;
-  padding: 16px;
-}
-
-header a {
-  color: var(--romance);
-  font-size: 20px;
-  margin: 0 8px;
-  transform: scale(1);
-  transition: transform ease-in-out 250ms, box-shadow ease-in-out 250ms;
-}
-
-header a:hover  {
-  color: var(--main-orange);
-  transform: scale(1.25);
-}
-header p {
-  font-size: 16px;
-}
-
-header .profile-icon {
-  color: var(--romance);
-  cursor: pointer;
-  font-size: 24px;
-}
-header .profile-icon:hover {
-  color: var(--main-orange);
 }
 
 img {
-  border-bottom: 1px solid var(--romance);
+  border-bottom: 1px solid var(--main-orange);
   box-shadow: var(--shadow);
   height: auto;
   object-fit: cover;
@@ -111,28 +88,14 @@ input {
 }
 
 label {
-  color:rgb(236, 161, 63);
+  /* color:rgb(236, 161, 63); */
   display: inline-block;
 }
 
-li {
-  background-color: var(--maroon);
-  border: solid 1px var(--romance);
-  box-shadow: var(--shadow);
-  color: white;
-  list-style: none;
-  margin: 10px auto;
-  text-align: center;
-}
 
 
 
-ul {
-  padding: 0;
-}
-
-
-/* CLASSES */
+/* STYLING LIBRARY */
 .block {
   display: block;
 }
@@ -141,6 +104,15 @@ ul {
 }
 .leftRightPadding16px {
   padding: 0 16px;
+}
+.textCenter {
+  text-align: center;
+}
+.topMargin8px {
+  margin-top: 8px;
+}
+.topMargin16px {
+  margin-top: 16px;
 }
 .topBottomMargin8px {
   margin: 8px auto;
@@ -156,32 +128,23 @@ ul {
 }
 
 
-
-.dashboard-places-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+/* SPECIFIC STYLING FOR ELEMENTS */
+.button {
+  all: unset;
+  display: inline-block;
+  padding: 8px 20px;
+  background: var(--main-orange);
+  color: var(--romance);
+  box-shadow: 0 12px 12px -6px rgba(black, .5);
+  /* transform: scale(1); */
+  /* transition: transform ease-in-out 250ms, box-shadow ease-in-out 250ms; */
 }
-.dashboard-places {
-  width: 320px;
-}
-.geolocation {
-  margin: 8px auto;
-  width: auto;
-}
-.geolocation-form {
-  display: flex;
-  flex-direction: column;
-}
-.geolocation-form-label {
-  align-self: center;
-  padding: 4px 0;
-}
-.geolocation-form-input {
-  align-self: center;
-}
-.geolocation-form-input input {
-  width: 200px;
+.button:hover {
+  background: var(--romance);
+  cursor: pointer;
+  color: var(--main-orange)
+  /* transform: scale(1.125); */
+  /* box-shadow: 0 12px 18px -10px rgba(black, .5); */
 }
 .place-card-content {
   padding: 16px 8px;
@@ -191,14 +154,14 @@ ul {
   justify-content: space-around;
 }
 .social-icons {
-  color: var(--romance);
+  color: var(--main-orange);
   font-size: 24px;
   margin: 0 8px;
   transform: scale(1);
   transition: transform ease-in-out 250ms, box-shadow ease-in-out 250ms;
 }
 .social-icons:hover {
-  color: var(--main-orange);
+  color: var(--romance);
   transform: scale(1.25);
 }
 .fa-bars {
@@ -213,20 +176,20 @@ ul {
 
 @media screen and (min-width: 990px) { 
   a {
-    font-size: 20px;
+    font-size: 18px;
   }
   label {
-    font-size: 20px;
+    font-size: 18px;
   }
   p {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   header .profile-icon {
     font-size: 32px;
   }
 
-  .dashboard {
+  main, .dashboard {
     margin: 0 auto;
     width: 960px;
   }

@@ -35,7 +35,7 @@ export class RegistrationForm extends React.Component {
             );
         }
         return (
-            <form
+            <form className='registration-form'
               onSubmit={this.props.handleSubmit(values =>
                   this.onSubmit(values)
               )}>
@@ -71,7 +71,7 @@ export class RegistrationForm extends React.Component {
                   labelText="Confirm password"
               />
               <button
-                className="btn-sub"
+                // className="btn-sub"
                 type="submit"
                 disabled={this.props.pristine || this.props.submitting}>
                 Register
