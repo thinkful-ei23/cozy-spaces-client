@@ -11,10 +11,71 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       currentLocation: {},
-      geolocationError: false
+      geolocationError: false,
+      fields: {zip: ''},
+      errors: {}
     };
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.submitSearchForm = this.submitSearchForm.bind(this);
   }
+
+
+
+  handleChange(e) {
+    let fields = this.state.fields;
+    fields[e.target.name] = e.target.value;
+    this.setState({
+      fields
+    });
+  }
+
+  submitSearchForm(e) {
+    e.preventDefault();
+    let errors = {}
+
+    if(this.validateForm()) {
+      this.sendZip();
+      let fields = {};
+      fields['zip'] = '';
+      this.setState({fields:fields});
+    } else {
+      errors['zip'] = 'Please enter a valid zip code';
+      this.setState({errors: errors})
+      console.log(false);
+    }
+  }
+
+  validateForm() {
+
+    let fields = this.state.fields;
+    let errors = {};
+    let formIsValid = true;
+
+    if (!fields['zip']) {
+      formIsValid = false;
+      errors['zip'] = 'Please enter a zip code';
+    }
+
+    if (typeof fields['zip'] !== 'undefined') {
+      if (!fields['zip'].match(/^[0-9]{5}$/)) {
+        formIsValid = false;
+        this.setState({
+          errors: errors
+        })
+      }
+    }
+
+    this.setState({
+      errors: errors
+    });
+    return formIsValid;
+  }
+
+
+
+
+
 
   componentDidMount() {
     if (navigator.geolocation) {
@@ -61,10 +122,8 @@ class Dashboard extends Component {
     this.setState({ geolocationError: true });
   }
 
-  sendZip(e) {
-    e.preventDefault();
-    let zip = document.getElementById('zip-geo').value;
-    console.log(zip);
+  sendZip() {
+    let zip = this.state.fields.zip;
     this.props.dispatch(fetchLatLng(zip)).then(latLng => {
       // send this filter to get places
       this.setState({ currentLocation: latLng });
@@ -74,6 +133,7 @@ class Dashboard extends Component {
 
   render() {
     let geoLocationError;
+    let error;
     let places;
 
     if (this.props.places) {
@@ -109,21 +169,21 @@ class Dashboard extends Component {
         places = <li>There are no cozy spaces recorded in your area yet. <Link to={`/add-listing`}>Add a cozy space now?</Link></li>
     }
 
+      if (this.state.errors.zip) {
+        error = <p>{this.state.errors.zip}</p>;
+      }
+
       return (
         <div className="dashboard">
           <div id="geolocation">
             {geoLocationError}
-            <form>
-              <label htmlFor="zip-geo">
+            <form onSubmit={(e) => this.submitSearchForm(e)}>
+              <label htmlFor="zip">
                 Enter a zipcode to find locations:{' '}
               </label>
-              <input
-                id="zip-geo"
-                type="text"
-                pattern="[0-9]{5}"
-                title="Five digit zip code"
-              />
-              <button onClick={e => this.sendZip(e)}>Submit</button>
+              <input type="text" name="zip" value={this.state.fields.zip} onChange={this.handleChange} id="zip-code" title="Five digit zip code"></input>
+              <button type='submit'>Submit</button>
+              {error}
             </form>
           </div>
           <ul>
