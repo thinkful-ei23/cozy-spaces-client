@@ -87,7 +87,7 @@ class Dashboard extends Component {
       }
       if (this.props.places.length >= 1) {
         places = this.props.places.map(place => (
-          <li key={place._id}>
+          <li className='dashboard-places' key={place._id}>
             <Link
               onClick={() => this.setPlace(place._id)}
               to={`/places/${place._id}`}
@@ -125,20 +125,24 @@ class Dashboard extends Component {
         <div className="dashboard">
           <div id="geolocation" className='geolocation'>
             {geoLocationError}
-            <form>
-              <label htmlFor="zip-geo">
+            <form className='geolocation-form'>
+              <label className='geolocation-form-label' htmlFor="zip-geo">
                 Enter a zipcode to find locations:{' '}
               </label>
-              <input
-                id="zip-geo"
-                type="text"
-                pattern="[0-9]{5}"
-                title="Five digit zip code"
-              />
-              <button onClick={e => this.sendZip(e)}>Submit</button>
+              <div className='geolocation-form-input'>
+                <input
+                  id="zip-geo"
+                  type="text"
+                  pattern="[0-9]{5}"
+                  title="Five digit zip code"
+                  />
+                <button onClick={e => this.sendZip(e)}>Submit</button>
+              </div>
             </form>
           </div>
-          <ul>{places}</ul>
+          <ul className='dashboard-places-list'>
+            {places}
+          </ul>
         </div>
       );
     } else {

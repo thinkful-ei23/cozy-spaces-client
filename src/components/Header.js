@@ -10,28 +10,38 @@ class Header extends Component {
     clearAuthToken();
   }
 
+  componentDidMount() {
+    let mainNav = document.getElementById('main-nav');
+    let navbarToggle = document.getElementById('navbar-toggle');
+    mainNav.style.display = "none";
+  }
+
+  toggleNavbar() {
+    let mainNav = document.getElementById('main-nav');
+    let navbarToggle = document.getElementById('navbar-toggle');
+    if (mainNav.style.display === 'none') {
+      mainNav.style.display = 'block';
+    } else {
+      mainNav.style.display = 'none';
+    }
+  }
+
   render() {
 
 
     let registerButton = (
       <Link to="/register">
-        <p className='inline'>
-          Register
-        </p>
+        Register
       </Link>
     );
     let loginButton = (
       <Link to="/login">
-        <p className='inline'>
-          Log in
-        </p>
+        Log in
       </Link>
     );
     let faqsButton = (
       <Link id="faqsButton" to="/learn-more">
-        <p className='inline'>
-          Learn more
-        </p>
+        Learn more
       </Link>
     );
     let logOutButton;
@@ -65,28 +75,29 @@ class Header extends Component {
       <header>
         <div className='header-icons'>
           <div className='inline icons-group1'>
-            <a className='social-icons' href='https://github.com/thinkful-ei23/cozy-spaces-client'>
-              <i className="fab fa-github" />
+            <a href='https://github.com/thinkful-ei23/cozy-spaces-client'>
+              <i className="fab fa-github social-icons" />
             </a>
-            <a className='social-icons' href="https://twitter.com/CozySpaces">
-              <i className="fab fa-twitter" />
+            <a href="https://twitter.com/CozySpaces">
+              <i className="fab fa-twitter social-icons" />
             </a>
-            <a className='social-icons' href="https://facebook.com/CozySpaces">
-              <i className="fab fa-facebook-f" />
+            <a href="https://facebook.com/CozySpaces">
+              <i className="fab fa-facebook-f social-icons" />
             </a>
-            <a className='social-icons' href="https://twitter.com/CozySpaces">
-              <i className="fab fa-youtube" />
+            <a href="https://twitter.com/CozySpaces">
+              <i className="fab fa-youtube social-icons" />
             </a>
           </div>
-          <span id='navbar-toggle' className='profile-icon'><i class='fas fa-user-circle'></i></span>
+          <span id='navbar-toggle' className='profile-icon' onClick={() => this.toggleNavbar()}><i className='fas fa-user-circle'></i></span>
         </div>
-
-        {faqsButton}
-        {addAListingLink}
-        {loginButton}
-        {registerButton}
-        {profileButton}
-        {logOutButton}
+        <div id='main-nav'>
+          {faqsButton}
+          {addAListingLink}
+          {loginButton}
+          {registerButton}
+          {profileButton}
+          {logOutButton}
+        </div>
         <Link to="/dashboard">
           <h1>Cozy Spaces</h1>
         </Link>
