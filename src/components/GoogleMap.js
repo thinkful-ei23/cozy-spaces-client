@@ -121,8 +121,9 @@ export class MapContainer extends Component {
         state,
         zipcode: info.address_components[0].long_name,
         location: {type: 'Point',
-        coordinates: [lng, lat]
-        }
+        coordinates: [lng, lat],
+        },
+        photos: ["444444444444444444444000"]
       }
       console.log(place);
       return this.props.dispatch(postPlace(place));
