@@ -102,7 +102,13 @@ export const fetchRatingsByPlaceId = placeId => (dispatch, getState) => {
     }
   })
     .then(res => normalizeResponseErrors(res))
-    .then(res => res.json())
+    .then(res => {
+      if (res.status === 204) {
+        throw new Error('You have not yet rated this place');
+      } else {
+        return res.json();
+      }
+    })
     .then(res => dispatch(fetchRatingsByPlaceIdSuccess(res)))
     .catch(error => {
       console.log('inside the catch: ', error);
