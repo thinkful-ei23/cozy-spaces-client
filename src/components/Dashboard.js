@@ -35,7 +35,8 @@ class Dashboard extends Component {
 
   getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => this.setPosition(position),
+      navigator.geolocation.getCurrentPosition(
+        position => this.setPosition(position),
         () => {
           this.handleLocationError(true);
         }
@@ -85,33 +86,44 @@ class Dashboard extends Component {
         geoLocationError = <p>'Error: The Geolocation service failed'</p>;
       }
       if (this.props.places.length >= 1) {
-      places = this.props.places.map(place => (
-        <li key={place._id}>
-          <img alt={`${place.photos[0].caption}`} src={`${place.photos[0].url}`} />
-          {/* This needs to be commented out temporarily because new listings don't have photos */}
-          <div>
-            <span className="name">{place.name}, </span>
-            <span className="type">{place.type}</span>
-            <br />
-            <span className="overallRating">
-              Overall cozy rating: {place.averageCozyness}
-            </span>
-          </div>
-          <Link
-            onClick={() => this.setPlace(place._id)}
-            to={`/places/${place._id}`}
-          >
-            Check out this place in detail
-          </Link>
-        </li>
-      ));
-    } else {
-        places = <li>There are no cozy spaces recorded in your area yet. <Link to={`/add-listing`}>Add a cozy space now?</Link></li>
-    }
+        places = this.props.places.map(place => (
+          <li key={place._id}>
+            <Link
+              onClick={() => this.setPlace(place._id)}
+              to={`/places/${place._id}`}
+            >
+              <img
+                alt={`${place.photos[0].caption}`}
+                src={`${place.photos[0].url}`}
+              />
+              {/* This needs to be commented out temporarily because new listings don't have photos */}
+              <div className="place-card-content">
+                <h2 className="inline name">{place.name}</h2>
+                <div className="place-card-content-r1">
+                  <p className="inline type">
+                    Type of Place: {place.type}
+                  </p>
+                  <p className="overallRating">
+                    Overall cozy rating: {place.averageCozyness}
+                  </p>
+                </div>
+
+              </div>
+            </Link>
+          </li>
+        ));
+      } else {
+        places = (
+          <li>
+            There are no cozy spaces recorded in your area yet.{' '}
+            <Link to={`/add-listing`}>Add a cozy space now?</Link>
+          </li>
+        );
+      }
 
       return (
         <div className="dashboard">
-          <div id="geolocation">
+          <div id="geolocation" className='geolocation'>
             {geoLocationError}
             <form>
               <label htmlFor="zip-geo">
@@ -126,9 +138,7 @@ class Dashboard extends Component {
               <button onClick={e => this.sendZip(e)}>Submit</button>
             </form>
           </div>
-          <ul>
-            {places}
-          </ul>
+          <ul>{places}</ul>
         </div>
       );
     } else {

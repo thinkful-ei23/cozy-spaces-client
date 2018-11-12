@@ -11,23 +11,27 @@ class Header extends Component {
   }
 
   render() {
-    const buttonStyle = {
-      margin: '5px'
-    };
+
 
     let registerButton = (
-      <Link style={buttonStyle} to="/register">
-        Register
+      <Link to="/register">
+        <p className='inline'>
+          Register
+        </p>
       </Link>
     );
     let loginButton = (
-      <Link style={buttonStyle} to="/login">
-        Log in
+      <Link to="/login">
+        <p className='inline'>
+          Log in
+        </p>
       </Link>
     );
     let faqsButton = (
-      <Link style={buttonStyle} id="faqsButton" to="/learn-more">
-        Learn more
+      <Link id="faqsButton" to="/learn-more">
+        <p className='inline'>
+          Learn more
+        </p>
       </Link>
     );
     let logOutButton;
@@ -37,7 +41,6 @@ class Header extends Component {
     if (this.props.loggedIn) {
       logOutButton = (
         <button
-          style={buttonStyle}
           id="logoutButton"
           onClick={() => this.logOut()}
         >
@@ -45,12 +48,12 @@ class Header extends Component {
         </button>
       );
       profileButton = (
-        <Link style={buttonStyle} id="profileButton" to="/profile">
+        <Link id="profileButton" to="/profile">
           Profile
         </Link>
       );
       addAListingLink = (
-        <Link style={buttonStyle} id="addListingLink" to="/add-listing">
+        <Link id="addListingLink" to="/add-listing">
           Add a cozy space
         </Link>
       );
@@ -60,15 +63,33 @@ class Header extends Component {
 
     return (
       <header>
-        <Link to="/dashboard">
-          <h1>Cozy Spaces</h1>
-        </Link>
+        <div className='header-icons'>
+          <div className='inline icons-group1'>
+            <a className='social-icons' href='https://github.com/thinkful-ei23/cozy-spaces-client'>
+              <i className="fab fa-github" />
+            </a>
+            <a className='social-icons' href="https://twitter.com/CozySpaces">
+              <i className="fab fa-twitter" />
+            </a>
+            <a className='social-icons' href="https://facebook.com/CozySpaces">
+              <i className="fab fa-facebook-f" />
+            </a>
+            <a className='social-icons' href="https://twitter.com/CozySpaces">
+              <i className="fab fa-youtube" />
+            </a>
+          </div>
+          <span id='navbar-toggle' className='profile-icon'><i class='fas fa-user-circle'></i></span>
+        </div>
+
         {faqsButton}
         {addAListingLink}
         {loginButton}
         {registerButton}
         {profileButton}
         {logOutButton}
+        <Link to="/dashboard">
+          <h1>Cozy Spaces</h1>
+        </Link>
       </header>
     );
   }
