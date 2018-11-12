@@ -21,23 +21,26 @@ class Header extends Component {
 
   toggleMainNavbar() {
     let mainNav = document.getElementById('main-nav');
+    let profileNav = document.getElementById('profile-nav');
     if (mainNav.style.display === 'none') {
       mainNav.style.display = 'block';
+      profileNav.style.display = 'none';
     } else {
       mainNav.style.display = 'none';
     }
   }
   toggleProfileNavbar() {
     let profileNav = document.getElementById('profile-nav');
+    let mainNav = document.getElementById('main-nav');
     if (profileNav.style.display === 'none') {
       profileNav.style.display = 'block';
+      mainNav.style.display = 'none';
     } else {
       profileNav.style.display = 'none';
     }
   }
 
   render() {
-
 
     let registerButton = (
       <Link className='block' to="/register">
@@ -85,21 +88,7 @@ class Header extends Component {
     return (
       <header>
         <div className='header-icons'>
-        <span id='navbar-toggle' className='bars-icon' onClick={() => this.toggleMainNavbar()}><i className="fas fa-bars"/></span>
-          <div className='icons-group1'>
-            <a className='inline' href='https://github.com/thinkful-ei23/cozy-spaces-client'>
-              <i className="fab fa-github social-icons" />
-            </a>
-            <a href="https://twitter.com/CozySpaces">
-              <i className="fab fa-twitter social-icons" />
-            </a>
-            <a href="https://facebook.com/CozySpaces">
-              <i className="fab fa-facebook-f social-icons" />
-            </a>
-            <a href="https://twitter.com/CozySpaces">
-              <i className="fab fa-youtube social-icons" />
-            </a>
-          </div>
+          <span id='navbar-toggle' className='bars-icon' onClick={() => this.toggleMainNavbar()}><i className="fas fa-bars"/></span>
           <span id='navbar-toggle' className='profile-icon' onClick={() => this.toggleProfileNavbar()}><i className='fas fa-user-circle'></i></span>
         </div>
         <div id='main-nav'>

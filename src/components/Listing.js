@@ -67,6 +67,7 @@ class Listing extends Component {
       return (
         <Fragment>
           <div className="listing">
+            <img alt={`${specificPlace.photos[0].caption}`} src={`${specificPlace.photos[0].url}`} />
             <h2 className='textCenter'>{specificPlace.name}</h2>
             <h3>Type of place: {specificPlace.type}</h3>
             <h3>Overall coziness: {specificPlace.averageCozyness}</h3>
