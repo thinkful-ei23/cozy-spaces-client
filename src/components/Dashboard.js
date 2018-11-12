@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchPlaces, fetchPlaceByID } from '../actions/places';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
-import Search from './Search';
-import { fetchPlaceInfo, postPlace, fetchLatLng } from '../actions/places';
+import { fetchLatLng } from '../actions/places';
+import { fetchPlaces, fetchPlaceByID } from '../actions/places';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -28,10 +27,6 @@ class Dashboard extends Component {
     } else {
       this.handleLocationError(false);
     }
-
-    // return (
-    //     this.props.dispatch(fetchPlaces())
-    // );
   }
 
   setPlace(id) {
@@ -40,8 +35,7 @@ class Dashboard extends Component {
 
   getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        position => this.setPosition(position),
+      navigator.geolocation.getCurrentPosition(position => this.setPosition(position),
         () => {
           this.handleLocationError(true);
         }
@@ -80,6 +74,7 @@ class Dashboard extends Component {
 
   render() {
     let geoLocationError;
+    let places;
 
     if (this.props.places) {
       if (!this.props.returningUser) {
@@ -89,6 +84,30 @@ class Dashboard extends Component {
       if (this.state.geolocationError) {
         geoLocationError = <p>'Error: The Geolocation service failed'</p>;
       }
+      if (this.props.places.length >= 1) {
+      places = this.props.places.map(place => (
+        <li key={place._id}>
+          <img alt={`${place.photos[0].caption}`} src={`${place.photos[0].url}`} />
+          {/* This needs to be commented out temporarily because new listings don't have photos */}
+          <div>
+            <span className="name">{place.name}, </span>
+            <span className="type">{place.type}</span>
+            <br />
+            <span className="overallRating">
+              Overall cozy rating: {place.averageCozyness}
+            </span>
+          </div>
+          <Link
+            onClick={() => this.setPlace(place._id)}
+            to={`/places/${place._id}`}
+          >
+            Check out this place in detail
+          </Link>
+        </li>
+      ));
+    } else {
+        places = <li>There are no cozy spaces recorded in your area yet. <Link to={`/add-listing`}>Add a cozy space now?</Link></li>
+    }
 
       return (
         <div className="dashboard">
@@ -108,34 +127,7 @@ class Dashboard extends Component {
             </form>
           </div>
           <ul>
-            {this.props.places.map(place => (
-              <li key={place._id}>
-                <img
-                  alt={`${place.photos[0].caption}`}
-                  src={`${place.photos[0].url}`}
-                />
-                {/* This needs to be commented out temporarily because new listings don't have photos */}
-                <div className='topBottomMarginhalf1'>
-                  <div className='topBottomMargin1'>
-                    <p className="inline leftRightPadding">
-                      <span className="name">{place.name}, </span>
-                      <span className="type">{place.type}</span>
-                    </p>
-                    <p className="inline leftRightPadding">
-                      <span className="overallRating">
-                        Overall cozy rating: {place.averageCozyness}
-                      </span>
-                    </p>
-                  </div>
-                  <Link
-                    onClick={() => this.setPlace(place._id)}
-                    to={`/places/${place._id}`}
-                  >
-                    Check out this place in detail
-                  </Link>
-                </div>
-              </li>
-            ))}
+            {places}
           </ul>
         </div>
       );

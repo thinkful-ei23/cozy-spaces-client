@@ -143,9 +143,10 @@ export const fetchPlaceByID = (id) => (dispatch, getState) => {
       .then(res => res.json()) 
       .then((res) => {
           dispatch(fetchPlaceByIdSuccess(res))
-          res.json()
+          return res;
       })
       .catch(error => {
+          console.log(error);
         dispatch(fetchPlaceByIdError(error));
       });
 }
@@ -191,6 +192,7 @@ export const unReportPlace = (placeId) => (dispatch, getState) => {
 }
 
 export const postPlace = (place) => dispatch => {
+    console.log(place);
     dispatch(postPlaceRequest());
     return fetch(`${API_BASE_URL}/places`, {
         method: 'POST',

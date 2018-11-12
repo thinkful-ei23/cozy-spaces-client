@@ -1,51 +1,68 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { clearAuth } from '../actions/auth';
 import { Link } from 'react-router-dom';
 import { clearAuthToken } from '../local-storage';
 
 class Header extends Component {
-
   logOut() {
     this.props.dispatch(clearAuth());
     clearAuthToken();
   }
 
   render() {
-
     const buttonStyle = {
       margin: '5px'
-    }
+    };
 
-    let registerButton = <Link style={buttonStyle} to="/register">Register</Link>;
-    let loginButton = <Link style={buttonStyle} to="/login">Log in</Link>;
-    let faqsButton = <Link style={buttonStyle} id="faqsButton" to="/learn-more">Learn more</Link>;
+    let registerButton = (
+      <Link style={buttonStyle} to="/register">
+        Register
+      </Link>
+    );
+    let loginButton = (
+      <Link style={buttonStyle} to="/login">
+        Log in
+      </Link>
+    );
+    let faqsButton = (
+      <Link style={buttonStyle} id="faqsButton" to="/learn-more">
+        Learn more
+      </Link>
+    );
     let logOutButton;
     let profileButton;
     let addAListingLink;
 
     if (this.props.loggedIn) {
-      console.log('Logged in? ', true);
       logOutButton = (
-        <button style={buttonStyle} id="logoutButton" onClick={() => this.logOut()}>
+        <button
+          style={buttonStyle}
+          id="logoutButton"
+          onClick={() => this.logOut()}
+        >
           Log out
         </button>
       );
       profileButton = (
-        <Link  style={buttonStyle} id="profileButton" to="/profile">Profile</Link>
-      )
-      addAListingLink  = (
-        <Link  style={buttonStyle} id="addListingLink" to="/add-listing">Add a cozy space</Link>
-      )
+        <Link style={buttonStyle} id="profileButton" to="/profile">
+          Profile
+        </Link>
+      );
+      addAListingLink = (
+        <Link style={buttonStyle} id="addListingLink" to="/add-listing">
+          Add a cozy space
+        </Link>
+      );
       loginButton = null;
       registerButton = null;
-    } else {
-      console.log('Logged in? ', false);
     }
 
     return (
       <header>
-        <Link to="/dashboard"><h1>Cozy Spaces</h1></Link>
+        <Link to="/dashboard">
+          <h1>Cozy Spaces</h1>
+        </Link>
         {faqsButton}
         {addAListingLink}
         {loginButton}
