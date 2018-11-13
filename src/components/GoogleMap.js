@@ -35,7 +35,6 @@ export class MapContainer extends Component {
       lat: position.coords.latitude,
       lng: position.coords.longitude
     };
-    console.log(pos);
     this.setState({currentLocation: pos, geoLocationError: false});
   }
 
@@ -47,8 +46,6 @@ export class MapContainer extends Component {
   onMapClicked(mapProps, map, clickEvent) {
     const latitude = clickEvent.latLng.lat();
     const longitude = clickEvent.latLng.lng();
-    console.log(latitude, longitude);
-    console.log(this.state);
     if (this.state.showingInfoWindow) {
       this.setState({
         showingInfoWindow: false,
@@ -69,7 +66,6 @@ export class MapContainer extends Component {
  
 
   fetchPlaces(mapProps, map) {
-    console.log('will be fetching places from our db???');
     //<Listing places={this.state.places} />
     // const {google} = mapProps;
     // const service = new google.maps.places.PlacesService(map);
@@ -104,9 +100,7 @@ export class MapContainer extends Component {
     let type = document.getElementById('typeOfPlace').value;
     let lat = this.state.activeMarker.internalPosition.lat();
     let lng = this.state.activeMarker.internalPosition.lng();
-    console.log('lng', typeof lng);
     return this.props.dispatch(fetchPlaceInfo(lat, lng)).then(info => {
-      console.log('address components', info.address_components);
       let state;
       if (info.address_components.length === 5) {
         state = info.address_components[3].long_name;
@@ -125,7 +119,6 @@ export class MapContainer extends Component {
         },
         photos: ["444444444444444444444000"]
       }
-      console.log(place);
       return this.props.dispatch(postPlace(place));
     });
   }
@@ -133,7 +126,6 @@ export class MapContainer extends Component {
   sendZip(e) {
     e.preventDefault();
     let zip = document.getElementById('zip-geo').value;
-    console.log(zip);
     this.props.dispatch(fetchLatLng(zip)).then((latLng) => {
       this.setState({ currentLocation: latLng})
     });

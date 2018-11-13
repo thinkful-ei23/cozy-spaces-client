@@ -91,13 +91,11 @@ export const fetchRatings = () => dispatch => {
 };
 
 export const fetchRatingsByPlaceId = placeId => (dispatch, getState) => {
-  // actually fetches by place
   const authToken = getState().auth.authToken;
   dispatch(fetchRatingsByPlaceIdRequest());
   return fetch(`${API_BASE_URL}/ratings/${placeId}`, {
     method: 'GET',
     headers: {
-      // Provide our existing token as credentials to get a new one
       Authorization: `Bearer ${authToken}`
     }
   })
@@ -111,13 +109,11 @@ export const fetchRatingsByPlaceId = placeId => (dispatch, getState) => {
     })
     .then(res => dispatch(fetchRatingsByPlaceIdSuccess(res)))
     .catch(error => {
-      console.log('inside the catch: ', error);
       dispatch(fetchRatingsByPlaceIdError(error));
     });
 };
 
 export const postRating = rating => (dispatch, getState) => {
-  console.log('rating', rating);
   const authToken = getState().auth.authToken;
   dispatch(postRatingRequest());
   return fetch(`${API_BASE_URL}/ratings`, {
@@ -132,11 +128,9 @@ export const postRating = rating => (dispatch, getState) => {
     .then(res => res.json())
     .then(res => dispatch(postRatingSuccess(res)))
     .catch(error => {
-      console.log('client side error');
       const { reason, message, location } = error;
       dispatch(postRatingError(error));
       if (reason === 'ValidationError') {
-        console.log('in reason');
         // Convert ValidationErrors into SubmissionErrors for Redux Form
         // need help from TJ on how to get this submission error into the right place
         return Promise.reject(
@@ -149,7 +143,6 @@ export const postRating = rating => (dispatch, getState) => {
 };
 
 export const editRating = (rating, placeId) => (dispatch, getState) => {
-  console.log('editrating', rating);
   const authToken = getState().auth.authToken;
   dispatch(toggleEditRating());
   dispatch(editRatingRequest());
@@ -165,15 +158,12 @@ export const editRating = (rating, placeId) => (dispatch, getState) => {
     .then(res => res.json())
     .then(res => dispatch(editRatingSuccess(res)))
     .catch(error => {
-      console.log(error);
       dispatch(editRatingError(error));
     });
 };
 
 export const deleteRating = placeID => (dispatch, getState) => {
   const authToken = getState().auth.authToken;
-  console.log('placeID: ', placeID);
-  console.log('authToken: ', authToken);
   return fetch(`${API_BASE_URL}/ratings/${placeID}`, {
     method: 'DELETE',
     headers: {

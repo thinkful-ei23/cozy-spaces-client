@@ -9,7 +9,6 @@ import { fetchPlaceByID } from '../actions/places';
 
 class RatingsForm extends React.Component {
   onSubmit(values) {
-    console.log(values);
     const rating = {
       placeId : this.props.place._id,
       rating : {
@@ -22,7 +21,6 @@ class RatingsForm extends React.Component {
         comment: values.comment
       }
     }
-    console.log(rating);
     return this.props.dispatch(postRating(rating))
     .then(() => this.props.dispatch(fetchRatingsByPlaceId(this.props.place._id)))
     .then(() => this.props.dispatch(fetchPlaceByID(rating.placeId)))
