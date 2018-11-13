@@ -11,6 +11,7 @@ import LandingPage from './LandingPage';
 import Listing from './Listing';
 import Dashboard from "./Dashboard";
 import LearnAboutCozy from "./LearnAboutCozy";
+import Footer from './Footer';
 import { refreshAuthToken } from '../actions/auth';
 
 class App extends Component {
@@ -55,6 +56,7 @@ class App extends Component {
           <Route exact path="/add-listing" component={AddAListingPage} />
           <Route exact path="/places/:id" component={Listing} />
           <Route exact path="/learn-more" component={LearnAboutCozy} />
+          <Footer />
       </div>
     );
   }

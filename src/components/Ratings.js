@@ -20,8 +20,8 @@ class Ratings extends React.Component {
     if (this.props.specificRating && !this.props.ratingError) {
       let specificRating = this.props.specificRating.rating;
       return (
-        <Fragment>
-          <h4>Your Ratings</h4>
+        <section className='textCenter'>
+          <h3>Your Ratings</h3>
           {ratingError}
           <ul>
             <li>Warm lighting: {specificRating.warmLighting}</li>
@@ -35,7 +35,7 @@ class Ratings extends React.Component {
             <li>Hot food/drink: {specificRating.hotFoodDrink}</li>
             <li>Comments: {specificRating.comment}</li>
           </ul>
-        </Fragment>
+        </section>
       );
     } else if (this.props.ratingError) {
       return <p>{ratingError}</p>;

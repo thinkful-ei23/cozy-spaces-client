@@ -6,6 +6,9 @@ import { Redirect } from 'react-router-dom';
 import { fetchLatLng } from '../actions/places';
 import { fetchPlaces, fetchPlaceByID } from '../actions/places';
 
+import '../styles/dashboard.css';
+
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -96,7 +99,8 @@ class Dashboard extends Component {
 
   getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => this.setPosition(position),
+      navigator.geolocation.getCurrentPosition(
+        position => this.setPosition(position),
         () => {
           this.handleLocationError(true);
         }
@@ -145,51 +149,72 @@ class Dashboard extends Component {
         geoLocationError = <p>'Error: The Geolocation service failed'</p>;
       }
       if (this.props.places.length >= 1) {
-      places = this.props.places.map(place => (
-        <li key={place._id}>
-          <img alt={`${place.photos[0].caption}`} src={`${place.photos[0].url}`} />
-          {/* This needs to be commented out temporarily because new listings don't have photos */}
-          <div>
-            <span className="name">{place.name}, </span>
-            <span className="type">{place.type}</span>
-            <br />
-            <span className="overallRating">
-              Overall cozy rating: {place.averageCozyness}
-            </span>
-          </div>
-          <Link
-            onClick={() => this.setPlace(place._id)}
-            to={`/places/${place._id}`}
-          >
-            Check out this place in detail
-          </Link>
-        </li>
-      ));
-    } else {
-        places = <li>There are no cozy spaces recorded in your area yet. <Link to={`/add-listing`}>Add a cozy space now?</Link></li>
-    }
+        places = this.props.places.map(place => (
+          <li className='dashboard-places card' key={place._id}>
+            <Link
+              onClick={() => this.setPlace(place._id)}
+              to={`/places/${place._id}`}
+            >
+            <img
+                alt={`${place.photos[0].caption}`}
+                src={`${place.photos[0].url}`}
+                />
+              {/* This needs to be commented out temporarily because new listings don't have photos */}
+              <div className="place-card-content">
+                <h2 className="inline name">{place.name}</h2>
+                <div className="place-card-content-r1">
+                  <p className="inline type">
+                    Type: {place.type}
+                  </p>
+                  <p className="overallRating">
+                    Cozy Rating: {place.averageCozyness}
+                  </p>
+                </div>
+
+              </div>
+            </Link>
+          </li>
+        ));
+      } else {
+        places = (
+          <li>
+            There are no cozy spaces recorded in your area yet.{' '}
+            <Link to={`/add-listing`}>Add a cozy space now?</Link>
+          </li>
+        );
+      }
 
       if (this.state.errors.zip) {
         error = <p>{this.state.errors.zip}</p>;
       }
 
       return (
-        <div className="dashboard">
-          <div id="geolocation">
+        <main className="dashboard">
+          <div id="geolocation" className='geolocation'>
             {geoLocationError}
-            <form onSubmit={(e) => this.submitSearchForm(e)}>
-              <label htmlFor="zip">
+            <form className='geolocation-form' onSubmit={(e) => this.submitSearchForm(e)}>
+              <label className='geolocation-form-label' htmlFor="zip-geo">
                 Enter a zipcode to find locations:{' '}
               </label>
-              <input type="text" name="zip" value={this.state.fields.zip} onChange={this.handleChange} id="zip-code" title="Five digit zip code"></input>
-              <button type='submit'>Submit</button>
-              {error}
+              <div className='geolocation-form-input'>
+                <input
+                  id="zip-geo"
+                  name="zip"
+                  type="text"
+                  value={this.state.fields.zip}
+                  onChange={this.handleChange}
+                  title="Five digit zip code"
+                  />
+                <button className='button' type='submit'>Submit</button>
+                {error}
+              </div>
+
             </form>
           </div>
-          <ul>
+          <ul className='dashboard-places-list'>
             {places}
           </ul>
-        </div>
+        </main>
       );
     } else {
       return <p>Incoming coziness</p>;

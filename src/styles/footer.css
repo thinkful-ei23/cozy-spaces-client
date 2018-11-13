@@ -1,0 +1,17 @@
+.social-icons {
+  color: var(--main-orange);
+  font-size: 24px;
+  margin: 0 8px;
+  transform: scale(1);
+  transition: transform ease-in-out 250ms, box-shadow ease-in-out 250ms;
+}
+.social-icons:hover {
+  color: var(--romance);
+  transform: scale(1.25);
+}
+
+@media screen and (min-width: 990px) { 
+  .social-icons {
+    font-size: 32px;
+  }
+}

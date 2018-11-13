@@ -1,20 +1,157 @@
+:root {
+  --darker-red: #af1919;
+  --light-red: #e40b17;
+  --main-brown: #433117;
+  --main-orange: #efa13d;
+  --maroon: #600505;
+  --romance: #F2EFE9;
+  --seal-brown: #3A0404;
+  --shadow: 0 1px 5px rgba(54, 47, 47, 0.8);
+  --tan: #a58976;
+}
+
+* {
+  box-sizing: border-box;
+}
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  color: var(--main-orange);
+}
 body {
-  background-color: #ffaa41;
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  background-color: var(--seal-brown);
+  color: var(--romance);
+  font-family: 'Roboto', sans-serif;
+  margin: 0 10px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+button {
+  all: unset;
+  color: var(--romance);
+  font-size: 18px;
+}
+button:hover {
+  cursor: pointer;
+  color: var(--main-orange)
+}
+footer {
+  text-align: center;
+}
+h1 {
+  color: var(--romance);
+  font-family: 'Rock Salt', cursive; /*'Qwigley', cursive; "Segoe Script", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif; */
+  font-size: 48px;
+  font-weight: normal;
+  margin-block-start: 0;
+  margin-top: 48px;
+  text-align: center;
+}
+h2 {
+  font-size: 26px;
+}
+img {
+  border-bottom: 1px solid var(--main-orange);
+  box-shadow: var(--shadow);
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+input {
+  padding: 6px 2px;
+}
+label {
+  display: inline-block;
+}
+p {
+  font-size: 16px;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.app {
-  margin: 0 auto;
-  width: 800px;
+/* STYLING LIBRARY */
+.block {
+  display: block;
+}
+.flex {
+  display: flex;
+}
+.main-orange-border {
+  border: 1px solid var(--main-orange);
+}
+.space-around {
+  justify-content: space-around;
+}
+.space-evenly {
+  justify-content: space-evenly;
+}
+.inline {
+  display: inline;
+}
+.leftRightPadding16px {
+  padding: 0 16px;
+}
+.textCenter {
+  text-align: center;
+}
+.topMargin8px {
+  margin-top: 8px;
+}
+.topMargin16px {
+  margin-top: 16px;
+}
+.topBottomMargin8px {
+  margin: 8px auto;
+}
+.topBottomMargin16px {
+  margin: 16px auto;
+}
+.topBottomMargin32px {
+  margin: 32px auto;
+}
+.leftRightMargin8px {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.whiteFont {
+  color: var(--romance);
+}
+
+/* SPECIFIC STYLING FOR ELEMENTS */
+.button {
+  all: unset;
+  background: var(--main-orange);
+  color: var(--romance);
+  display: inline-block;
+  padding: 8px 20px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.button:hover {
+  background: var(--romance);
+  cursor: pointer;
+  color: var(--main-orange)
+}
+
+@media screen and (min-width: 990px) { 
+  a {
+    font-size: 18px;
+  }
+  label {
+    font-size: 18px;
+  }
+  main {
+    margin: 0 auto;
+    width: 960px;
+  }
+  p {
+    font-size: 18px;
+  }
 }
