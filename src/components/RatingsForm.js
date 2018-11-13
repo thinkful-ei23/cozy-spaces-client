@@ -38,7 +38,7 @@ class RatingsForm extends React.Component {
         );
     }
       return (
-        <Fragment>
+        <section className='section'>
           <h4>Rate the cozyness!</h4>
           <form  className="ratings-form"
             onSubmit={this.props.handleSubmit(values =>
@@ -113,7 +113,7 @@ class RatingsForm extends React.Component {
               Rate it
             </button>
           </form>
-        </Fragment>
+        </section>
       );
 }
 }

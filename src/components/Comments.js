@@ -16,7 +16,7 @@ class Comments extends React.Component {
     }
 
     return (
-      <section className="comments main-orange-border textCenter">
+      <section className="section">
         <h3>Comments from visitors</h3>
           <ul>
               {(this.props.ratings).reduce((acc, rating) => {

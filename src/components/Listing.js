@@ -24,13 +24,7 @@ class Listing extends Component {
     });
   }
 
-  deleteRating() {
-    const id = this.props.match.params.id;
-    return this.props
-      .dispatch(deleteRating(this.props.specificPlace._id))
-      .then(() => this.props.dispatch(fetchRatingsByPlaceId(id)))
-      .then(() => this.props.dispatch(fetchPlaceByID(id)));
-  }
+
 
   render() {
     let yourRatings;
@@ -39,13 +33,13 @@ class Listing extends Component {
     let reportButton;
 
     if (this.props.loggedIn) {
-      yourRatings = <Ratings />;
+      yourRatings = <Ratings placeId={this.props.match.params.id} />;
       reportButton = <ReportListing />;
       if (!this.props.specificRating) {
         ratingsFormPost = <RatingsForm place={this.props.specificPlace} />;
       } else {
         ratingsFormEdit = this.props.editing ? (
-          <section className='edit-rating-form textCenter'>
+          <section className='section'>
             <EditRatingForm
               rating={this.props.specificRating}
               place={this.props.specificPlace}
@@ -60,7 +54,7 @@ class Listing extends Component {
       return (
         <main className='listing-page'>
           <section className="listing-info">
-            <img alt={`${specificPlace.photos[0].caption}`} src={`${specificPlace.photos[0].url}`} />
+            <img alt={`${specificPlace.photos[0].caption}`} className='bottomShadow main-orange-border' src={`${specificPlace.photos[0].url}`} />
             <div className='listing-specific-info'>
               <h2 className='textCenter'>{specificPlace.name}</h2>
               <p className='textCenter'>
@@ -72,7 +66,7 @@ class Listing extends Component {
                 <p>Cozy Rating: {specificPlace.averageCozyness}</p>
               </div>
             </div>
-            <ul className='average-ratings textCenter'>
+            <ul className='average-ratings section textCenter'>
             <h3>Average Ratings</h3>
               <li>Warm lighting: {specificPlace.averageWarmLighting}</li>
               <li>Relaxed Music: {specificPlace.averageRelaxedMusic}</li>
@@ -86,10 +80,8 @@ class Listing extends Component {
             </ul>
           </section>
           <Comments />
-          <div className='yourRatings-editRatings-group'>
-            {yourRatings}
-            {ratingsFormEdit}
-          </div>
+          {yourRatings}
+          {ratingsFormEdit}
           {ratingsFormPost}
           {reportButton}
         </main>

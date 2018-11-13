@@ -1,6 +1,6 @@
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import React, { Component, Fragment } from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { fetchPlaceInfo, postPlace, fetchLatLng } from '../actions/places';
 import { Redirect } from 'react-router-dom';
@@ -13,17 +13,20 @@ export class MapContainer extends Component {
       activeMarker: {},
       selectedPlace: {},
       currentLocation: {},
-      geolocationError: false 
-    }
+      geolocationError: false
+    };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.handleLocationError = this.handleLocationError.bind(this);
   }
 
   componentDidMount() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => this.setPosition(position), () => {
-        this.handleLocationError(true);
-      });
+      navigator.geolocation.getCurrentPosition(
+        position => this.setPosition(position),
+        () => {
+          this.handleLocationError(true);
+        }
+      );
     } else {
       // Browser doesn't support Geolocation
       this.handleLocationError(false);
@@ -36,13 +39,12 @@ export class MapContainer extends Component {
       lng: position.coords.longitude
     };
     console.log(pos);
-    this.setState({currentLocation: pos, geoLocationError: false});
+    this.setState({ currentLocation: pos, geoLocationError: false });
   }
 
   handleLocationError(browserHasGeolocation) {
-    this.setState({geolocationError: true});
+    this.setState({ geolocationError: true });
   }
-
 
   onMapClicked(mapProps, map, clickEvent) {
     const latitude = clickEvent.latLng.lat();
@@ -53,9 +55,11 @@ export class MapContainer extends Component {
       this.setState({
         showingInfoWindow: false,
         activeMarker: null
-      })
+      });
     }
-    this.setState({activeMarker: {position: {lat: latitude, lng: longitude}}})
+    this.setState({
+      activeMarker: { position: { lat: latitude, lng: longitude } }
+    });
   }
 
   onMarkerClick(props, marker, e) {
@@ -65,7 +69,6 @@ export class MapContainer extends Component {
       showingInfoWindow: true
     });
   }
- 
 
   fetchPlaces(mapProps, map) {
     console.log('will be fetching places from our db???');
@@ -77,26 +80,29 @@ export class MapContainer extends Component {
 
   onInfoWindowOpen(props, e) {
     const form = (
-    <form>
-      <div>
-        <label htmlFor="name">Name:</label>
-        <input type="text" id="name"></input> 
-      </div>
-      <div>
-        <label htmlFor="address">Address:</label>
-        <input type='text' id='address'></input> 
-      </div>
-      <div>
-        <label htmlFor="typeOfPlace">Type of Place:</label>
-        <input type='text' id='typeOfPlace'></input> 
-      </div>
-      <button value='Save' onClick={e => this.saveData(e)}>Add listing</button>
-    </form>);
-    ReactDOM.render(React.Children.only(form), document.getElementById("form"));
+      <form>
+        <div>
+          <label htmlFor="name">Name:</label>
+          <input type="text" id="name" />
+        </div>
+        <div>
+          <label htmlFor="address">Address:</label>
+          <input type="text" id="address" />
+        </div>
+        <div>
+          <label htmlFor="typeOfPlace">Type of Place:</label>
+          <input type="text" id="typeOfPlace" />
+        </div>
+        <button value="Save" onClick={e => this.saveData(e)}>
+          Add listing
+        </button>
+      </form>
+    );
+    ReactDOM.render(React.Children.only(form), document.getElementById('form'));
   }
 
   saveData(e) {
-    this.setState({geolocationError: false});
+    this.setState({ geolocationError: false });
     e.preventDefault();
     let name = document.getElementById('name').value;
     let address = document.getElementById('address').value;
@@ -119,11 +125,9 @@ export class MapContainer extends Component {
         city: info.address_components[1].long_name,
         state,
         zipcode: info.address_components[0].long_name,
-        location: {type: 'Point',
-        coordinates: [lng, lat],
-        },
-        photos: ["444444444444444444444000"]
-      }
+        location: { type: 'Point', coordinates: [lng, lat] },
+        photos: ['444444444444444444444000']
+      };
       console.log(place);
       return this.props.dispatch(postPlace(place));
     });
@@ -133,14 +137,14 @@ export class MapContainer extends Component {
     e.preventDefault();
     let zip = document.getElementById('zip-geo').value;
     console.log(zip);
-    this.props.dispatch(fetchLatLng(zip)).then((latLng) => {
-      this.setState({ currentLocation: latLng})
+    this.props.dispatch(fetchLatLng(zip)).then(latLng => {
+      this.setState({ currentLocation: latLng });
     });
   }
 
   render() {
     if (this.props.specificPlace) {
-      return <Redirect to={`/places/${this.props.specificPlace._id}`} />
+      return <Redirect to={`/places/${this.props.specificPlace._id}`} />;
     }
 
     let marker;
@@ -149,53 +153,70 @@ export class MapContainer extends Component {
 
     if (this.state.activeMarker) {
       // make some markers appear
-      marker = <Marker onClick={(props, marker, e) => this.onMarkerClick(props, marker, e)}
-          name={'Current location'} position={this.state.activeMarker.position}/>
+      marker = (
+        <Marker
+          onClick={(props, marker, e) => this.onMarkerClick(props, marker, e)}
+          name={'Current location'}
+          position={this.state.activeMarker.position}
+        />
+      );
     }
 
     if (this.state.geolocationError) {
       geoLocationError = <p>'Error: The Geolocation service failed'</p>;
       // make some markers appear
-      geolocationForm = <form>
-        <label htmlFor="zip-geo">Enter a zip-code instead</label>
-        <input id="zip-geo" type="text" pattern="[0-9]{5}" title="Five digit zip code" />
-        <button onClick={(e) => this.sendZip(e)}>Submit</button>
-        </form>;
+      geolocationForm = (
+        <form>
+          <label htmlFor="zip-geo">Enter a zip-code instead</label>
+          <input
+            id="zip-geo"
+            type="text"
+            pattern="[0-9]{5}"
+            title="Five digit zip code"
+          />
+          <button onClick={e => this.sendZip(e)}>Submit</button>
+        </form>
+      );
     }
 
     const style = {
-        width: '500px',
-        height: '500px'
+      height: '500px',
+      width: '500px',
+      margin: '0 auto',
+      position: 'static'
     };
 
     return (
-      <div>
-      <div>
+      <section>
         {geoLocationError}
         {geolocationForm}
-      </div>
-      <Map google={this.props.google}
-      style={style}
-      initialCenter={{
-        lat: 45.6387281,
-        lng: -122.6614861
-      }}
-      center={this.state.currentLocation}
-      zoom={12}
-      onReady={this.fetchPlaces}
-      onClick={(mapProps, map, clickEvent) => this.onMapClicked(mapProps, map, clickEvent)}>
-        {marker}
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onOpen={e => {
-            this.onInfoWindowOpen(this.props, e);
+        <Map
+          google={this.props.google}
+          style={style}
+          containerStyle={style}
+          initialCenter={{
+            lat: 45.6387281,
+            lng: -122.6614861
           }}
+          center={this.state.currentLocation}
+          zoom={12}
+          onReady={this.fetchPlaces}
+          onClick={(mapProps, map, clickEvent) =>
+            this.onMapClicked(mapProps, map, clickEvent)
+          }
+        >
+          {marker}
+          <InfoWindow
+            marker={this.state.activeMarker}
+            visible={this.state.showingInfoWindow}
+            onOpen={e => {
+              this.onInfoWindowOpen(this.props, e);
+            }}
           >
-          <div id="form" />
-        </InfoWindow>
-      </Map>
-      </div>
+            <div id="form" />
+          </InfoWindow>
+        </Map>
+      </section>
     );
   }
 }
@@ -207,4 +228,4 @@ const mapStateToProps = state => ({
 
 export default GoogleApiWrapper({
   apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-})(connect(mapStateToProps)(MapContainer))
+})(connect(mapStateToProps)(MapContainer));

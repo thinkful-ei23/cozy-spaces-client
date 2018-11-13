@@ -1,10 +1,21 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { toggleEditRating, deleteRating } from '../actions/ratings';
+import { fetchPlaceByID } from '../actions/places';
+import { toggleEditRating, deleteRating, fetchRatingsByPlaceId } from '../actions/ratings';
 
 class Ratings extends React.Component {
   //let editRatingForm = <EditRatingForm place={this.props.specificPlace}/>
   // this.props.editing
+
+
+  deleteRating() {
+    const id = this.props.placeId;
+    return this.props
+      .dispatch(deleteRating(this.props.specificPlace._id))
+      .then(() => this.props.dispatch(fetchRatingsByPlaceId(id)))
+      .then(() => this.props.dispatch(fetchPlaceByID(id)));
+  }
+
 
   render() {
     let ratingError;
@@ -33,7 +44,7 @@ class Ratings extends React.Component {
     if (this.props.specificRating && !this.props.ratingError) {
       let specificRating = this.props.specificRating.rating;
       return (
-        <section className='textCenter your-ratings'>
+        <section className='section'>
           <h3>Your Ratings</h3>
           {ratingError}
           <ul>

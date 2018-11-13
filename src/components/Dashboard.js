@@ -157,6 +157,7 @@ class Dashboard extends Component {
             >
             <img
                 alt={`${place.photos[0].caption}`}
+                className='main-orange-bottom-border'
                 src={`${place.photos[0].url}`}
                 />
               {/* This needs to be commented out temporarily because new listings don't have photos */}

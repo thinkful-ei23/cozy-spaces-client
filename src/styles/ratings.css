@@ -1,23 +1,7 @@
 .average-ratings {
-  background-color: var(--maroon);
-  border: 1px solid var(--main-orange);
   box-shadow: 0px -5px 5px rgba(0, 0, 0, 0.6);
-  padding: 10px;
 }
-
-.your-ratings, .edit-rating-form {
-  background-color: var(--maroon);
-  border: 1px solid var(--main-orange);
-  padding: 10px;
-  margin: 10px 0;
-}
-
-
 
 @media screen and (min-width: 990px) { 
-  .yourRatings-editRatings-group {
-    display: flex;
-    flex-direction: column;
-  }
   
 }
