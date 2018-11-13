@@ -32,7 +32,7 @@ class EditRatingForm extends React.Component {
     let error;
     let success;
       return (
-        <Fragment>
+        <section className='textCenter'>
           <h3>Change your mind? Edit your rating here</h3>
           <form  className="ratings-form"
             onSubmit={this.props.handleSubmit(values =>
@@ -101,13 +101,13 @@ class EditRatingForm extends React.Component {
                 label="Comments"
               />
             <button
-              className="btn-sub"
+              className="button"
               type="submit"
               disabled={this.props.pristine || this.props.submitting}>
               Rate it
             </button>
           </form>
-        </Fragment>
+        </section>
       );
 }
 }

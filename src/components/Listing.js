@@ -49,7 +49,7 @@ class Listing extends Component {
               rating={this.props.specificRating}
               place={this.props.specificPlace}
             />
-            <button className='button' onClick={() => this.props.dispatch(toggleEditRating())}>
+            <button className='button textCenter' onClick={() => this.props.dispatch(toggleEditRating())}>
               Cancel
             </button>
           </section>
