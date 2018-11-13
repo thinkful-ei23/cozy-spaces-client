@@ -8,7 +8,8 @@ import ReportListing from './ReportListing';
 import { fetchPlaceByID } from '../actions/places';
 import { fetchRatingsByPlaceId } from '../actions/ratings';
 import { toggleEditRating, deleteRating } from '../actions/ratings';
-import { toggleAddPhoto } from '../actions/photos';
+import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
+
 
 class Listing extends Component {
   componentDidMount() {
@@ -21,6 +22,8 @@ class Listing extends Component {
         }
     });
   }
+  
+  
 
   deleteRating() {
     const id = this.props.match.params.id;
@@ -29,6 +32,57 @@ class Listing extends Component {
       .then(() => this.props.dispatch(fetchRatingsByPlaceId(id)))
       .then(() => this.props.dispatch(fetchPlaceByID(id)));
   }
+
+  showUploadWidget() { 
+    const id = this.props.specificPlace._id;
+    window.cloudinary.openUploadWidget({    
+      cloudName: "cozyspaces",    
+      uploadPreset: "ax2mu8wy", 
+      tags: [id],   
+      sources: [        
+        "local",        
+        "url",        
+        "camera",        
+        // "image_search",        
+        "facebook",        
+        "dropbox",       
+        "instagram"    
+      ],    
+      // googleApiKey: "<image_search_google_api_key>",    
+      showAdvancedOptions: true,    
+      cropping: false,    
+      multiple: true,    
+      defaultSource: "local",    
+      styles: {        
+        palette: {           
+          window: "#FFFFFF",            
+          windowBorder: "#7FB2EF",            
+          tabIcon: "#0078FF",            
+          menuIcons: "#5A616A",            
+          textDark: "#000000",            
+          textLight: "#FFFFFF",            
+          link: "#0078FF",            
+          action: "#FD600B",            
+          inactiveTabIcon: "#0E2F5A",            
+          error: "#F44235",            
+          inProgress: "#0078FF",            
+          complete: "#20B832",            
+          sourceBg: "#E4EBF1"        
+        },        
+        fonts: {            
+          default: {                
+            active: true            
+          }        
+        }    
+      }}, 
+      (err, info) => {   
+        if (!err) {         
+          console.log("Upload Widget event - ", info);   
+        }  
+      }); 
+    }
+
+  
 
   render() {
     let ratings;
@@ -88,9 +142,9 @@ class Listing extends Component {
               <li>Hot food/drink: {specificPlace.averageHotFoodDrink}</li>
             </ul>
           </div>
-          <Comments />
-          <button onClick={() => this.props.dispatch(toggleAddPhoto())}>
-              Add a photo
+          <Comments /> 
+          <button onClick={() => this.showUploadWidget()}>
+              Upload photos
             </button>
           {ratings}
           {ratingsFormPost}
