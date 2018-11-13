@@ -8,6 +8,8 @@ import ReportListing from './ReportListing';
 import { fetchPlaceByID } from '../actions/places';
 import { fetchRatingsByPlaceId } from '../actions/ratings';
 import { toggleEditRating, deleteRating } from '../actions/ratings';
+import '../styles/listing.css';
+
 
 class Listing extends Component {
   componentDidMount() {
@@ -42,21 +44,21 @@ class Listing extends Component {
         ratingsFormPost = <RatingsForm place={this.props.specificPlace} />;
       } else {
         ratingsFormEdit = this.props.editing ? (
-          <div>
+          <section>
             <EditRatingForm
               rating={this.props.specificRating}
               place={this.props.specificPlace}
             />
-            <button onClick={() => this.props.dispatch(toggleEditRating())}>
+            <button className='button' onClick={() => this.props.dispatch(toggleEditRating())}>
               Cancel
             </button>
-          </div>
+          </section>
         ) : (
-          <div>
-            <button onClick={() => this.props.dispatch(toggleEditRating())}>
+          <div className='flex space-evenly'>
+            <button className='button leftRightMargin8px' onClick={() => this.props.dispatch(toggleEditRating())}>
               Edit rating
             </button>
-            <button onClick={() => this.deleteRating()}>Delete</button>
+            <button className='button leftRightMargin8px' onClick={() => this.deleteRating()}>Delete</button>
           </div>
         );
       }
@@ -65,17 +67,20 @@ class Listing extends Component {
     let specificPlace = this.props.specificPlace;
     if (specificPlace) {
       return (
-        <Fragment>
-          <div className="listing">
+        <main className='listing-page'>
+          <section className="listing-info">
             <img alt={`${specificPlace.photos[0].caption}`} src={`${specificPlace.photos[0].url}`} />
             <h2 className='textCenter'>{specificPlace.name}</h2>
-            <h3>Type of place: {specificPlace.type}</h3>
-            <h3>Overall coziness: {specificPlace.averageCozyness}</h3>
-            <h3>
-              Address: {specificPlace.address}, {specificPlace.city},{' '}
+            <p className='textCenter'>
+              {specificPlace.address}, {specificPlace.city},{' '}
               {specificPlace.state}
-            </h3>
-            <ul>
+            </p>
+            <div className='flex space-around'>
+              <p>Type: {specificPlace.type}</p>
+              <p>Cozy Rating: {specificPlace.averageCozyness}</p>
+            </div>
+            <ul className='average-ratings textCenter'>
+            <h3>Average Ratings</h3>
               <li>Warm lighting: {specificPlace.averageWarmLighting}</li>
               <li>Relaxed Music: {specificPlace.averageRelaxedMusic}</li>
               <li>Calm Environment: {specificPlace.averageCalmEnvironment}</li>
@@ -86,13 +91,13 @@ class Listing extends Component {
               <li>Comfy seating: {specificPlace.averageComfySeating}</li>
               <li>Hot food/drink: {specificPlace.averageHotFoodDrink}</li>
             </ul>
-          </div>
+          </section>
           <Comments />
           {ratings}
           {ratingsFormPost}
           {ratingsFormEdit}
           {reportButton}
-        </Fragment>
+        </main>
       );
     } else {
       return <p>Loading</p>;

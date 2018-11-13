@@ -13,10 +13,6 @@
 * {
   box-sizing: border-box;
 }
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-} */
 a {
   color: white;
   text-decoration: none;
@@ -52,7 +48,7 @@ h1 {
   font-size: 48px;
   font-weight: normal;
   margin-block-start: 0;
-  margin-top: 32px;
+  margin-top: 48px;
   text-align: center;
 }
 h2 {
@@ -66,10 +62,9 @@ img {
   width: 100%;
 }
 input {
-  padding: 6px 20px;
+  padding: 6px 2px;
 }
 label {
-  /* color:rgb(236, 161, 63); */
   display: inline-block;
 }
 p {
@@ -81,10 +76,21 @@ ul {
   padding: 0;
 }
 
-
 /* STYLING LIBRARY */
 .block {
   display: block;
+}
+.flex {
+  display: flex;
+}
+.main-orange-border {
+  border: 1px solid var(--main-orange);
+}
+.space-around {
+  justify-content: space-around;
+}
+.space-evenly {
+  justify-content: space-evenly;
 }
 .inline {
   display: inline;
@@ -110,56 +116,29 @@ ul {
 .topBottomMargin32px {
   margin: 32px auto;
 }
+.leftRightMargin8px {
+  margin-left: 8px;
+  margin-right: 8px;
+}
 .whiteFont {
   color: var(--romance);
 }
 
-
 /* SPECIFIC STYLING FOR ELEMENTS */
 .button {
   all: unset;
-  display: inline-block;
-  padding: 8px 20px;
   background: var(--main-orange);
   color: var(--romance);
-  box-shadow: 0 12px 12px -6px rgba(black, .5);
-  /* transform: scale(1); */
-  /* transition: transform ease-in-out 250ms, box-shadow ease-in-out 250ms; */
+  display: inline-block;
+  padding: 8px 20px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 .button:hover {
   background: var(--romance);
   cursor: pointer;
   color: var(--main-orange)
-  /* transform: scale(1.125); */
-  /* box-shadow: 0 12px 18px -10px rgba(black, .5); */
 }
-.place-card-content {
-  padding: 16px 8px;
-}
-.place-card-content-r1 {
-  display: flex;
-  justify-content: space-around;
-}
-.social-icons {
-  color: var(--main-orange);
-  font-size: 24px;
-  margin: 0 8px;
-  transform: scale(1);
-  transition: transform ease-in-out 250ms, box-shadow ease-in-out 250ms;
-}
-.social-icons:hover {
-  color: var(--romance);
-  transform: scale(1.25);
-}
-.fa-bars {
-  color: var(--romance);
-  font-size: 22px;
-}
-.header-icons {
-  display: flex;
-  justify-content: space-between;
-}
-
 
 @media screen and (min-width: 990px) { 
   a {
@@ -168,20 +147,11 @@ ul {
   label {
     font-size: 18px;
   }
-  p {
-    font-size: 18px;
-  }
-
-  header .profile-icon {
-    font-size: 32px;
-  }
-
-  main, .dashboard {
+  main {
     margin: 0 auto;
     width: 960px;
   }
-  .social-icons {
-    font-size: 32px;
+  p {
+    font-size: 18px;
   }
-  
 }

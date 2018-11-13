@@ -33,7 +33,7 @@ class EditRatingForm extends React.Component {
     let success;
       return (
         <Fragment>
-          <h4>Change your mind? Edit your rating here</h4>
+          <h3>Change your mind? Edit your rating here</h3>
           <form  className="ratings-form"
             onSubmit={this.props.handleSubmit(values =>
                 this.onSubmit(values)

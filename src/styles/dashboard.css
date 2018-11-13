@@ -1,4 +1,12 @@
-/* SPECIFIC STYLING FOR ELEMENTS */
+.card {
+  background-color: var(--maroon);
+  border: solid 1px var(--main-orange);
+  box-shadow: var(--shadow);
+  color: white;
+  list-style: none;
+  margin: 10px auto;
+  text-align: center;
+}
 .dashboard-places-list {
   display: flex;
   flex-wrap: wrap;
@@ -8,7 +16,7 @@
   width: 800px;
 }
 .geolocation {
-  margin: 8px auto;
+  /* margin: 8px auto; */
   width: auto;
 }
 .geolocation-form {
@@ -25,26 +33,10 @@
 .geolocation-form-input input {
   width: 200px;
 }
-
-/* li {
-  background-color: var(--maroon);
-  border: solid 1px var(--main-orange);
-  box-shadow: var(--shadow);
-  color: white;
-  list-style: none;
-  margin: 10px auto;
-  text-align: center;
-} */
-.card {
-  background-color: var(--maroon);
-  border: solid 1px var(--main-orange);
-  box-shadow: var(--shadow);
-  color: white;
-  list-style: none;
-  margin: 10px auto;
-  text-align: center;
+.place-card-content {
+  padding: 16px 8px;
 }
-
-ul {
-  padding: 0;
+.place-card-content-r1 {
+  display: flex;
+  justify-content: space-around;
 }

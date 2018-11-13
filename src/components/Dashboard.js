@@ -189,7 +189,7 @@ class Dashboard extends Component {
       }
 
       return (
-        <div className="dashboard">
+        <main className="dashboard">
           <div id="geolocation" className='geolocation'>
             {geoLocationError}
             <form className='geolocation-form' onSubmit={(e) => this.submitSearchForm(e)}>
@@ -214,7 +214,7 @@ class Dashboard extends Component {
           <ul className='dashboard-places-list'>
             {places}
           </ul>
-        </div>
+        </main>
       );
     } else {
       return <p>Incoming coziness</p>;

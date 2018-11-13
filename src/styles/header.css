@@ -2,8 +2,8 @@ header {
   background-color: var(--maroon);
   font-size: 16px;
   padding: 16px;
+  margin-bottom: 16px;
 }
-
 header .header-icons .bars-icon path {
   color: var(--main-orange);
   cursor: pointer;
@@ -11,20 +11,14 @@ header .header-icons .bars-icon path {
 header .bars-icon:hover path {
   color: var(--romance);
 }
-
 header a {
   color: var(--romance);
   font-size: 18px;
   margin: 8px 0;
 }
-
 header a:hover  {
   color: var(--main-orange);
 }
-header button {
-  margin: 0 auto;
-}
-
 header .profile-icon {
   color: var(--main-orange);
   cursor: pointer;
@@ -33,21 +27,27 @@ header .profile-icon {
 header .profile-icon:hover {
   color: var(--romance);
 }
+.fa-bars {
+  color: var(--romance);
+  font-size: 22px;
+}
+.header-icons {
+  display: flex;
+  justify-content: space-between;
+}
 .main-nav-ul {
   position: absolute;
   left: 25px;
   text-align: left;
 }
-
 .profile-nav-ul {
   position: absolute;
   right: 25px;
   text-align: right;
 }
 
-
 @media screen and (min-width: 990px) { 
-
-
-
+  header .profile-icon {
+    font-size: 32px;
+  }
 }
