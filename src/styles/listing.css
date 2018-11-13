@@ -1,0 +1,14 @@
+img {
+  border: solid 1px var(--main-orange);
+}
+.average-ratings {
+  border: 1px solid var(--main-orange);
+  padding: 8px;
+}
+
+
+
+@media screen and (min-width: 990px) { 
+
+  
+}

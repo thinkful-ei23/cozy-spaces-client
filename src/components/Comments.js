@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import '../styles/comments.css';
 
 class Comments extends React.Component {
 
@@ -8,12 +9,15 @@ class Comments extends React.Component {
     let registerLink;
 
     if (!this.props.loggedIn) {
-      registerLink =  <p><Link to="/register">Have a comment to share? Join the cozy force!</Link></p>;
+      registerLink =  <div className='textCenter'>
+                        <p>Have a comment to share?</p>
+                        <Link to="/register"> Join the cozy force!</Link>
+                      </div>;
     }
 
     return (
-      <div className="comments">
-        <h4>Comments from Cozy Spaces visitors</h4>
+      <section className="comments main-orange-border textCenter">
+        <h3>Comments from visitors</h3>
           <ul>
               {(this.props.ratings).reduce((acc, rating) => {
                 if (rating.rating.comment !== null) {
@@ -25,7 +29,7 @@ class Comments extends React.Component {
               )}
           </ul>
           {registerLink}
-      </div>
+      </section>
     )
   }
 }

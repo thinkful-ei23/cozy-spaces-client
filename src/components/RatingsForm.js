@@ -107,7 +107,7 @@ class RatingsForm extends React.Component {
                 label="Comments"
               />
             <button
-              className="btn-sub"
+              className='button'
               type="submit"
               disabled={this.props.pristine || this.props.submitting}>
               Rate it

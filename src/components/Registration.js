@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 
 import RegistrationForm from './RegistrationForm';
+import '../styles/registrationForm.css';
 
 export class RegistrationPage extends React.Component {
 
@@ -17,7 +18,7 @@ export class RegistrationPage extends React.Component {
 
 
     return (
-        <main role="main">
+        <main className='registration-form' role="main">
           <h2>Sign up</h2>
           <RegistrationForm />
           <p>Already have an account? Go to the <Link to="/login">login page</Link></p>
