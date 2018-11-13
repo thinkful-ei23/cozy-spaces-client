@@ -25,7 +25,6 @@ import {
  export default function reducer(state = initialState, action) {
    switch (action.type) {
      case FETCH_RATINGS_SUCCESS:
-      console.log(action.ratings);
        return {...state, ratings: action.ratings, loading: false, error: null};
      case FETCH_RATINGS_ERROR:
        return {...state, loading: false, error: action.error};
