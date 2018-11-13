@@ -68,7 +68,7 @@ class Listing extends Component {
         <main className='listing-page'>
           <section className="listing-info">
             <img alt={`${specificPlace.photos[0].caption}`} src={`${specificPlace.photos[0].url}`} />
-            <div class='listing-specific-info'>
+            <div className='listing-specific-info'>
               <h2 className='textCenter'>{specificPlace.name}</h2>
               <p className='textCenter'>
                 {specificPlace.address}, {specificPlace.city},{' '}

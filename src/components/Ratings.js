@@ -38,7 +38,7 @@ class Ratings extends React.Component {
         </section>
       );
     } else if (this.props.ratingError) {
-      return <p>{ratingError}</p>;
+      return ''
     } else {
       return <p>Loading</p>;
     }
