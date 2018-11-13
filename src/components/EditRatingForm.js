@@ -5,6 +5,7 @@ import { required } from '../validators';
 import { editRating } from '../actions/ratings';
 import { fetchRatingsByPlaceId } from '../actions/ratings';
 import { fetchPlaceByID } from '../actions/places';
+import { toggleEditRating } from '../actions/ratings';
 
 class EditRatingForm extends React.Component {
   onSubmit(values) {
@@ -32,7 +33,7 @@ class EditRatingForm extends React.Component {
     let error;
     let success;
       return (
-        <section className='textCenter'>
+        <React.Fragment>
           <h3>Change your mind? Edit your rating here</h3>
           <form  className="ratings-form"
             onSubmit={this.props.handleSubmit(values =>
@@ -100,14 +101,19 @@ class EditRatingForm extends React.Component {
                 name="comment"
                 label="Comments"
               />
-            <button
-              className="button"
-              type="submit"
-              disabled={this.props.pristine || this.props.submitting}>
-              Rate it
-            </button>
+              <div className='flex space-evenly'>
+                <button
+                  className="button"
+                  type="submit"
+                  disabled={this.props.pristine || this.props.submitting}>
+                  Rate it
+                </button>
+                <button className='button textCenter' onClick={() => this.props.dispatch(toggleEditRating())}>
+                  Cancel
+                </button>
+              </div>
           </form>
-        </section>
+        </React.Fragment>
       );
 }
 }

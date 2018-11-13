@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { fetchPlaceByID, reportPlace, unReportPlace } from '../actions/places';
 
@@ -49,7 +50,7 @@ class ReportListings extends React.Component {
           reportPlaceButton = <button className='button' onClick={() => this.reportPlace()}>Report</button>
           return (
             <div className='textCenter'>
-              <p>Does this place not belong here?</p>
+              <p>Does this place not meet the <Link className='romanceColor' to="/learn-more">cozy standards?</Link></p>
               {reportPlaceButton}
             </div>
           ) 
