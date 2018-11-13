@@ -81,19 +81,19 @@ export class MapContainer extends Component {
   onInfoWindowOpen(props, e) {
     const form = (
       <form>
-        <div>
-          <label htmlFor="name">Name:</label>
+        <div className='topBottomMargin8px'>
+          <label className='blackText' htmlFor="name">Name:</label>
           <input type="text" id="name" />
         </div>
-        <div>
-          <label htmlFor="address">Address:</label>
+        <div className='topBottomMargin8px'>
+          <label className='blackText' htmlFor="address">Address:</label>
           <input type="text" id="address" />
         </div>
-        <div>
-          <label htmlFor="typeOfPlace">Type of Place:</label>
+        <div className='topBottomMargin8px'>
+          <label className='blackText' htmlFor="typeOfPlace">Type of Place:</label>
           <input type="text" id="typeOfPlace" />
         </div>
-        <button value="Save" onClick={e => this.saveData(e)}>
+        <button className='button' onClick={e => this.saveData(e)} value="Save" >
           Add listing
         </button>
       </form>

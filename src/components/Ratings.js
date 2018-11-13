@@ -44,7 +44,7 @@ class Ratings extends React.Component {
     if (this.props.specificRating && !this.props.ratingError) {
       let specificRating = this.props.specificRating.rating;
       return (
-        <section className='section'>
+        <section className='section topBottomMargin10px your-ratings'>
           <h3>Your Ratings</h3>
           {ratingError}
           <ul>

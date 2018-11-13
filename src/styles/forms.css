@@ -12,10 +12,7 @@
 }
 
 @media screen and (min-width: 500px) { 
-  .registration-form, .login-form, .ratings-form {
-    /* align-items: center; */
-    /* display: flex;
-    flex-direction: column; */
+  .registration-form, .login-form {
     margin: 0 auto;
     width: 400px;
   }
