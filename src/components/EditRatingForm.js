@@ -1,4 +1,4 @@
-import React, { Fragment }  from 'react';
+import React from 'react';
 import {Field, reduxForm, /*focus*/} from 'redux-form'; 
 import Input from './Input';
 import { required } from '../validators';
@@ -8,7 +8,6 @@ import { fetchPlaceByID } from '../actions/places';
 
 class EditRatingForm extends React.Component {
   onSubmit(values) {
-    console.log('Edited values: ', values);
     const rating = {
       placeId : this.props.place._id,
       rating : {
@@ -21,8 +20,6 @@ class EditRatingForm extends React.Component {
         comment: values.comment
       }
     }
-    console.log('Edited rating: ', rating);
-    console.log('this.props.rating._id', this.props.rating._id);
     return this.props.dispatch(editRating(rating, this.props.rating._id))
     .then(() => this.props.dispatch(fetchRatingsByPlaceId(this.props.place._id)))
     .then(() => this.props.dispatch(fetchPlaceByID(this.props.place._id)))
