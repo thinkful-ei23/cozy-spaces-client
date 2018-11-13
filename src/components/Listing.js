@@ -9,6 +9,7 @@ import { fetchPlaceByID } from '../actions/places';
 import { fetchRatingsByPlaceId } from '../actions/ratings';
 import { toggleEditRating, deleteRating } from '../actions/ratings';
 import '../styles/listing.css';
+import '../styles/ratings.css';
 
 
 class Listing extends Component {
@@ -32,26 +33,23 @@ class Listing extends Component {
   }
 
   render() {
-    let ratings;
+    let yourRatings;
     let ratingsFormPost;
     let ratingsFormEdit;
     let reportButton;
 
     if (this.props.loggedIn) {
-      ratings = <Ratings />;
+      yourRatings = <Ratings />;
       reportButton = <ReportListing />;
       if (!this.props.specificRating) {
         ratingsFormPost = <RatingsForm place={this.props.specificPlace} />;
       } else {
         ratingsFormEdit = this.props.editing ? (
-          <section>
+          <section className='edit-rating-form textCenter'>
             <EditRatingForm
               rating={this.props.specificRating}
               place={this.props.specificPlace}
             />
-            <button className='button textCenter' onClick={() => this.props.dispatch(toggleEditRating())}>
-              Cancel
-            </button>
           </section>
         ) : (
           <div className='flex space-evenly'>
@@ -70,14 +68,16 @@ class Listing extends Component {
         <main className='listing-page'>
           <section className="listing-info">
             <img alt={`${specificPlace.photos[0].caption}`} src={`${specificPlace.photos[0].url}`} />
-            <h2 className='textCenter'>{specificPlace.name}</h2>
-            <p className='textCenter'>
-              {specificPlace.address}, {specificPlace.city},{' '}
-              {specificPlace.state}
-            </p>
-            <div className='flex space-around'>
-              <p>Type: {specificPlace.type}</p>
-              <p>Cozy Rating: {specificPlace.averageCozyness}</p>
+            <div class='listing-specific-info'>
+              <h2 className='textCenter'>{specificPlace.name}</h2>
+              <p className='textCenter'>
+                {specificPlace.address}, {specificPlace.city},{' '}
+                {specificPlace.state}
+              </p>
+              <div className='flex space-around'>
+                <p>Type: {specificPlace.type}</p>
+                <p>Cozy Rating: {specificPlace.averageCozyness}</p>
+              </div>
             </div>
             <ul className='average-ratings textCenter'>
             <h3>Average Ratings</h3>
@@ -85,7 +85,7 @@ class Listing extends Component {
               <li>Relaxed Music: {specificPlace.averageRelaxedMusic}</li>
               <li>Calm Environment: {specificPlace.averageCalmEnvironment}</li>
               <li>
-                Soft fabrics in space (walls or floor):{' '}
+                Soft fabrics (walls or floor):{' '}
                 {specificPlace.averageSoftFabrics}{' '}
               </li>
               <li>Comfy seating: {specificPlace.averageComfySeating}</li>
@@ -93,9 +93,11 @@ class Listing extends Component {
             </ul>
           </section>
           <Comments />
-          {ratings}
+          <div className='yourRatings-editRatings-group'>
+            {yourRatings}
+            {ratingsFormEdit}
+          </div>
           {ratingsFormPost}
-          {ratingsFormEdit}
           {reportButton}
         </main>
       );
