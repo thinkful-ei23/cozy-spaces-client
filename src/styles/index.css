@@ -13,7 +13,17 @@
 * {
   box-sizing: border-box;
 }
-
+/* code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+} */
+a {
+  color: white;
+  text-decoration: none;
+}
+a:hover {
+  color: var(--main-orange);
+}
 body {
   background-color: var(--seal-brown);
   color: var(--romance);
@@ -22,36 +32,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-} */
-
-a {
-  color: white;
-  text-decoration: none;
-}
-a:hover {
-  color: var(--main-orange);
-}
 button {
   all: unset;
-  /* display: inline-block; */
-  /* padding: 8px 20px; */
-  /* background: var(--main-orange); */
   color: var(--romance);
   font-size: 18px;
-  /* box-shadow: 0 12px 12px -6px rgba(black, .5); */
-  /* transform: scale(1); */
-  /* transition: transform ease-in-out 250ms, box-shadow ease-in-out 250ms; */
 }
 button:hover {
-  /* background: var(--romance); */
   cursor: pointer;
   color: var(--main-orange)
-  /* transform: scale(1.125); */
-  /* box-shadow: 0 12px 18px -10px rgba(black, .5); */
 }
 footer {
   text-align: center;
@@ -70,12 +58,6 @@ h1 {
 h2 {
   font-size: 26px;
 }
-
-
-p {
-  font-size: 16px;
-}
-
 img {
   border-bottom: 1px solid var(--main-orange);
   box-shadow: var(--shadow);
@@ -86,13 +68,18 @@ img {
 input {
   padding: 6px 20px;
 }
-
 label {
   /* color:rgb(236, 161, 63); */
   display: inline-block;
 }
-
-
+p {
+  font-size: 16px;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
 
 /* STYLING LIBRARY */

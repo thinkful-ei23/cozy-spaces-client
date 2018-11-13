@@ -150,7 +150,7 @@ class Dashboard extends Component {
       }
       if (this.props.places.length >= 1) {
         places = this.props.places.map(place => (
-          <li className='dashboard-places' key={place._id}>
+          <li className='dashboard-places card' key={place._id}>
             <Link
               onClick={() => this.setPlace(place._id)}
               to={`/places/${place._id}`}
