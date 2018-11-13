@@ -17,8 +17,6 @@ export class Profile extends Component {
   }
 
     render(){
-      console.log(this.props.username);
-      console.log(this.props.userId);
         return (
           <div>
             <h2>User Name: {this.props.username}</h2>
