@@ -51,14 +51,7 @@ class Listing extends Component {
               place={this.props.specificPlace}
             />
           </section>
-        ) : (
-          <div className='flex space-evenly'>
-            <button className='button leftRightMargin8px' onClick={() => this.props.dispatch(toggleEditRating())}>
-              Edit rating
-            </button>
-            <button className='button leftRightMargin8px' onClick={() => this.deleteRating()}>Delete</button>
-          </div>
-        );
+        ) : null
       }
     }
 

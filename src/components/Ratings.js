@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
+import { toggleEditRating, deleteRating } from '../actions/ratings';
 
 class Ratings extends React.Component {
   //let editRatingForm = <EditRatingForm place={this.props.specificPlace}/>
@@ -15,6 +16,18 @@ class Ratings extends React.Component {
       } else {
         ratingError = this.props.ratingError.message;
       }
+    }
+    let buttons;
+
+    if (!this.props.editing) {
+      buttons =  (
+        <div className='flex space-evenly'>
+          <button className='button leftRightMargin8px' onClick={() => this.props.dispatch(toggleEditRating())}>
+            Edit rating
+          </button>
+          <button className='button leftRightMargin8px' onClick={() => this.deleteRating()}>Delete</button>
+        </div>
+      );
     }
 
     if (this.props.specificRating && !this.props.ratingError) {
@@ -35,6 +48,7 @@ class Ratings extends React.Component {
             <li>Hot food/drink: {specificRating.hotFoodDrink}</li>
             <li>Comments: {specificRating.comment}</li>
           </ul>
+          {buttons}
         </section>
       );
     } else if (this.props.ratingError) {
