@@ -1,44 +1,39 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#Cozy Spaces
+##Logo
+An app focused on improving quality of life through curating truly cozy spaces especially for those who experience cold climates.
 
-## Available Scripts
+###V1 Feature List
+*Users are taken to an introductory landing page the first time they visit the app.  If they have previously visited Cozy Spaces, they will be taken directly to listings of cozy spaces.
+*Users can access a learn more section to learn about categories of coziness.
+*Users can see cozy places based on their current location, or based on a zip code they enter.
+*Users can click on a cozy place to see details of that cozy place, including average ratings and comments from the Cozy Spaces community.
+*If users would like to rate a place, they can create an account/log in and then they will be able to rate a place, as well as edit or delete their rating.
+*Logged in users can add a cozy place by clicking a location on a map and adding information about that location.
+*Logged in users can access their username and email in their profile, where they can also delete their account.
 
-In the project directory, you can run:
+###V2 Feature List
+*Logged in users can upload photos of cozy places.
+*Users can see all of the closest cozy places on a map, or on a list.  List view will include distance from their location.
+*Users can see all the cozy places they have rated in their profile, as well as save their favorite cozy spaces in their profile.  They can add a statement to their profile defining what coziness means to them.
+*Users can follow other users (let's call them cozy curators) to see/keep up with the cozy curator's favorite cozy spaces.
+*User profile includes a count of number of people following that user.
+*User can "like" the comment of any other user.
+*User can access a terms of service(TOS).
+*User can filter places based on tags.
+*User, if they choose to enter a zip code to interact with places, can interact with the app using that location as if it were their current location, even it is not.
+*Emails validated as existing emails.
+*Accounts archived instead of deleted.
 
-### `npm start`
+#Link to Deployed Version:
+https://dashboard.heroku.com/apps/cozy-spaces-client
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#Tech Stack:
+React for the frontend
+Redux for state management
+Node/Express for the backend
+MongoDB/Mongoose for the database
+JWTs for authentication
+GoogleMap API
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+This is the frontend for this app.  The backend can be found here: https://github.com/thinkful-ei23/CozySpacesServer
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
