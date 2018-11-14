@@ -12,21 +12,20 @@ export class LearnAboutCoziness extends Component {
   render(){
     let registerInfo;
     if (!this.props.loggedIn) {
-        registerInfo = <div><p>If you agree to rate public spaces to the best of your ability, based on the rating guide listed above, register now to begin rating. </p><Link to="/register">Register to join the cozy force</Link></div>
+        registerInfo = <div><p>If you agree to rate public spaces to the best of your ability, based on the rating guide listed above, register now to begin rating. </p><Link to="/register">Register to join the cozy community</Link></div>
     }
     return (
         <main role="main">
-          <p>How does Cozy Spaces and its users judge what places are cozy?</p>
-          <p>*Subject to lots of change*</p>
-          <p>If you've heard of Hygge, you might know where this rating guide is going. Hygge is the Danish word for comfort and togetherness. In the cold fall and winter months, it's an especially attractive way of life. This site is an attempt to organize information about the coziest/most hygge public places near you.</p>
+          <p>How do we judge what places are cozy?</p>
+          <p>If you've heard of Hygge, you might know where this rating guide is headed. Hygge is the Danish word for comfort and togetherness. In the cold fall and winter months, it's an especially attractive way of life. We have taken principles from Hygge to create our categories of coziness.</p>
           <p> Our categories: </p>
           <ul>    
-            <li>Warm Lighting: No flourescent or harsh lights. Prefer dim or warm lights. Lighting must be strong enough to read a book.</li>
-            <li>Relaxed Music: If there is music, it should be lower tempo. No frenetic music.</li>
-            <li>Calm Environment: People in the space should behave calmly, which means no loud voices, not too many people, and staff who aren't swamped. Often the most calm, but lively, environments must hit that sweet spot between empty and busy.</li>
-            <li>Soft Fabrics: Fabrics in an environment can dampen sound and make the space appear more welcoming.</li>
-            <li>Comfy seating: To relax properly in a place, you need couches or chairs that have some kind of cushions. Some businesses don't want you getting too comfortable so that they can have you move along. Hygge places aren't like this. </li>
-            <li>Hot food or drink: Having a nice cup of tea or coffee/hot soup is really nice in the cold months. Higher quality food or drink is important, but </li>  
+            <li>Warm Lighting: Cozy spaces are lit in ways that do not stress the eyes. This means that the lighting cannot be too bright (florescent or harsh lights) or too dim (little to no lighting). Good lighting is somewhere in the middle and tends to favor a warmer hue.</li>
+            <li>Relaxed Music: If music has a high tempo and gets your heart pumping, it's likely that you're not feeling too cozy. Cozy spaces have low tempo music that makes you slow down the pace of life.</li>
+            <li>Calm Environment: Babies, children, and loud people are not conducive to a calm environment. A bustling coffee shop full of office workers going to and fro is also not a calm environment. A cozy space should feel somewhat separate from the concerns of daily life. It should be lively but not busy.</li>
+            <li>Soft Fabrics: Carpets and wall hangings dampen sound and also make the space appear more warm and welcoming. Concrete floors and exposed beams may be cool, but they give a space a spartan and unwelcoming vibe.</li>
+            <li>Comfy seating: To relax properly in a place, couches or comfy chairs are necessary. The cozy space should be accepting of your desire to linger. </li>
+            <li>Hot food or drink: A bad cup of coffee or a stale pastry in an otherwise charming place can be a dealbreaker. Sensory pleasures make us slow down and appreciate the little things, but if the food or drink is subpar, we don't get that moment to reflect.</li>  
             </ul>
           {registerInfo}
         </main>
