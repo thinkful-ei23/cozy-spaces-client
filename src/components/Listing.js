@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Ratings from './Ratings';
 import Comments from './Comments';
@@ -7,7 +7,6 @@ import EditRatingForm from './EditRatingForm';
 import ReportListing from './ReportListing';
 import { fetchPlaceByID } from '../actions/places';
 import { fetchRatingsByPlaceId } from '../actions/ratings';
-import { toggleEditRating, deleteRating } from '../actions/ratings';
 import '../styles/listing.css';
 import '../styles/ratings.css';
 
