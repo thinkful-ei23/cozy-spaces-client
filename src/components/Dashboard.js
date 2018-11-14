@@ -45,7 +45,6 @@ class Dashboard extends Component {
     } else {
       errors['zip'] = 'Please enter a valid zip code';
       this.setState({errors: errors})
-      console.log(false);
     }
   }
 
@@ -116,7 +115,7 @@ class Dashboard extends Component {
       lat: position.coords.latitude,
       lng: position.coords.longitude
     };
-    console.log(pos);
+
     this.setState({ currentLocation: pos, geoLocationError: false });
     this.props.dispatch(fetchPlaces(pos));
     // send this filter to get places
