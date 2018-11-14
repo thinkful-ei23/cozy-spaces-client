@@ -193,7 +193,7 @@ class Dashboard extends Component {
             {geoLocationError}
             <form className='geolocation-form' onSubmit={(e) => this.submitSearchForm(e)}>
               <label className='geolocation-form-label' htmlFor="zip-geo">
-                Enter a zipcode to find locations:{' '}
+                Enter a zipcode to find cozy spaces near you:{' '}
               </label>
               <div className='geolocation-form-input'>
                 <input
