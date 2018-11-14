@@ -9,8 +9,8 @@ import { fetchPlaceByID } from '../actions/places';
 class RatingsForm extends React.Component {
   onSubmit(values) {
     const rating = {
-      placeId: this.props.place._id,
-      rating: {
+      placeId : this.props.place.id,
+      rating : {
         warmLighting: parseInt(values.warmLighting, 10),
         relaxedMusic: parseInt(values.relaxedMusic, 10),
         calmEnvironment: parseInt(values.calmEnvironment, 10),
@@ -19,13 +19,10 @@ class RatingsForm extends React.Component {
         hotFoodDrink: parseInt(values.hotFoodDrink, 10),
         comment: values.comment
       }
-    };
-    return this.props
-      .dispatch(postRating(rating))
-      .then(() =>
-        this.props.dispatch(fetchRatingsByPlaceId(this.props.place._id))
-      )
-      .then(() => this.props.dispatch(fetchPlaceByID(rating.placeId)));
+    }
+    return this.props.dispatch(postRating(rating))
+    .then(() => this.props.dispatch(fetchRatingsByPlaceId(this.props.place.id)))
+    .then(() => this.props.dispatch(fetchPlaceByID(rating.placeId)))
   }
 
   render() {
@@ -121,9 +118,6 @@ class RatingsForm extends React.Component {
 
 export default reduxForm({
   form: 'makeRating',
-  onSubmitFail: (error, dispatch) => {
-    console.log(error);
-    // this is the line that is messing up
-    dispatch(focus('makeRating', Object.keys(error)[0]));
-  }
-})(RatingsForm);
+  onSubmitFail: (error, dispatch) =>{
+      dispatch(focus('makeRating', Object.keys(error)[0]))
+}})(RatingsForm);

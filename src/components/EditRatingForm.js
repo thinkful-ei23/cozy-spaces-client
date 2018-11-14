@@ -1,5 +1,5 @@
 import React from 'react';
-import {Field, reduxForm, /*focus*/} from 'redux-form'; 
+import {Field, reduxForm, focus} from 'redux-form'; 
 import Input from './Input';
 import { required } from '../validators';
 import { editRating } from '../actions/ratings';
@@ -14,7 +14,7 @@ class EditRatingForm extends React.Component {
     yourRatings.classList.remove('marginRight4');
     editRatingsForm.classList.remove('marginLeft4');
     const rating = {
-      placeId : this.props.place._id,
+      placeId : this.props.place.id,
       rating : {
         warmLighting: parseInt(values.warmLighting, 10),
         relaxedMusic: parseInt(values.relaxedMusic, 10),
@@ -25,9 +25,9 @@ class EditRatingForm extends React.Component {
         comment: values.comment
       }
     }
-    return this.props.dispatch(editRating(rating, this.props.rating._id))
-    .then(() => this.props.dispatch(fetchRatingsByPlaceId(this.props.place._id)))
-    .then(() => this.props.dispatch(fetchPlaceByID(this.props.place._id)))
+    return this.props.dispatch(editRating(rating, this.props.rating.id))
+    .then(() => this.props.dispatch(fetchRatingsByPlaceId(this.props.place.id)))
+    .then(() => this.props.dispatch(fetchPlaceByID(this.props.place.id)))
   }
 
   cancelEditRating() {
@@ -130,6 +130,8 @@ class EditRatingForm extends React.Component {
 
 export default reduxForm({
   form: 'EditRatingForm',
-  // onSubmitFail: (errors, dispatch) =>
-  //     dispatch(focus('EditRatingform', Object.keys(errors)[0]))
+
+  onSubmitFail: (errors, dispatch) =>
+    dispatch(focus('EditRatingform', Object.keys(errors)[0]))
 })(EditRatingForm);
+

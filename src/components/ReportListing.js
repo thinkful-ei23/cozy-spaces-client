@@ -7,7 +7,7 @@ import { fetchPlaceByID, reportPlace, unReportPlace } from '../actions/places';
 class ReportListings extends React.Component {
   reportPlace() {
     const report = {
-      placeId: this.props.specificPlace._id
+      placeId: this.props.specificPlace.id
     };
     return this.props
       .dispatch(reportPlace(report))
@@ -16,7 +16,7 @@ class ReportListings extends React.Component {
 
   unReportPlace() {
     const report = {
-      placeId: this.props.specificPlace._id
+      placeId: this.props.specificPlace.id
     };
     return this.props
       .dispatch(unReportPlace(report))
