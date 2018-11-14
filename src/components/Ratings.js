@@ -12,6 +12,17 @@ class Ratings extends React.Component {
       .then(() => this.props.dispatch(fetchRatingsByPlaceId(id)))
       .then(() => this.props.dispatch(fetchPlaceByID(id)));
   }
+  toggleEditRating() {
+    let yourRatings = document.getElementById('your-ratings');
+    if (yourRatings.classList.contains('marginRight4')) {
+      yourRatings.classList.remove('marginRight4');
+      this.props.dispatch(toggleEditRating());
+    } else {
+
+      yourRatings.classList.add('marginRight4');
+      this.props.dispatch(toggleEditRating());
+    }
+  }
 
   render() {
     let ratingError;
@@ -29,7 +40,7 @@ class Ratings extends React.Component {
     if (!this.props.editing) {
       buttons =  (
         <div className='flex space-evenly'>
-          <button className='button leftRightMargin8px' onClick={() => this.props.dispatch(toggleEditRating())}>
+          <button className='button leftRightMargin8px' onClick={() => this.toggleEditRating()}>
             Edit rating
           </button>
           <button className='button leftRightMargin8px' onClick={() => this.deleteRating()}>Delete</button>
@@ -40,7 +51,7 @@ class Ratings extends React.Component {
     if (this.props.specificRating && !this.props.ratingError) {
       let specificRating = this.props.specificRating.rating;
       return (
-        <section className='section topBottomMargin10px your-ratings'>
+        <section id='your-ratings' className='section topBottomMargin10px your-ratings'>
           <h3>Your Ratings</h3>
           {ratingError}
           <ul>

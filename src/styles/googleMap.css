@@ -1,0 +1,13 @@
+.map-container {
+  height: 350;
+  width: '100%';
+  display: 'flex';
+  flex-Flow: 'row nowrap';
+  justify-Content: 'center';
+  padding: 0
+}
+
+
+@media screen and (min-width: 990px) { 
+
+}
