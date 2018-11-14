@@ -142,7 +142,7 @@ export class MapContainer extends Component {
 
   render() {
     if (this.props.specificPlace) {
-      return <Redirect to={`/places/${this.props.specificPlace._id}`} />;
+      return <Redirect to={`/places/${this.props.specificPlace.id}`} />;
     }
 
     let marker;
