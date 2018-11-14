@@ -134,7 +134,6 @@ export const fetchPlaceByID = (id) => (dispatch, getState) => {
     return fetch(`${API_BASE_URL}/places/${id}`, {
       method: 'GET',
       headers: {
-        // Provide our existing token as credentials to get a new one
         Authorization: `Bearer ${authToken}`
     }
     })

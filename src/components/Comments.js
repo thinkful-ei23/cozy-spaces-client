@@ -37,7 +37,6 @@ class Comments extends React.Component {
 const mapStateToProps = state => ({
   ratings: state.places.specificPlace.ratings,
   loggedIn: state.auth.currentUser !== null
-  // userComments: state.places.specificPlace.userComments
 });
 
 export default connect(mapStateToProps)(Comments);
