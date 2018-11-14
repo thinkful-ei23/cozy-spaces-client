@@ -1,20 +1,19 @@
 import React from 'react';
 import '../styles/footer.css';
 
-
 export default function Footer() {
   return (
     <footer className='topMargin16px'>
       <a className="social-icons" href="https://github.com/thinkful-ei23/cozy-spaces-client">
         <i className="fab fa-github social-icons" />
       </a>
-      <a href="https://twitter.com/CozySpaces">
+      <a href="https://twitter.com/CozySpacesApp">
         <i className="fab fa-twitter social-icons" />
       </a>
-      <a href="https://facebook.com/CozySpaces">
+      <a href="https://twitter.com/CozySpacesApp">
         <i className="fab fa-facebook-f social-icons" />
       </a>
-      <a href="https://twitter.com/CozySpaces">
+      <a href="https://twitter.com/CozySpacesApp">
         <i className="fab fa-youtube social-icons" />
       </a>
       <p className='whiteFont'>Developed by the Magnificent 5 © 2018</p>
