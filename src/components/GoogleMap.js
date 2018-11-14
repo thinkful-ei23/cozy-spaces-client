@@ -1,5 +1,5 @@
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { fetchPlaceInfo, postPlace, fetchLatLng } from '../actions/places';
