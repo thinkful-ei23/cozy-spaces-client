@@ -1,0 +1,19 @@
+.form-input {
+  display: flex;
+  padding: 10px 0;
+}
+
+.form-input label {
+  text-align: right;
+}
+
+.form-input input {
+  flex: 1;
+}
+
+@media screen and (min-width: 500px) { 
+  .registration-form, .login-form {
+    margin: 0 auto;
+    width: 400px;
+  }
+}

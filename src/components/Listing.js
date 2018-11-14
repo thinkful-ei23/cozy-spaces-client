@@ -9,93 +9,84 @@ import { fetchPlaceByID } from '../actions/places';
 import { fetchRatingsByPlaceId } from '../actions/ratings';
 import { toggleEditRating, deleteRating } from '../actions/ratings';
 import '../styles/listing.css';
-
+import '../styles/ratings.css';
 
 class Listing extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
-    return this.props
-      .dispatch(fetchPlaceByID(id))
-      .then(() => {
-        if (this.props.loggedIn) {
-            this.props.dispatch(fetchRatingsByPlaceId(id))
-        }
+    return this.props.dispatch(fetchPlaceByID(id)).then(() => {
+      if (this.props.loggedIn) {
+        this.props.dispatch(fetchRatingsByPlaceId(id));
+      }
     });
   }
 
-  deleteRating() {
-    const id = this.props.match.params.id;
-    return this.props
-      .dispatch(deleteRating(this.props.specificPlace._id))
-      .then(() => this.props.dispatch(fetchRatingsByPlaceId(id)))
-      .then(() => this.props.dispatch(fetchPlaceByID(id)));
-  }
-
   render() {
-    let ratings;
+    let yourRatings;
     let ratingsFormPost;
     let ratingsFormEdit;
     let reportButton;
 
     if (this.props.loggedIn) {
-      ratings = <Ratings />;
+      yourRatings = <Ratings placeId={this.props.match.params.id} />;
       reportButton = <ReportListing />;
       if (!this.props.specificRating) {
         ratingsFormPost = <RatingsForm place={this.props.specificPlace} />;
       } else {
         ratingsFormEdit = this.props.editing ? (
-          <section>
+          <section className="edit-rating-form section topBottomMargin10px">
             <EditRatingForm
               rating={this.props.specificRating}
               place={this.props.specificPlace}
             />
-            <button className='button textCenter' onClick={() => this.props.dispatch(toggleEditRating())}>
-              Cancel
-            </button>
           </section>
-        ) : (
-          <div className='flex space-evenly'>
-            <button className='button leftRightMargin8px' onClick={() => this.props.dispatch(toggleEditRating())}>
-              Edit rating
-            </button>
-            <button className='button leftRightMargin8px' onClick={() => this.deleteRating()}>Delete</button>
-          </div>
-        );
+        ) : null;
       }
     }
 
     let specificPlace = this.props.specificPlace;
     if (specificPlace) {
       return (
-        <main className='listing-page'>
+        <main className="listing-page">
           <section className="listing-info">
-            <img alt={`${specificPlace.photos[0].caption}`} src={`${specificPlace.photos[0].url}`} />
-            <h2 className='textCenter'>{specificPlace.name}</h2>
-            <p className='textCenter'>
-              {specificPlace.address}, {specificPlace.city},{' '}
-              {specificPlace.state}
-            </p>
-            <div className='flex space-around'>
-              <p>Type: {specificPlace.type}</p>
-              <p>Cozy Rating: {specificPlace.averageCozyness}</p>
+            <img
+              alt={`${specificPlace.photos[0].caption}`}
+              className="bottomShadow main-orange-border"
+              src={`${specificPlace.photos[0].url}`}
+            />
+            <div className="listing-specific-info">
+              <h2 className="textCenter">{specificPlace.name}</h2>
+              <p className="textCenter">
+                {specificPlace.address}, {specificPlace.city},{' '}
+                {specificPlace.state}
+              </p>
+              <div className="flex space-around">
+                <p>Type: {specificPlace.type}</p>
+                <p>Cozy Rating: {specificPlace.averageCozyness}</p>
+              </div>
             </div>
-            <ul className='average-ratings textCenter'>
-            <h3>Average Ratings</h3>
-              <li>Warm lighting: {specificPlace.averageWarmLighting}</li>
-              <li>Relaxed Music: {specificPlace.averageRelaxedMusic}</li>
-              <li>Calm Environment: {specificPlace.averageCalmEnvironment}</li>
-              <li>
-                Soft fabrics in space (walls or floor):{' '}
-                {specificPlace.averageSoftFabrics}{' '}
-              </li>
-              <li>Comfy seating: {specificPlace.averageComfySeating}</li>
-              <li>Hot food/drink: {specificPlace.averageHotFoodDrink}</li>
-            </ul>
+            <ul className="average-ratings flex1 section textCenter topBottomMargin10px topShadow">
+                <h3>Average Ratings</h3>
+                <li>Warm lighting: {specificPlace.averageWarmLighting}</li>
+                <li>Relaxed Music: {specificPlace.averageRelaxedMusic}</li>
+                <li>
+                  Calm Environment: {specificPlace.averageCalmEnvironment}
+                </li>
+                <li>
+                  Soft fabrics (walls or floor):{' '}
+                  {specificPlace.averageSoftFabrics}{' '}
+                </li>
+                <li>Comfy seating: {specificPlace.averageComfySeating}</li>
+                <li>Hot food/drink: {specificPlace.averageHotFoodDrink}</li>
+              </ul>
+
           </section>
           <Comments />
-          {ratings}
+          <div className="flexOnBig">
+            {yourRatings}
+            {ratingsFormEdit}
+            </div>
           {ratingsFormPost}
-          {ratingsFormEdit}
           {reportButton}
         </main>
       );

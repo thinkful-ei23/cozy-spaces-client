@@ -10,6 +10,10 @@
   --tan: #a58976;
 }
 
+.romanceColor {
+  color: var(--romance);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -55,8 +59,6 @@ h2 {
   font-size: 26px;
 }
 img {
-  border-bottom: 1px solid var(--main-orange);
-  box-shadow: var(--shadow);
   height: auto;
   object-fit: cover;
   width: 100%;
@@ -66,6 +68,12 @@ input {
 }
 label {
   display: inline-block;
+  font-size: 16px;
+  padding-right: 8px;
+}
+li {
+  font-size: 16px;
+  margin: 8px auto;
 }
 p {
   font-size: 16px;
@@ -77,14 +85,23 @@ ul {
 }
 
 /* STYLING LIBRARY */
+.blackText {
+  color: black;
+}
 .block {
   display: block;
 }
 .flex {
   display: flex;
 }
+.flex1 {
+  flex: 1;
+}
 .main-orange-border {
   border: 1px solid var(--main-orange);
+}
+.main-orange-bottom-border {
+  border-bottom: 1px solid var(--main-orange);
 }
 .space-around {
   justify-content: space-around;
@@ -95,8 +112,17 @@ ul {
 .inline {
   display: inline;
 }
+.inputPaddingStripped {
+  padding: 0;
+}
 .leftRightPadding16px {
   padding: 0 16px;
+}
+.section {
+  background-color: var(--maroon);
+  border: 1px solid var(--main-orange);
+  padding-bottom: 10px;
+  text-align: center;
 }
 .textCenter {
   text-align: center;
@@ -109,6 +135,9 @@ ul {
 }
 .topBottomMargin8px {
   margin: 8px auto;
+}
+.topBottomMargin10px {
+  margin: 10px auto;
 }
 .topBottomMargin16px {
   margin: 16px auto;
@@ -142,16 +171,20 @@ ul {
 
 @media screen and (min-width: 990px) { 
   a {
-    font-size: 18px;
+    font-size: 16px;
   }
   label {
-    font-size: 18px;
+    font-size: 16px;
   }
   main {
     margin: 0 auto;
     width: 960px;
   }
   p {
-    font-size: 18px;
+    font-size: 16px;
+  }
+
+  .flexOnBig {
+    display: flex;
   }
 }

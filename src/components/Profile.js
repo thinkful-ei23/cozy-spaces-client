@@ -18,11 +18,12 @@ export class Profile extends Component {
 
     render(){
         return (
-          <div>
-            <h2>User Name: {this.props.username}</h2>
-            <h2>User ID: {this.props.userId}</h2>
-            <button onClick={() => this.deleteAccount(this.props.userId)}>Delete Account</button>
-          </div>
+          <section className='textCenter'>
+            <h2>Profile Information</h2>
+            <p>User Name: {this.props.username}</p>
+            <p>User Email: {this.props.email}</p>
+            <button className='button' onClick={() => this.deleteAccount(this.props.userId)}>Delete Account</button>
+          </section>
         );
     }
 }
@@ -33,7 +34,8 @@ const mapStateToProps = state => {
   const { currentUser } = state.auth;
   return {
     username: currentUser.username,
-    userId: currentUser.id
+    userId: currentUser.id,
+    email: currentUser.email
   }
 };
 

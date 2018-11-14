@@ -1,12 +1,15 @@
-img {
-  border: solid 1px var(--main-orange);
+.bottomShadow {
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.6);
 }
-.average-ratings {
-  border: 1px solid var(--main-orange);
+
+.listing-page {
+  border: 1px solid var(--romance);
   padding: 8px;
 }
 
-
+.listing-specific-info {
+  margin: 8px 0;
+}
 
 @media screen and (min-width: 990px) { 
 

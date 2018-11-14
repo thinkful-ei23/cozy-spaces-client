@@ -155,6 +155,7 @@ class Dashboard extends Component {
             >
             <img
                 alt={`${place.photos[0].caption}`}
+                className='main-orange-bottom-border'
                 src={`${place.photos[0].url}`}
                 />
               <div className="place-card-content">
