@@ -10,7 +10,7 @@ import { fetchPlaceByID } from '../actions/places';
 class RatingsForm extends React.Component {
   onSubmit(values) {
     const rating = {
-      placeId : this.props.place._id,
+      placeId : this.props.place.id,
       rating : {
         warmLighting: parseInt(values.warmLighting, 10),
         relaxedMusic: parseInt(values.relaxedMusic, 10),
@@ -22,7 +22,7 @@ class RatingsForm extends React.Component {
       }
     }
     return this.props.dispatch(postRating(rating))
-    .then(() => this.props.dispatch(fetchRatingsByPlaceId(this.props.place._id)))
+    .then(() => this.props.dispatch(fetchRatingsByPlaceId(this.props.place.id)))
     .then(() => this.props.dispatch(fetchPlaceByID(rating.placeId)))
   }
 
