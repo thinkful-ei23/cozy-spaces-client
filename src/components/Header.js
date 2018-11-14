@@ -111,7 +111,7 @@ class Header extends Component {
             Register
           </Link>
         </li>
-      );;
+      );
     }
 
     return (
