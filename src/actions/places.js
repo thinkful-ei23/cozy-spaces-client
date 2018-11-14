@@ -78,11 +78,17 @@ export const fetchPlaceInfoSuccess = () => ({
     type: FETCH_PLACE_INFO_SUCCESS,
 });
 
-// export const FETCH_PLACE_BY_ID_ERROR = 'FETCH_PLACE_BY_ID_ERROR';
-// export const fetchPlaceByIdError = (error) => ({
-//     type: FETCH_PLACE_BY_ID_ERROR,
-//     error
-// });
+export const FETCH_PLACE_INFO_ERROR = 'FETCH_PLACE_INFO_ERROR';
+export const fetchPlaceInfoError = (err) => ({
+    type: FETCH_PLACE_INFO_ERROR,
+    err
+});
+
+export const FETCH_LAT_LNG_ERROR = 'FETCH_LAT_LNG_ERROR';
+export const fetchLatLngError = (err) => ({
+    type: FETCH_LAT_LNG_ERROR,
+    err
+});
 
 export const fetchPlaces = (filter) => dispatch => {
   dispatch(fetchPlacesRequest());
@@ -109,7 +115,7 @@ export const fetchPlaceInfo = (lat, lng) => dispatch => {
           return info;
       })
       .catch(error => {
-        // dispatch(fetchPlacesError(error));
+        dispatch(fetchPlaceInfoError(error));
       });
   }
 
@@ -124,7 +130,7 @@ export const fetchPlaceInfo = (lat, lng) => dispatch => {
           return res.results[0].geometry.location;
       })
       .catch(error => {
-        // dispatch(fetchPlacesError(error));
+        dispatch(fetchLatLngError(error));
       });
   }
 

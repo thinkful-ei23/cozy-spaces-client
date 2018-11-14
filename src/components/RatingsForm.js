@@ -119,7 +119,5 @@ class RatingsForm extends React.Component {
 export default reduxForm({
   form: 'makeRating',
   onSubmitFail: (error, dispatch) =>{
-      console.log(error);
-      // this is the line that is messing up
       dispatch(focus('makeRating', Object.keys(error)[0]))
 }})(RatingsForm);
