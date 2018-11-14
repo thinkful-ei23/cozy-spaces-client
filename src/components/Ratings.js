@@ -14,7 +14,6 @@ class Ratings extends React.Component {
   }
   toggleEditRating() {
     let yourRatings = document.getElementById('your-ratings');
-    let editRatingsForm = document.getElementById('edit-ratings-form');
     if (yourRatings.classList.contains('marginRight4')) {
       yourRatings.classList.remove('marginRight4');
       this.props.dispatch(toggleEditRating());
