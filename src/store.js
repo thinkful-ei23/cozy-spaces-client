@@ -18,6 +18,12 @@ const rootReducer = combineReducers({
   ratings: ratingReducer
 });
 
+// we still need this because we're going to switch to it right before pushing to master
+// const store = createStore(	
+//     rootReducer,	
+//     applyMiddleware(thunk)	
+// );	
+
 const store = createStore(rootReducer, composeWithDevTools(
   applyMiddleware(thunk)
 ));
