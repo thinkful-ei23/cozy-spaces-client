@@ -4,9 +4,6 @@ import { fetchPlaceByID } from '../actions/places';
 import { toggleEditRating, deleteRating, fetchRatingsByPlaceId } from '../actions/ratings';
 
 class Ratings extends React.Component {
-  //let editRatingForm = <EditRatingForm place={this.props.specificPlace}/>
-  // this.props.editing
-
 
   deleteRating() {
     const id = this.props.placeId;
@@ -20,12 +17,10 @@ class Ratings extends React.Component {
     let editRatingsForm = document.getElementById('edit-ratings-form');
     if (yourRatings.classList.contains('marginRight4')) {
       yourRatings.classList.remove('marginRight4');
-      // editRatingsForm.classList.remove('marginLeft4');
       this.props.dispatch(toggleEditRating());
     } else {
 
       yourRatings.classList.add('marginRight4');
-      // editRatingsForm.classList.add('marginLeft4');
       this.props.dispatch(toggleEditRating());
     }
   }
