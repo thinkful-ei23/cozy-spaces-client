@@ -197,7 +197,7 @@ export class MapContainer extends Component {
       <section>
         {geoLocationError}
         {geolocationForm}
-        <div class='map-container' style={mapWrapper}>
+        <div className='map-container' style={mapWrapper}>
           <Map
             google={this.props.google}
             style={style}
