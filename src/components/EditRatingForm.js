@@ -9,6 +9,10 @@ import { toggleEditRating } from '../actions/ratings';
 
 class EditRatingForm extends React.Component {
   onSubmit(values) {
+    let yourRatings = document.getElementById('your-ratings');
+    let editRatingsForm = document.getElementById('edit-ratings-form');
+    yourRatings.classList.remove('marginRight4');
+    editRatingsForm.classList.remove('marginLeft4');
     const rating = {
       placeId : this.props.place._id,
       rating : {
@@ -26,12 +30,22 @@ class EditRatingForm extends React.Component {
     .then(() => this.props.dispatch(fetchPlaceByID(this.props.place._id)))
   }
 
+  cancelEditRating() {
+    let yourRatings = document.getElementById('your-ratings');
+    let editRatingsForm = document.getElementById('edit-ratings-form');
+    console.log(yourRatings);
+    yourRatings.classList.remove('marginRight4');
+    editRatingsForm.classList.remove('marginLeft4');
+    this.props.dispatch(toggleEditRating());
+  }
+
   render() {
     let error;
     let success;
       return (
         <React.Fragment>
           <h3>Change your mind? Edit your rating here</h3>
+          <p>Range: 0 - 5</p>
           <form  className="ratings-form"
             onSubmit={this.props.handleSubmit(values =>
                 this.onSubmit(values)
@@ -105,7 +119,7 @@ class EditRatingForm extends React.Component {
                   disabled={this.props.pristine || this.props.submitting}>
                   Rate it
                 </button>
-                <button className='button textCenter' onClick={() => this.props.dispatch(toggleEditRating())}>
+                <button className='button textCenter' onClick={() => this.cancelEditRating()}>
                   Cancel
                 </button>
               </div>

@@ -38,7 +38,7 @@ export class MapContainer extends Component {
       lat: position.coords.latitude,
       lng: position.coords.longitude
     };
-    this.setState({currentLocation: pos, geoLocationError: false});
+    this.setState({ currentLocation: pos, geoLocationError: false });
   }
 
   handleLocationError(browserHasGeolocation) {
@@ -77,19 +77,25 @@ export class MapContainer extends Component {
   onInfoWindowOpen(props, e) {
     const form = (
       <form>
-        <div className='topBottomMargin8px'>
-          <label className='blackText' htmlFor="name">Name:</label>
+        <div className="topBottomMargin8px">
+          <label className="blackText" htmlFor="name">
+            Name:
+          </label>
           <input type="text" id="name" />
         </div>
-        <div className='topBottomMargin8px'>
-          <label className='blackText' htmlFor="address">Address:</label>
+        <div className="topBottomMargin8px">
+          <label className="blackText" htmlFor="address">
+            Address:
+          </label>
           <input type="text" id="address" />
         </div>
-        <div className='topBottomMargin8px'>
-          <label className='blackText' htmlFor="typeOfPlace">Type of Place:</label>
+        <div className="topBottomMargin8px">
+          <label className="blackText" htmlFor="typeOfPlace">
+            Type of Place:
+          </label>
           <input type="text" id="typeOfPlace" />
         </div>
-        <button className='button' onClick={e => this.saveData(e)} value="Save" >
+        <button className="button" onClick={e => this.saveData(e)} value="Save">
           Add listing
         </button>
       </form>
@@ -119,11 +125,9 @@ export class MapContainer extends Component {
         city: info.address_components[1].long_name,
         state,
         zipcode: info.address_components[0].long_name,
-        location: {type: 'Point',
-        coordinates: [lng, lat],
-        },
-        photos: ["444444444444444444444000"]
-      }
+        location: { type: 'Point', coordinates: [lng, lat] },
+        photos: ['444444444444444444444000']
+      };
       return this.props.dispatch(postPlace(place));
     });
   }
@@ -131,8 +135,8 @@ export class MapContainer extends Component {
   sendZip(e) {
     e.preventDefault();
     let zip = document.getElementById('zip-geo').value;
-    this.props.dispatch(fetchLatLng(zip)).then((latLng) => {
-      this.setState({ currentLocation: latLng})
+    this.props.dispatch(fetchLatLng(zip)).then(latLng => {
+      this.setState({ currentLocation: latLng });
     });
   }
 
@@ -173,9 +177,18 @@ export class MapContainer extends Component {
       );
     }
 
+    const mapWrapper = {
+      height: 500,
+      width: '100%',
+      display: 'flex',
+      flexFlow: 'row nowrap',
+      justifyContent: 'center',
+      padding: 0
+    };
+
     const style = {
-      height: '500px',
-      width: '500px',
+      height: '100%',
+      width: '100%',
       margin: '0 auto',
       position: 'static'
     };
@@ -184,32 +197,34 @@ export class MapContainer extends Component {
       <section>
         {geoLocationError}
         {geolocationForm}
-        <Map
-          google={this.props.google}
-          style={style}
-          containerStyle={style}
-          initialCenter={{
-            lat: 45.6387281,
-            lng: -122.6614861
-          }}
-          center={this.state.currentLocation}
-          zoom={12}
-          onReady={this.fetchPlaces}
-          onClick={(mapProps, map, clickEvent) =>
-            this.onMapClicked(mapProps, map, clickEvent)
-          }
-        >
-          {marker}
-          <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}
-            onOpen={e => {
-              this.onInfoWindowOpen(this.props, e);
+        <div class='map-container' style={mapWrapper}>
+          <Map
+            google={this.props.google}
+            style={style}
+            containerStyle={style}
+            initialCenter={{
+              lat: 45.6387281,
+              lng: -122.6614861
             }}
+            center={this.state.currentLocation}
+            zoom={12}
+            onReady={this.fetchPlaces}
+            onClick={(mapProps, map, clickEvent) =>
+              this.onMapClicked(mapProps, map, clickEvent)
+            }
           >
-            <div id="form" />
-          </InfoWindow>
-        </Map>
+            {marker}
+            <InfoWindow
+              marker={this.state.activeMarker}
+              visible={this.state.showingInfoWindow}
+              onOpen={e => {
+                this.onInfoWindowOpen(this.props, e);
+              }}
+            >
+              <div id="form" />
+            </InfoWindow>
+          </Map>
+        </div>
       </section>
     );
   }
