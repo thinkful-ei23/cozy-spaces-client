@@ -27,7 +27,8 @@ a:hover {
 body {
   background-color: var(--seal-brown);
   color: var(--romance);
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
+  font-family: 'Lato', sans-serif;
   margin: 0 10px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -35,7 +36,7 @@ body {
 button {
   all: unset;
   color: var(--romance);
-  font-size: 18px;
+  font-size: 16px;
 }
 button:hover {
   cursor: pointer;
