@@ -1,4 +1,4 @@
-import React, { Fragment }  from 'react';
+import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form'; 
 import Input from './Input';
 import { required } from '../validators';
