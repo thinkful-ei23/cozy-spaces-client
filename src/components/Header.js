@@ -135,6 +135,7 @@ class Header extends Component {
           </ul>
         </nav>
         <Link to="/dashboard">
+          <img className='header-logo' src='../img/icon.png' alt='logo'/>
           <h1>Cozy Spaces</h1>
         </Link>
       </header>

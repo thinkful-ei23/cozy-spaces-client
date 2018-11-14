@@ -1,3 +1,12 @@
+h1 {
+  color: var(--romance);
+  font-family: 'Comfortaa', cursive;
+  font-size: 48px;
+  font-weight: normal;
+  margin-block-start: 0;
+  margin-top: -20px;
+  text-align: center;
+}
 header {
   background-color: var(--maroon);
   font-size: 16px;
@@ -13,6 +22,8 @@ header .bars-icon:hover path {
 }
 header a {
   color: var(--romance);
+  display: flex;
+  flex-direction: column;
   font-size: 18px;
   margin: 8px 0;
 }
@@ -34,6 +45,10 @@ header .profile-icon:hover {
 .header-icons {
   display: flex;
   justify-content: space-between;
+}
+.header-logo {
+  margin: 0 auto;
+  width: 150px;
 }
 .main-nav-ul {
   position: absolute;

@@ -44,17 +44,6 @@ button:hover {
 footer {
   text-align: center;
 }
-h1 {
-  color: var(--romance);
-  font-family: 'Rock Salt', cursive; /*'Qwigley', cursive; "Segoe Script", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-  sans-serif; */
-  font-size: 48px;
-  font-weight: normal;
-  margin-block-start: 0;
-  margin-top: 48px;
-  text-align: center;
-}
 h2 {
   font-size: 26px;
 }
