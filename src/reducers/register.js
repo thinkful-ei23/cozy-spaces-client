@@ -6,8 +6,7 @@ import {
 
 const initialState = {
   loading: false,
-  error: null,
-  // temp reducer
+  error: null
 };
 
 export default function reducer(state = initialState, action) {
