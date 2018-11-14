@@ -10,7 +10,7 @@ import { toggleEditRating } from '../actions/ratings';
 class EditRatingForm extends React.Component {
   onSubmit(values) {
     const rating = {
-      placeId : this.props.place._id,
+      placeId : this.props.place.id,
       rating : {
         warmLighting: parseInt(values.warmLighting, 10),
         relaxedMusic: parseInt(values.relaxedMusic, 10),
@@ -21,9 +21,9 @@ class EditRatingForm extends React.Component {
         comment: values.comment
       }
     }
-    return this.props.dispatch(editRating(rating, this.props.rating._id))
-    .then(() => this.props.dispatch(fetchRatingsByPlaceId(this.props.place._id)))
-    .then(() => this.props.dispatch(fetchPlaceByID(this.props.place._id)))
+    return this.props.dispatch(editRating(rating, this.props.rating.id))
+    .then(() => this.props.dispatch(fetchRatingsByPlaceId(this.props.place.id)))
+    .then(() => this.props.dispatch(fetchPlaceByID(this.props.place.id)))
   }
 
   render() {

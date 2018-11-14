@@ -11,7 +11,7 @@ class Ratings extends React.Component {
   deleteRating() {
     const id = this.props.placeId;
     return this.props
-      .dispatch(deleteRating(this.props.specificPlace._id))
+      .dispatch(deleteRating(this.props.specificPlace.id))
       .then(() => this.props.dispatch(fetchRatingsByPlaceId(id)))
       .then(() => this.props.dispatch(fetchPlaceByID(id)));
   }
