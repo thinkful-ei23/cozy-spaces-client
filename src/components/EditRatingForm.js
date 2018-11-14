@@ -33,7 +33,6 @@ class EditRatingForm extends React.Component {
   cancelEditRating() {
     let yourRatings = document.getElementById('your-ratings');
     let editRatingsForm = document.getElementById('edit-ratings-form');
-    console.log(yourRatings);
     yourRatings.classList.remove('marginRight4');
     editRatingsForm.classList.remove('marginLeft4');
     this.props.dispatch(toggleEditRating());
