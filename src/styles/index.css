@@ -118,6 +118,9 @@ ul {
 .leftRightPadding16px {
   padding: 0 16px;
 }
+.padding10px {
+  padding: 10px;
+}
 .section {
   background-color: var(--maroon);
   border: 1px solid var(--main-orange);
