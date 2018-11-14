@@ -85,7 +85,6 @@ export const fetchPlaceInfoSuccess = () => ({
 // });
 
 export const fetchPlaces = (filter) => dispatch => {
-console.log(filter);
   dispatch(fetchPlacesRequest());
   fetch(`${API_BASE_URL}/places?lat=${filter.lat}&lng=${filter.lng}`, {
     method: 'GET'
@@ -146,7 +145,6 @@ export const fetchPlaceByID = (id) => (dispatch, getState) => {
           return res;
       })
       .catch(error => {
-          console.log(error);
         dispatch(fetchPlaceByIdError(error));
       });
 }
@@ -154,7 +152,6 @@ export const fetchPlaceByID = (id) => (dispatch, getState) => {
 export const reportPlace = (placeId) => (dispatch, getState) => {
   dispatch(reportPlaceRequest());
   const authToken = getState().auth.authToken;
-  console.log(placeId);
   return fetch(`${API_BASE_URL}/report`, {
     method: 'POST',
     headers: {
@@ -174,7 +171,6 @@ export const reportPlace = (placeId) => (dispatch, getState) => {
 export const unReportPlace = (placeId) => (dispatch, getState) => {
   dispatch(reportPlaceRequest());
   const authToken = getState().auth.authToken;
-  console.log(placeId);
   return fetch(`${API_BASE_URL}/report`, {
     method: 'DELETE',
     headers: {
@@ -192,7 +188,6 @@ export const unReportPlace = (placeId) => (dispatch, getState) => {
 }
 
 export const postPlace = (place) => dispatch => {
-    console.log(place);
     dispatch(postPlaceRequest());
     return fetch(`${API_BASE_URL}/places`, {
         method: 'POST',

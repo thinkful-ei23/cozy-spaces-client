@@ -45,7 +45,6 @@ class Dashboard extends Component {
     } else {
       errors['zip'] = 'Please enter a valid zip code';
       this.setState({errors: errors})
-      console.log(false);
     }
   }
 
@@ -116,7 +115,6 @@ class Dashboard extends Component {
       lat: position.coords.latitude,
       lng: position.coords.longitude
     };
-    console.log(pos);
     this.setState({ currentLocation: pos, geoLocationError: false });
     this.props.dispatch(fetchPlaces(pos));
     // send this filter to get places
@@ -160,7 +158,6 @@ class Dashboard extends Component {
                 className='main-orange-bottom-border'
                 src={`${place.photos[0].url}`}
                 />
-              {/* This needs to be commented out temporarily because new listings don't have photos */}
               <div className="place-card-content">
                 <h2 className="inline name">{place.name}</h2>
                 <div className="place-card-content-r1">

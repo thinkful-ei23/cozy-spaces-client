@@ -17,8 +17,6 @@ export class Profile extends Component {
   }
 
     render(){
-      console.log(this.props.username);
-      console.log(this.props.userId);
         return (
           <section className='textCenter'>
             <h2>Profile Information</h2>
