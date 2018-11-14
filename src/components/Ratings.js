@@ -19,14 +19,10 @@ class Ratings extends React.Component {
     let yourRatings = document.getElementById('your-ratings');
     let editRatingsForm = document.getElementById('edit-ratings-form');
     if (yourRatings.classList.contains('marginRight4')) {
-      console.log('has class');
-      console.log(editRatingsForm);
       yourRatings.classList.remove('marginRight4');
       // editRatingsForm.classList.remove('marginLeft4');
       this.props.dispatch(toggleEditRating());
     } else {
-      console.log('doesnt have class');
-      console.log(editRatingsForm);
 
       yourRatings.classList.add('marginRight4');
       // editRatingsForm.classList.add('marginLeft4');
