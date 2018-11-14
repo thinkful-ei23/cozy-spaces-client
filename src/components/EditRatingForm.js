@@ -1,5 +1,5 @@
 import React from 'react';
-import {Field, reduxForm, /*focus*/} from 'redux-form'; 
+import {Field, reduxForm, focus} from 'redux-form'; 
 import Input from './Input';
 import { required } from '../validators';
 import { editRating } from '../actions/ratings';
@@ -117,6 +117,6 @@ class EditRatingForm extends React.Component {
 
 export default reduxForm({
   form: 'EditRatingForm',
-  // onSubmitFail: (errors, dispatch) =>
-  //     dispatch(focus('EditRatingform', Object.keys(errors)[0]))
+  onSubmitFail: (errors, dispatch) =>
+    dispatch(focus('EditRatingform', Object.keys(errors)[0]))
 })(EditRatingForm);

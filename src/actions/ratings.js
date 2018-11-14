@@ -131,8 +131,6 @@ export const postRating = rating => (dispatch, getState) => {
       const { reason, message, location } = error;
       dispatch(postRatingError(error));
       if (reason === 'ValidationError') {
-        // Convert ValidationErrors into SubmissionErrors for Redux Form
-        // need help from TJ on how to get this submission error into the right place
         return Promise.reject(
           new SubmissionError({
             [location]: message

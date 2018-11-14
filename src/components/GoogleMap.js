@@ -28,7 +28,6 @@ export class MapContainer extends Component {
         }
       );
     } else {
-      // Browser doesn't support Geolocation
       this.handleLocationError(false);
     }
   }
@@ -65,13 +64,6 @@ export class MapContainer extends Component {
       activeMarker: marker,
       showingInfoWindow: true
     });
-  }
-
-  fetchPlaces(mapProps, map) {
-    //<Listing places={this.state.places} />
-    // const {google} = mapProps;
-    // const service = new google.maps.places.PlacesService(map);
-    // ...
   }
 
   onInfoWindowOpen(props, e) {
@@ -146,7 +138,6 @@ export class MapContainer extends Component {
     let geoLocationError;
 
     if (this.state.activeMarker) {
-      // make some markers appear
       marker = (
         <Marker
           onClick={(props, marker, e) => this.onMarkerClick(props, marker, e)}
@@ -158,7 +149,6 @@ export class MapContainer extends Component {
 
     if (this.state.geolocationError) {
       geoLocationError = <p>'Error: The Geolocation service failed'</p>;
-      // make some markers appear
       geolocationForm = (
         <form>
           <label htmlFor="zip-geo">Enter a zip-code instead</label>
@@ -194,7 +184,6 @@ export class MapContainer extends Component {
           }}
           center={this.state.currentLocation}
           zoom={12}
-          onReady={this.fetchPlaces}
           onClick={(mapProps, map, clickEvent) =>
             this.onMapClicked(mapProps, map, clickEvent)
           }

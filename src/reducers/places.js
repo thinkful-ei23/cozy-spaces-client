@@ -12,6 +12,7 @@ import {
   POST_PLACE_ERROR,
   POST_PLACE_SUCCESS,
   CLEAR_SPECIFIC_PLACE,
+  FETCH_PLACE_INFO_ERROR
 } from '../actions/places';
  
  const initialState = {
@@ -34,7 +35,9 @@ import {
      case FETCH_PLACE_BY_ID_ERROR: 
        return {...state, loading: false, error: action.error};
      case FETCH_PLACE_BY_ID_SUCCESS: 
-       return {...state, loading: false, specificPlace: action.place, error: null}
+       return {...state, loading: false, specificPlace: action.place, error: null};
+     case FETCH_PLACE_INFO_ERROR: 
+       return {...state, loading: false, error: action.error}
      case POST_PLACE_REQUEST: 
        return {...state, loading: true};
      case POST_PLACE_ERROR: 
