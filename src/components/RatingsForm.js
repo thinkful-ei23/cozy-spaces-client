@@ -36,8 +36,8 @@ class RatingsForm extends React.Component {
         );
     }
       return (
-        <section className='section'>
-          <h4>Rate the cozyness!</h4>
+        <section className='padding10px section topBottomMargin8px'>
+          <h3>Rate the cozyness!</h3>
           <form  className="ratings-form"
             onSubmit={this.props.handleSubmit(values =>
                 this.onSubmit(values)
