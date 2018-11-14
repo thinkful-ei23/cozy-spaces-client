@@ -33,7 +33,7 @@ class Listing extends Component {
         ratingsFormPost = <RatingsForm place={this.props.specificPlace} />;
       } else {
         ratingsFormEdit = this.props.editing ? (
-          <section className="edit-rating-form section topBottomMargin10px">
+          <section id='edit-ratings-form' className="edit-rating-form section topBottomMargin10px">
             <EditRatingForm
               rating={this.props.specificRating}
               place={this.props.specificPlace}
