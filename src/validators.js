@@ -11,12 +11,13 @@ export const length = length => value => {
         return `Must be at most ${length.max} characters long`;
     }
 };
-// validator for email
+
 export const matches = field => (value, allValues) =>
     field in allValues && value.trim() === allValues[field].trim()
         ? undefined
         : 'Password does not match';
 
+// validator for email
 export const isEmail = value => {
   let re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(value).toLowerCase()) ? undefined : 'Not an email';

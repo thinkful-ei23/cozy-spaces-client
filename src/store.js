@@ -18,12 +18,6 @@ const rootReducer = combineReducers({
   ratings: ratingReducer
 });
 
-// const store = createStore(
-//     rootReducer,
-//     applyMiddleware(thunk)
-// );
-
-// for dev
 const store = createStore(rootReducer, composeWithDevTools(
   applyMiddleware(thunk)
 ));
