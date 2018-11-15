@@ -1,7 +1,7 @@
 ![alt text][logo]
 
 [logo]: img/icon-left-logo-cropped-readme.png "Cozy Spaces Logo"
-An app focused on improving quality of life through curating truly cozy spaces especially for those who experience cold climates.
+Cozy Spaces is focused on improving quality of life through curating truly cozy spaces especially for those who experience cold climates.  
 
 ## V1 Feature List
   * Users are taken to an introductory landing page the first time they visit the app.  If they have previously visited Cozy Spaces, they will be taken directly to listings of cozy spaces.
@@ -40,12 +40,13 @@ https://twitter.com/CozySpacesApp
 https://dashboard.heroku.com/apps/cozy-spaces-client
 
 ## Tech Stack:
-React for the frontend
-Redux for state management
-Node/Express for the backend
-MongoDB/Mongoose for the database
-JWTs for authentication
-GoogleMap API
+  * React for the frontend
+  * Redux for state management
+  * Node/Express for the backend
+  * MongoDB/Mongoose for the database
+  * JWTs for authentication
+  * GoogleMap API
+  * Heroku for Deployment  
 
 ## This is the frontend for this app.  The backend can be found here: 
 https://github.com/thinkful-ei23/CozySpacesServer
