@@ -2,7 +2,7 @@
 
 [logo]: img/icon-left-logo-cropped-readme2.png
 [twitter]: img/twitter.png
-[instagram]: img/Instagram.png
+[instagram]: img/instagram.png
 [1]: https://twitter.com/CozySpacesApp
 [2]: https://www.instagram.com/cozyspacesapp/
 
