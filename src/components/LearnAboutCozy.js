@@ -21,7 +21,10 @@ export class LearnAboutCoziness extends Component {
             based on the rating guide listed above, register now to begin
             rating.
           </p>
-          <Link className='button' to="/register">Register</Link>
+          <div className='flex space-evenly'>
+            <Link className='button' to='/login'>Login</Link>
+            <Link className='button' to="/register">Register</Link>
+          </div>
         </div>
       );
     }
