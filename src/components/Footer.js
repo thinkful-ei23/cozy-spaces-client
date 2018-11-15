@@ -10,11 +10,8 @@ export default function Footer() {
       <a href="https://twitter.com/CozySpacesApp">
         <i className="fab fa-twitter social-icons" />
       </a>
-      <a href="https://twitter.com/CozySpacesApp">
-        <i className="fab fa-facebook-f social-icons" />
-      </a>
-      <a href="https://twitter.com/CozySpacesApp">
-        <i className="fab fa-youtube social-icons" />
+      <a href="https://www.instagram.com/cozyspacesapp/">
+        <i className="fab fa-instagram social-icons" />
       </a>
       <p className='whiteFont'>Developed by the Magnificent 5 © 2018</p>
     </footer>
