@@ -28,12 +28,13 @@ class RatingsForm extends React.Component {
   render() {
     let error;
     if (this.props.submitFailed) {
-      error = (
-        <div className="form-error" aria-live="polite">
-          {this.props.error}
-        </div>
-      );
+        error = (
+             <div className="form-error" aria-live="polite">
+               {this.props.error}
+             </div>
+        );
     }
+    
     return (
       <section className="padding10px section topBottomMargin8px">
         <h3>Rate the cozyness!</h3>
@@ -101,7 +102,7 @@ class RatingsForm extends React.Component {
             component={Input}
             type="textarea"
             name="comment"
-            label="Comments"
+            label="Comment"
           />
           <button
             className="button"
