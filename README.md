@@ -3,7 +3,7 @@
 [logo]: img/icon-left-logo-cropped-readme2.png
 [twitter]: img/Twitter_Logo_Blue42pxcropped.png
 [instagram]: img/glyph-logo_May201629px.png
-[producthunt]: img/product-hunt-logo-orange-30px.png
+[producthunt]: img/product-hunt-logo-orange-28px.png
 [1]: https://twitter.com/CozySpacesApp
 [2]: https://www.instagram.com/cozyspacesapp/
 
