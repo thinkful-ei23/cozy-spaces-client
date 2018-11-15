@@ -27,7 +27,7 @@ export default class Input extends React.Component {
                     {...this.props.input}
                     aria-label={this.props.label}
                     className='inputPaddingStripped'
-                    id={this.props.input.name}
+                    id={this.props.label}
                     type={this.props.type}
                     ref={input => (this.input = input)}
                     min={this.props.min}

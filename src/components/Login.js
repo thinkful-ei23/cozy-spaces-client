@@ -15,12 +15,12 @@ export class LogIn extends React.Component {
     }
 
     return (
-      <main className="login-form textCenter" role="main">
+      <main aria-live="assertive" className="login-form textCenter" role="main">
         <h2>Log in</h2>
         <LoginForm />
         <p>
           Don't have an account? Go to the
-          <Link to="/register">registration page</Link>
+          <Link to="/register"> registration page</Link>
         </p>
       </main>
     );
