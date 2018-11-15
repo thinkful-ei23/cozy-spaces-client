@@ -1,8 +1,8 @@
 #Cozy Spaces
-##Logo
+(img/icon-above-font.png)
 An app focused on improving quality of life through curating truly cozy spaces especially for those who experience cold climates.
 
-###V1 Feature List
+##V1 Feature List
 *Users are taken to an introductory landing page the first time they visit the app.  If they have previously visited Cozy Spaces, they will be taken directly to listings of cozy spaces.
 *Users can access a learn more section to learn about categories of coziness.
 *Users can see cozy places based on their current location, or based on a zip code they enter.
@@ -11,7 +11,7 @@ An app focused on improving quality of life through curating truly cozy spaces e
 *Logged in users can add a cozy place by clicking a location on a map and adding information about that location.
 *Logged in users can access their username and email in their profile, where they can also delete their account.
 
-###V2 Feature List
+##V2 Feature List
 *Logged in users can upload photos of cozy places.
 *Users can see all of the closest cozy places on a map, or on a list.  List view will include distance from their location.
 *Users can see all the cozy places they have rated in their profile, as well as save their favorite cozy spaces in their profile.  They can add a statement to their profile defining what coziness means to them.
@@ -24,10 +24,21 @@ An app focused on improving quality of life through curating truly cozy spaces e
 *Emails validated as existing emails.
 *Accounts archived instead of deleted.
 
-#Link to Deployed Version:
+##Developers
+*Alexander Puhl https://github.com/AlexanderPuhl
+*Burke Koontz https://github.com/burkeKoontz
+*Jemadean Dobrosielski https://github.com/JemDobro
+*Selvin Norman https://github.com/selvinor
+
+##Twitter 
+https://twitter.com/CozySpacesApp
+
+##Product Hunt
+
+##Link to Deployed Version:
 https://dashboard.heroku.com/apps/cozy-spaces-client
 
-#Tech Stack:
+##Tech Stack:
 React for the frontend
 Redux for state management
 Node/Express for the backend
@@ -35,5 +46,6 @@ MongoDB/Mongoose for the database
 JWTs for authentication
 GoogleMap API
 
-This is the frontend for this app.  The backend can be found here: https://github.com/thinkful-ei23/CozySpacesServer
+##This is the frontend for this app.  The backend can be found here: 
+https://github.com/thinkful-ei23/CozySpacesServer
 
