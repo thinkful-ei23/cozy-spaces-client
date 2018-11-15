@@ -1,5 +1,5 @@
 ![alt text][logo]
-[![alt text][1.1]][1]
+[1.1]: http://i.imgur.com/tXSoThF.png (twitter icon with padding)
 [1]: http://www.twitter.com/CozySpacesApp
 
 [logo]: img/icon-left-logo-cropped-readme2.png "Cozy Spaces Logo"
