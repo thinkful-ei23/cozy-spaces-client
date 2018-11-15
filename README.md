@@ -1,4 +1,4 @@
-![alt text](img/icon-above-font.png "Cozy Spaces Logo")
+![alt text](public/img/icon-above-font.png "Cozy Spaces Logo")
 An app focused on improving quality of life through curating truly cozy spaces especially for those who experience cold climates.
 
 ## V1 Feature List
