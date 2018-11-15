@@ -48,6 +48,6 @@ https://dashboard.heroku.com/apps/cozy-spaces-client
   * GoogleMap API
   * Heroku for Deployment  
 
-## This is the frontend for this app.  The backend can be found here: 
+## This is the Cozy Spaces frontend.  The backend can be found here: 
 https://github.com/thinkful-ei23/CozySpacesServer
 
