@@ -117,10 +117,10 @@ class Header extends Component {
 
     return (
       <header>
-        <div className='header-icons'>
-          <span id='navbar-toggle' className='bars-icon' onClick={() => this.toggleMainNavbar()}><i className="fas fa-bars"/></span>
-          <span id='navbar-toggle' className='profile-icon' onClick={() => this.toggleProfileNavbar()}><i className='fas fa-user-circle'></i></span>
-        </div>
+        <nav className='header-icons'>
+          <button id='navbar-toggle' tabindex="0" className='bars-icon' onClick={() => this.toggleMainNavbar()}><i className="fas fa-bars" title="Open navbar"/></button>
+          <button id='navbar-toggle' tabindex="1" className='profile-icon' onClick={() => this.toggleProfileNavbar()}><i className='fas fa-user-circle' title="Open profile navbar"></i></button>
+        </nav>
         <nav id='main-nav'>
           <ul className='main-nav-ul' >
             {faqsButton}
@@ -136,7 +136,7 @@ class Header extends Component {
           </ul>
         </nav>
         <Link to="/dashboard">
-          <img className='header-logo' src='../img/icon-above-font-cropped.png' alt='logo'/>
+          <img className='header-logo' alt="Logo and link to dashboard" src='../img/icon-above-font-cropped.png' />
         </Link>
       </header>
     );

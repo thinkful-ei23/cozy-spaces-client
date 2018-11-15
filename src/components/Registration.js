@@ -21,7 +21,7 @@ export class RegistrationPage extends React.Component {
 
 
     return (
-        <main className='registration-form textCenter' role="main">
+        <main aria-live="assertive" className='registration-form textCenter' role="main">
           <h2>Sign up</h2>
           <RegistrationForm />
           <p>Already have an account? Go to the <Link to="/login">login page</Link></p>
