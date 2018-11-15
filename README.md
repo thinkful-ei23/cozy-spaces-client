@@ -1,4 +1,4 @@
-(img/icon-above-font.png)
+!(img/icon-above-font.png)
 An app focused on improving quality of life through curating truly cozy spaces especially for those who experience cold climates.
 
 ## V1 Feature List
