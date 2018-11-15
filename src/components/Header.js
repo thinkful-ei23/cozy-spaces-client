@@ -111,7 +111,7 @@ class Header extends Component {
             Register
           </Link>
         </li>
-      );;
+      );
     }
 
     return (
@@ -135,7 +135,7 @@ class Header extends Component {
           </ul>
         </nav>
         <Link to="/dashboard">
-          <h1>Cozy Spaces</h1>
+          <img className='header-logo' src='../img/icon-above-font-cropped.png' alt='logo'/>
         </Link>
       </header>
     );
