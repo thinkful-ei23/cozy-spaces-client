@@ -74,10 +74,9 @@ class Dashboard extends Component {
     return formIsValid;
   }
 
-
-
-
-
+  componentWillMount() {
+    document.title = 'Dashboard | Cozy Spaces';
+  }
 
   componentDidMount() {
     if (navigator.geolocation) {
@@ -145,7 +144,7 @@ class Dashboard extends Component {
       }
 
       if (this.state.geolocationError) {
-        geoLocationError = <p>'Error: The Geolocation service failed'</p>;
+        geoLocationError = <p className='geolocation-error-message textCenter'>Sorry, we can't find your location.</p>;
       }
       if (this.props.places.length >= 1) {
         places = this.props.places.map(place => (
@@ -176,8 +175,8 @@ class Dashboard extends Component {
         ));
       } else {
         places = (
-          <li>
-            There are no cozy spaces recorded in your area yet.{' '}
+          <li className='textCenter'>
+            <p>There are no cozy spaces recorded in your area yet.</p>
             <Link to={`/add-listing`}>Add a cozy space now?</Link>
           </li>
         );
@@ -193,7 +192,7 @@ class Dashboard extends Component {
             {geoLocationError}
             <form className='geolocation-form' onSubmit={(e) => this.submitSearchForm(e)}>
               <label className='geolocation-form-label' htmlFor="zip-geo">
-                Enter a zipcode to find cozy spaces near you:{' '}
+                Enter a zipcode to find cozy spaces near you
               </label>
               <div className='geolocation-form-input'>
                 <input

@@ -162,7 +162,7 @@ export class MapContainer extends Component {
             pattern="[0-9]{5}"
             title="Five digit zip code"
           />
-          <button onClick={e => this.sendZip(e)}>Submit</button>
+          <button className='button' onClick={e => this.sendZip(e)}>Submit</button>
         </form>
       );
     }

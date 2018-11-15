@@ -19,6 +19,9 @@ class Listing extends Component {
       }
     });
   }
+  componentWillMount() {
+    document.title = 'Listing | Cozy Spaces';
+  }
 
   render() {
     let yourRatings;
