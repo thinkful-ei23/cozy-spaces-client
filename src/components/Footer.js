@@ -8,7 +8,7 @@ export default function Footer() {
       <a className="social-icons" href="https://github.com/thinkful-ei23/cozy-spaces-client">
         <i className="fab fa-github social-icons" />
       </a>
-      <a href="https://twitter.com/CozySpaces">
+      <a href="https://twitter.com/CozySpacesApp?lang=en">
         <i className="fab fa-twitter social-icons" />
       </a>
       <a href="https://facebook.com/CozySpaces">

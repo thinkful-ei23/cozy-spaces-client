@@ -102,7 +102,7 @@ class RatingsForm extends React.Component {
                 component={Input}
                 type="textarea"
                 name="comment"
-                label="Comments"
+                label="Comment"
               />
             <button
               className='button'

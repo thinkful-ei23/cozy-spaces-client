@@ -29,6 +29,7 @@ class Header extends Component {
       mainNav.style.display = 'none';
     }
   }
+  
   toggleProfileNavbar() {
     let profileNav = document.getElementById('profile-nav');
     let mainNav = document.getElementById('main-nav');

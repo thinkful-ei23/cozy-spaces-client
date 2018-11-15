@@ -166,7 +166,13 @@ ul {
   margin-top: 8px;
   margin-bottom: 8px;
 }
-.button:hover {
+
+.button:disabled {
+  opacity: 0.65; 
+  cursor: not-allowed;
+}
+
+.button:hover:enabled {
   background: var(--romance);
   cursor: pointer;
   color: var(--main-orange)
