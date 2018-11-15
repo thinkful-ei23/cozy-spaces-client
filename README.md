@@ -31,10 +31,9 @@ Cozy Spaces is focused on improving quality of life through curating truly cozy 
   * [Jemadean Dobrosielski](https://github.com/JemDobro)
   * [Selvin Norman](https://github.com/selvinor)
 
-## Twitter 
-https://twitter.com/CozySpacesApp
+## [Twitter](https://twitter.com/CozySpacesApp "CozySpacesApp")
 
-## Product Hunt
+## [Product Hunt]
 
 ## Tech Stack:
   * React for the frontend
@@ -45,6 +44,6 @@ https://twitter.com/CozySpacesApp
   * GoogleMap API
   * Heroku for Deployment  
 
-## This is the Cozy Spaces frontend.  The backend can be found here: 
-https://github.com/thinkful-ei23/CozySpacesServer
+## This is the Cozy Spaces frontend.  The backend can be found [here].(https://github.com/thinkful-ei23/CozySpacesServer "CozySpacesServer")
+
 
