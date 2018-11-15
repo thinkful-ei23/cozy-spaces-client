@@ -1,7 +1,7 @@
 ![alt text][logo]
 
 [logo]: img/icon-left-logo-cropped-readme2.png
-[twitter]: img/Twitter_Logo_Blue37px.png
+[twitter]: img/Twitter_Logo_Blue40px.png
 [instagram]: img/glyph-logo_May201629px.png
 [producthunt]: img/product-hunt-logo-orange-25px.png
 [1]: https://twitter.com/CozySpacesApp
