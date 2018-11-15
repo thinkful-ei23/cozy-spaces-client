@@ -1,8 +1,8 @@
 ![alt text][logo]
 
 [logo]: img/icon-left-logo-cropped-readme2.png
-[twitter]: img/twitter.png
-[instagram]: img/instagram.png
+[twitter]: img/Twitter_Logo_Blue.png
+[instagram]: img/glyph-logo_May2016.png
 [1]: https://twitter.com/CozySpacesApp
 [2]: https://www.instagram.com/cozyspacesapp/
 
