@@ -15,6 +15,7 @@ class LandingPage extends Component {
             return (
                 <main className='textCenter' role="main">
                   <h2>Find <i>your</i> cozy space</h2>
+                  <img className='main-orange-border' src='.\img\kris-atomic-39750-unsplash.jpg' alt='cozy space' />
                   <p>Not all public spaces are equally cozy. In dark times, a warm and welcoming space can be a lifesaver. Search for these spaces near you, or join our community of cozy-seekers to determine which spaces are truly cozy.</p>
                   <button onClick={() => {this.setReturnUser()}}>Become cozy</button>
                 </main>
