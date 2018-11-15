@@ -3,7 +3,7 @@
 [logo]: img/icon-left-logo-cropped-readme2.png
 [twitter]: img/Twitter_Logo_Blue29px.png
 [instagram]: img/glyph-logo_May201629px.png
-[producthunt]: img/product-hunt-logo-orange-25px.png
+[producthunt]: img/product-hunt-logo-horizontal-orange.png
 [1]: https://twitter.com/CozySpacesApp
 [2]: https://www.instagram.com/cozyspacesapp/
 
@@ -42,7 +42,7 @@ Cozy Spaces is focused on improving quality of life through curating truly cozy 
   * [Jemadean Dobrosielski](https://github.com/JemDobro)
   * [Selvin Norman](https://github.com/selvinor)
 
-## Tech Used:
+## Tech Used
 
 ### Front End
 
