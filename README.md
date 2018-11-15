@@ -8,7 +8,7 @@
 
 
 Cozy Spaces is focused on improving quality of life through curating truly cozy spaces especially for those who experience cold climates.  Need a cozy space to warm up your toes and maybe put that warm light back in your soul?  **_[Find one here](https://dashboard.heroku.com/apps/cozy-spaces-client "Cozy Spaces")_** 
-
+[![alt text][twitter]][1] 
 [![alt text][instagram]][2] 
 
 ## V1 Feature List
