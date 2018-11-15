@@ -6,6 +6,10 @@ import RegistrationForm from './RegistrationForm';
 
 export class RegistrationPage extends React.Component {
 
+  componentWillMount() {
+    document.title = 'Registration | Cozy Spaces';
+  }
+
     render() {
     if (!this.props.informedUser) {
         return <Redirect to="/learn-more" />;

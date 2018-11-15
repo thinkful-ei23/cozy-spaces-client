@@ -6,6 +6,9 @@ import { clearAuth } from '../actions/auth';
 import { clearAuthToken, clearReturningUser, clearInformedUser } from '../local-storage';
 
 export class Profile extends Component {
+  componentWillMount() {
+    document.title = 'Profile | Cozy Spaces';
+  }
 
   deleteAccount(userId) {
     this.props.dispatch(deleteAccount(userId))
