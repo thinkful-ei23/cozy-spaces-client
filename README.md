@@ -42,18 +42,33 @@ Cozy Spaces is focused on improving quality of life through curating truly cozy 
   * [Jemadean Dobrosielski](https://github.com/JemDobro)
   * [Selvin Norman](https://github.com/selvinor)
 
-## [Twitter](https://twitter.com/CozySpacesApp "CozySpacesApp")
+## Tech Used:
 
-## [Product Hunt]
+### Front End
 
-## Tech Stack:
-  * React for the frontend
-  * Redux for state management
-  * Node/Express for the backend
-  * MongoDB/Mongoose for the database
-  * JWTs for authentication
+  * HTML5
+  * CSS3
+  * React
+  * Redux
   * GoogleMap API
-  * Heroku for Deployment  
+
+### Back End
+
+  * Node/Express
+  * MongoDB/Mongoose
+  * JWTs for authentication
+
+### Testing and Deployment  
+
+  * Mocha -testing framework
+  * Chai - assertion library for Node
+  * Heroku - deployment
+  * mLab - cloud database service 
+
+## API Documentation
+
+[Click to view API Documentation](https://documenter.getpostman.com/view/4458639/RzZCEdYf)
+
 
 ## This is the Cozy Spaces frontend.  The backend can be found [here](https://github.com/thinkful-ei23/CozySpacesServer "CozySpacesServer").
 
