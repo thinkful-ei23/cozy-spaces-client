@@ -3,14 +3,14 @@
 [logo]: img/icon-left-logo-cropped-readme2.png
 [twitter]: img/Twitter_Logo_Blue29px.png
 [instagram]: img/glyph-logo_May201629px.png
-[producthunt]: img/product-hunt-logo-orange-23px.png
+[producthunt]: img/product-hunt-logo-orange-25px.png
 [1]: https://twitter.com/CozySpacesApp
 [2]: https://www.instagram.com/cozyspacesapp/
 
 
 Cozy Spaces is focused on improving quality of life through curating truly cozy spaces especially for those who experience cold climates.  Need a cozy space to warm up your toes and light up your soul?  **_[Find one here](https://dashboard.heroku.com/apps/cozy-spaces-client "Cozy Spaces")_** 
 [![alt text][twitter]][1] 
-[![alt text][instagram]][2]
+[![alt text][instagram]][2]&nbsp;&nbsp;
 [![alt text][producthunt]][1]
 
 ## V1 Feature List
