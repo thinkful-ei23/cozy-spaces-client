@@ -1,7 +1,7 @@
 ![alt text][logo]
 
 [logo]: img/icon-left-logo-cropped-readme2.png "Cozy Spaces Logo"
-Cozy Spaces is focused on improving quality of life through curating truly cozy spaces especially for those who experience cold climates.  Need a cozy space to warm up your toes and maybe put that warm light back in your soul?  [Find one here](https://dashboard.heroku.com/apps/cozy-spaces-client "Cozy Spaces")
+Cozy Spaces is focused on improving quality of life through curating truly cozy spaces especially for those who experience cold climates.  Need a cozy space to warm up your toes and maybe put that warm light back in your soul?  **[Find one here](https://dashboard.heroku.com/apps/cozy-spaces-client "Cozy Spaces")**
 
 ## V1 Feature List
   * Users are taken to an introductory landing page the first time they visit the app.  If they have previously visited Cozy Spaces, they will be taken directly to listings of cozy spaces.
