@@ -15,7 +15,7 @@ Cozy Spaces is focused on bringing a warm glow to life through curating truly co
 [![Twitter Icon][twitter]][1]&nbsp;&nbsp;
 [![Instagram Icon][instagram]][2]&nbsp;&nbsp;&nbsp;&nbsp;
 [![Product Hunt Icon][producthunt]][1]&nbsp;&nbsp;&nbsp;&nbsp;
-[![GitHub Icon][github]][3] &nbsp; Backend
+[![GitHub Icon][github]][3] &nbsp;Backend
 
 ## V1 Feature List
   * Users are taken to an introductory landing page the first time they visit the app.  If they have previously visited Cozy Spaces, they will be taken directly to listings of cozy spaces.
