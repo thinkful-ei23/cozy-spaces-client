@@ -7,7 +7,7 @@ import placeReducer from './reducers/places';
 import ratingReducer from './reducers/ratings';
 import {refreshAuthToken, setAuthToken, setReturningUser, setInformedUser} from './actions/auth'
 import { reducer as formReducer } from 'redux-form';
-import {composeWithDevTools} from 'redux-devtools-extension';
+// import {composeWithDevTools} from 'redux-devtools-extension';
 
 
 const rootReducer = combineReducers({
@@ -19,14 +19,10 @@ const rootReducer = combineReducers({
 });
 
 // we still need this because we're going to switch to it right before pushing to master
-// const store = createStore(	
-//     rootReducer,	
-//     applyMiddleware(thunk)	
-// );	
-
-const store = createStore(rootReducer, composeWithDevTools(
-  applyMiddleware(thunk)
-));
+const store = createStore(	
+    rootReducer,	
+    applyMiddleware(thunk)	
+);	
 
 // Hydrate the authToken from localStorage if it exist
 const authToken = loadAuthToken();

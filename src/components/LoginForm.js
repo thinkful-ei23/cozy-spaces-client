@@ -13,7 +13,7 @@ class LoginForm extends React.Component {
         let error;
         if (this.props.error) {
             error = (
-                <div aria-live="assertive" className="form-error" aria-live="polite">
+                <div aria-live="assertive" className="form-error">
                     {this.props.error}
                 </div>
             );
