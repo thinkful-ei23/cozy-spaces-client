@@ -23,6 +23,15 @@ Cozy Spaces is focused on bringing a warm glow to life through curating truly co
   * Logged in users can add a cozy place by clicking a location on a map and adding information about that location.
   * Logged in users can access their username and email in their profile, where they can also delete their account.
 
+## Screenshots
+| <img alt="Landing Page" src="img/LandingPage.PNG" width="350"> | <img alt="Registration" src="img/Registration.PNG" width="350"> | <img alt="Login" src="img/Login.PNG" width="350"> |
+|:---:|:---:|:---:|
+| Landing Page | Registration | Login |
+
+| <img alt="Listings" src="img/Listings.PNG" width="350"> | <img alt="Specific Place Details" src="img/Specific_Place_Details.PNG" width="350"> | <img alt="Add Listing" src="img/AddListing.PNG" width="350"> |
+|:---:|:---:|:---:|
+| Listings | Specific Plac Details | Add Listing |
+
 ## V2 Feature List
   * Logged in users can upload photos of cozy places.
   * Users can see all of the closest cozy places on a map, or on a list.  List view will include distance from their location.
