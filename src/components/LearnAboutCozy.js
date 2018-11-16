@@ -40,38 +40,38 @@ export class LearnAboutCoziness extends Component {
         </p>
         <h3 className="textCenter"> Our categories</h3>
         <ul>
-          <li>
+          <li className="topBottomMargin16px">
             <span className="bold">Warm Lighting:</span> Cozy spaces are lit in
             ways that do not stress the eyes. This means that the lighting
             cannot be too bright (fluorescent or harsh lights) or too dim
             (little to no lighting). Good lighting is somewhere in the middle
             and tends to favor a warmer hue.
           </li>
-          <li>
+          <li className="topBottomMargin16px">
             <span className="bold">Relaxed Music:</span> If music has a high
             tempo and gets your heart pumping, it's likely that you're not
             feeling too cozy. Cozy spaces have low tempo music that makes you
             slow down the pace of life.
           </li>
-          <li>
+          <li className="topBottomMargin16px">
             <span className="bold">Calm Environment:</span> Babies, children,
             and loud people are not conducive to a calm environment. A bustling
             coffee shop full of office workers going to and fro is also not a
             calm environment. A cozy space should feel somewhat separate from
             the concerns of daily life. It should be lively but not busy.
           </li>
-          <li>
+          <li className="topBottomMargin16px">
             <span className="bold">Soft Fabrics:</span> Carpets and wall
             hangings dampen sound and also make the space appear more warm and
             welcoming. Concrete floors and exposed beams may be cool, but they
             give a space a spartan and unwelcoming vibe.
           </li>
-          <li>
+          <li className="topBottomMargin16px">
             <span className="bold">Comfy seating:</span> To relax properly in a
             place, couches or comfy chairs are necessary. The cozy space should
             be accepting of your desire to linger.{' '}
           </li>
-          <li>
+          <li className="topBottomMargin16px">
             <span className="bold">Hot food or drink:</span> A bad cup of coffee
             or a stale pastry in an otherwise charming place can be a
             dealbreaker. Sensory pleasures make us slow down and appreciate the
