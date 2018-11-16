@@ -8,7 +8,7 @@
 [2]: https://www.instagram.com/cozyspacesapp/
 
 
-Cozy Spaces is focused on bringing a warm glow to life through curating truly cozy spaces, especially for anyone experiencing cold climates, and/or nostalgia of a cozier time.  Need a cozy space to warm up your toes and light up your soul?  **_[Find one here](https://dashboard.heroku.com/apps/cozy-spaces-client "Cozy Spaces")_**&nbsp;
+Cozy Spaces is focused on bringing a warm glow to life through curating truly cozy spaces, especially for anyone experiencing cold climates, and/or nostalgia of a cozier time.  Need a cozy space to warm up your toes and light up your soul?  **_[Find one here](https://cozy-spaces-client.herokuapp.com/ "Cozy Spaces")_**&nbsp;
 
 [![alt text][twitter]][1]&nbsp;&nbsp;
 [![alt text][instagram]][2]&nbsp;&nbsp;&nbsp;&nbsp;
