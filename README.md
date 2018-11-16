@@ -30,7 +30,7 @@ Cozy Spaces is focused on bringing a warm glow to life through curating truly co
 
 | <img alt="Listings" src="img/Listings2.PNG" width="350"> | <img alt="Specific Place Details" src="img/Specific_Place_Details2.PNG" width="350"> | <img alt="Add Listing" src="img/AddListing6.PNG" width="350"> |
 |:---:|:---:|:---:|
-| Listings | Specific Plac Details | Add Listing |
+| Listings | Specific Place Details | Add Listing |
 
 ## V2 Feature List
   * Logged in users can upload photos of cozy places.
