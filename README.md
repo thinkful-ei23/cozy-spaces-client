@@ -65,9 +65,10 @@ Cozy Spaces is focused on bringing a warm glow to life through curating truly co
   * GoogleMap API
 
 ### Back End 
+[![GitHub Icon][github]][3]
 
-  * Node/Express  
-  * MongoDB/Mongoose  [![GitHub Icon][github]][3]
+  * Node/Express
+  * MongoDB/Mongoose
   * JWTs for authentication
 
 ### Testing and Deployment  
