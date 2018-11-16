@@ -74,10 +74,9 @@ class Dashboard extends Component {
     return formIsValid;
   }
 
-
-
-
-
+  componentWillMount() {
+    document.title = 'Dashboard | Cozy Spaces';
+  }
 
   componentDidMount() {
     if (navigator.geolocation) {
@@ -115,6 +114,7 @@ class Dashboard extends Component {
       lat: position.coords.latitude,
       lng: position.coords.longitude
     };
+
     this.setState({ currentLocation: pos, geoLocationError: false });
     this.props.dispatch(fetchPlaces(pos));
     // send this filter to get places
@@ -144,20 +144,20 @@ class Dashboard extends Component {
       }
 
       if (this.state.geolocationError) {
-        geoLocationError = <p>'Error: The Geolocation service failed'</p>;
+        geoLocationError = <p className='geolocation-error-message textCenter'>Sorry, we can't find your location.</p>;
       }
       if (this.props.places.length >= 1) {
         places = this.props.places.map(place => (
-          <li className='dashboard-places card' key={place._id}>
+          <li className='dashboard-places card' key={place.id}>
             <Link
-              onClick={() => this.setPlace(place._id)}
-              to={`/places/${place._id}`}
+              onClick={() => this.setPlace(place.id)}
+              to={`/places/${place.id}`}
             >
             <img
                 alt={`${place.photos[0].caption}`}
-                className='main-orange-bottom-border'
                 src={`${place.photos[0].url}`}
                 />
+              {/* This needs to be commented out temporarily because new listings don't have photos */}
               <div className="place-card-content">
                 <h2 className="inline name">{place.name}</h2>
                 <div className="place-card-content-r1">
@@ -175,8 +175,8 @@ class Dashboard extends Component {
         ));
       } else {
         places = (
-          <li>
-            There are no cozy spaces recorded in your area yet.{' '}
+          <li className='textCenter'>
+            <p>There are no cozy spaces recorded in your area yet.</p>
             <Link to={`/add-listing`}>Add a cozy space now?</Link>
           </li>
         );
@@ -192,7 +192,7 @@ class Dashboard extends Component {
             {geoLocationError}
             <form className='geolocation-form' onSubmit={(e) => this.submitSearchForm(e)}>
               <label className='geolocation-form-label' htmlFor="zip-geo">
-                Enter a zipcode to find locations:{' '}
+                Enter a zipcode to find cozy spaces near you
               </label>
               <div className='geolocation-form-input'>
                 <input

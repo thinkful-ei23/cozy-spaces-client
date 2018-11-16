@@ -8,7 +8,7 @@ class Ratings extends React.Component {
   deleteRating() {
     const id = this.props.placeId;
     return this.props
-      .dispatch(deleteRating(this.props.specificPlace._id))
+      .dispatch(deleteRating(this.props.specificPlace.id))
       .then(() => this.props.dispatch(fetchRatingsByPlaceId(id)))
       .then(() => this.props.dispatch(fetchPlaceByID(id)));
   }
@@ -64,13 +64,13 @@ class Ratings extends React.Component {
             </li>
             <li>Comfy seating: {specificRating.comfySeating}</li>
             <li>Hot food/drink: {specificRating.hotFoodDrink}</li>
-            <li>Comments: {specificRating.comment}</li>
+            <li>Comment: {specificRating.comment}</li>
           </ul>
           {buttons}
         </section>
       );
     } else if (this.props.ratingError) {
-      return ''
+      return '';
     } else {
       return <p>Loading</p>;
     }

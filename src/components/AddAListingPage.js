@@ -7,6 +7,7 @@ import {clearSpecificPlace} from '../actions/places';
 export class AddAListingPage extends Component {
 
   componentWillMount() {
+    document.title = 'Add A Listing | Cozy Spaces';
     this.props.dispatch(clearSpecificPlace())
   }
 

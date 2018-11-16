@@ -28,7 +28,6 @@ export class MapContainer extends Component {
         }
       );
     } else {
-      // Browser doesn't support Geolocation
       this.handleLocationError(false);
     }
   }
@@ -65,13 +64,6 @@ export class MapContainer extends Component {
       activeMarker: marker,
       showingInfoWindow: true
     });
-  }
-
-  fetchPlaces(mapProps, map) {
-    //<Listing places={this.state.places} />
-    // const {google} = mapProps;
-    // const service = new google.maps.places.PlacesService(map);
-    // ...
   }
 
   onInfoWindowOpen(props, e) {
@@ -142,7 +134,7 @@ export class MapContainer extends Component {
 
   render() {
     if (this.props.specificPlace) {
-      return <Redirect to={`/places/${this.props.specificPlace._id}`} />;
+      return <Redirect to={`/places/${this.props.specificPlace.id}`} />;
     }
 
     let marker;
@@ -150,7 +142,6 @@ export class MapContainer extends Component {
     let geoLocationError;
 
     if (this.state.activeMarker) {
-      // make some markers appear
       marker = (
         <Marker
           onClick={(props, marker, e) => this.onMarkerClick(props, marker, e)}
@@ -162,7 +153,6 @@ export class MapContainer extends Component {
 
     if (this.state.geolocationError) {
       geoLocationError = <p>'Error: The Geolocation service failed'</p>;
-      // make some markers appear
       geolocationForm = (
         <form>
           <label htmlFor="zip-geo">Enter a zip-code instead</label>
@@ -172,7 +162,7 @@ export class MapContainer extends Component {
             pattern="[0-9]{5}"
             title="Five digit zip code"
           />
-          <button onClick={e => this.sendZip(e)}>Submit</button>
+          <button className='button' onClick={e => this.sendZip(e)}>Submit</button>
         </form>
       );
     }
@@ -197,6 +187,7 @@ export class MapContainer extends Component {
       <section>
         {geoLocationError}
         {geolocationForm}
+
         <div className='map-container' style={mapWrapper}>
           <Map
             google={this.props.google}

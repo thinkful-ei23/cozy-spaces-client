@@ -25,8 +25,9 @@ export default class Input extends React.Component {
                 <label htmlFor={this.props.label}>{this.props.labelText || this.props.label}</label>
                 <input
                     {...this.props.input}
+                    aria-label={this.props.label}
                     className='inputPaddingStripped'
-                    id={this.props.input.name}
+                    id={this.props.label}
                     type={this.props.type}
                     ref={input => (this.input = input)}
                     min={this.props.min}
