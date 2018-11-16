@@ -25,7 +25,7 @@ export class Profile extends Component {
             <h2>Profile Information</h2>
             <p>User Name: {this.props.username}</p>
             <p>User Email: {this.props.email}</p>
-            <button className='button' onClick={() => this.deleteAccount(this.props.userId)}>Delete Account</button>
+            {/* <button className='button' onClick={() => this.deleteAccount(this.props.userId)}>Delete Account</button> */}
           </section>
         );
     }
