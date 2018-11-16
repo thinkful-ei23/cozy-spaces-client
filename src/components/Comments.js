@@ -21,7 +21,11 @@ class Comments extends React.Component {
           <ul>
               {(this.props.ratings).reduce((acc, rating) => {
                 if (rating.rating.comment !== null) {
-                  acc.push (<li key={rating.id} className="comment">{rating.rating.comment} &nbsp;&nbsp;- <i>{rating.userId.username}</i> </li>);
+                  let username;
+                  if (rating.userId) {
+                    username = <i>- {rating.userId.username}</i>;
+                  }
+                  acc.push (<li key={rating.id} className="comment">{rating.rating.comment} &nbsp;&nbsp;{username} </li>);
                 }
                 return acc;
               },[]
