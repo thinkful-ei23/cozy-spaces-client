@@ -4,7 +4,7 @@
 [twitter]: img/Twitter_Logo_Blue42pxcropped.png
 [instagram]: img/glyph-logo_May201629px.png
 [producthunt]: img/product-hunt-logo-orange-28px.png
-[github]: img/product-hunt-logo-orange-28px.png
+[github]: img/github-mark-32px.png
 [1]: https://twitter.com/CozySpacesApp
 [2]: https://www.instagram.com/cozyspacesapp/
 [3]: https://github.com/thinkful-ei23/CozySpacesServer
