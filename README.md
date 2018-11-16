@@ -80,6 +80,6 @@ Cozy Spaces is focused on bringing a warm glow to life through curating truly co
 [Click to view API Documentation](https://documenter.getpostman.com/view/4458639/RzZCEdYf)
 
 
-## This is the Cozy Spaces frontend.  The backend can be found [here](https://github.com/thinkful-ei23/CozySpacesServer "CozySpacesServer").
+### **This is the Cozy Spaces frontend.  The backend can be found [here](https://github.com/thinkful-ei23/CozySpacesServer "CozySpacesServer").**
 
 
