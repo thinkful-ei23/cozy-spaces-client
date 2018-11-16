@@ -177,7 +177,7 @@ class Dashboard extends Component {
         places = (
           <li className='textCenter'>
             <p>There are no cozy spaces recorded in your area yet.</p>
-            <Link to={`/add-listing`}>Add a cozy space now?</Link>
+            <Link className='button' to={`/add-listing`}>Add a cozy space</Link>
           </li>
         );
       }
