@@ -1,4 +1,4 @@
-![alt text][logo]
+![Cozy Spaces Logo][logo]
 
 [logo]: img/icon-left-logo-cropped-readme.png
 [twitter]: img/Twitter_Logo_Blue42pxcropped.png
