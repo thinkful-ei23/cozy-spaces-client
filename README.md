@@ -56,7 +56,7 @@ Cozy Spaces is focused on bringing a warm glow to life through curating truly co
 
 ## Tech Used
 
-### Front End
+### Frontend
 
   * HTML5
   * CSS3
@@ -65,7 +65,7 @@ Cozy Spaces is focused on bringing a warm glow to life through curating truly co
   * Redux
   * GoogleMap API
 
-### Back End
+### Backend
 
   * Node/Express
   * MongoDB/Mongoose
