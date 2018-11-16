@@ -48,6 +48,7 @@ Cozy Spaces is focused on bringing a warm glow to life through curating truly co
 
   * HTML5
   * CSS3
+  * JavaScript
   * React
   * Redux
   * GoogleMap API
