@@ -118,8 +118,8 @@ class Header extends Component {
     return (
       <header>
         <nav className='header-icons'>
-          <button id='navbar-toggle' tabindex="0" className='bars-icon' onClick={() => this.toggleMainNavbar()}><i className="fas fa-bars" title="Open navbar"/></button>
-          <button id='navbar-toggle' tabindex="1" className='profile-icon' onClick={() => this.toggleProfileNavbar()}><i className='fas fa-user-circle' title="Open profile navbar"></i></button>
+          <button id='navbar-toggle' tabIndex="0" className='bars-icon' onClick={() => this.toggleMainNavbar()}><i className="fas fa-bars" title="Open navbar"/></button>
+          <button id='navbar-toggle' tabIndex="1" className='profile-icon' onClick={() => this.toggleProfileNavbar()}><i className='fas fa-user-circle' title="Open profile navbar"></i></button>
         </nav>
         <nav id='main-nav'>
           <ul className='main-nav-ul' >
