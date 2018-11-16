@@ -152,7 +152,7 @@ export class MapContainer extends Component {
     }
 
     if (this.state.geolocationError) {
-      geoLocationError = <p>'Error: The Geolocation service failed'</p>;
+      geoLocationError = <p>Sorry, we can't find your location.</p>;
       geolocationForm = (
         <form>
           <label htmlFor="zip-geo">Enter a zip-code instead</label>
