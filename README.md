@@ -64,7 +64,8 @@ Cozy Spaces is focused on bringing a warm glow to life through curating truly co
   * Redux
   * GoogleMap API
 
-### Back End  [![alt text][github]][3]
+### Back End
+[![alt text][github]][3]
 
   * Node/Express
   * MongoDB/Mongoose
