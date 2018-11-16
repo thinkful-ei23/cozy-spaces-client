@@ -4,7 +4,7 @@
 [twitter]: img/Twitter_Logo_Blue42pxcropped.png
 [instagram]: img/glyph-logo_May201629px.png
 [producthunt]: img/product-hunt-logo-orange-28px.png
-[github]: img/GitHub-Mark-32px.png
+[github]: img/GitHub-Mark-29px.png
 [1]: https://twitter.com/CozySpacesApp
 [2]: https://www.instagram.com/cozyspacesapp/
 [3]: https://github.com/thinkful-ei23/CozySpacesServer
@@ -14,7 +14,7 @@ Cozy Spaces is focused on bringing a warm glow to life through curating truly co
 
 [![Twitter Icon][twitter]][1]&nbsp;&nbsp;
 [![Instagram Icon][instagram]][2]&nbsp;&nbsp;&nbsp;&nbsp;
-[![Product Hunt Icon][producthunt]][1]
+[![Product Hunt Icon][producthunt]][1]&nbsp;&nbsp;&nbsp;&nbsp;
 [![GitHub Icon][github]][3] Backend
 
 ## V1 Feature List
