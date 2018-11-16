@@ -12,9 +12,9 @@
 
 Cozy Spaces is focused on bringing a warm glow to life through curating truly cozy spaces, especially for anyone experiencing cold climates, and/or nostalgia of a cozier time.  Need a cozy space to warm up your toes and light up your soul?  **_[Find one here](https://cozy-spaces-client.herokuapp.com/ "Cozy Spaces")_**&nbsp;
 
-[![alt text][twitter]][1]&nbsp;&nbsp;
-[![alt text][instagram]][2]&nbsp;&nbsp;&nbsp;&nbsp;
-[![alt text][producthunt]][1]
+[![Twitter Icon][twitter]][1]&nbsp;&nbsp;
+[![Instagram Icon][instagram]][2]&nbsp;&nbsp;&nbsp;&nbsp;
+[![Product Hunt Icon][producthunt]][1]
 
 ## V1 Feature List
   * Users are taken to an introductory landing page the first time they visit the app.  If they have previously visited Cozy Spaces, they will be taken directly to listings of cozy spaces.
@@ -65,7 +65,7 @@ Cozy Spaces is focused on bringing a warm glow to life through curating truly co
   * GoogleMap API
 
 ### Back End
-[![alt text][github]][3]
+[![GitHub Icon][github]][3]
 
   * Node/Express
   * MongoDB/Mongoose
