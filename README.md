@@ -66,8 +66,8 @@ Cozy Spaces is focused on bringing a warm glow to life through curating truly co
 
 ### Back End 
 
-  * Node/Express  [![GitHub Icon][github]][3]
-  * MongoDB/Mongoose
+  * Node/Express  
+  * MongoDB/Mongoose  [![GitHub Icon][github]][3]
   * JWTs for authentication
 
 ### Testing and Deployment  
