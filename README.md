@@ -4,8 +4,10 @@
 [twitter]: img/Twitter_Logo_Blue42pxcropped.png
 [instagram]: img/glyph-logo_May201629px.png
 [producthunt]: img/product-hunt-logo-orange-28px.png
+[github]: img/Github-Mark-32px.png
 [1]: https://twitter.com/CozySpacesApp
 [2]: https://www.instagram.com/cozyspacesapp/
+[3]: https://github.com/thinkful-ei23/CozySpacesServer
 
 
 Cozy Spaces is focused on bringing a warm glow to life through curating truly cozy spaces, especially for anyone experiencing cold climates, and/or nostalgia of a cozier time.  Need a cozy space to warm up your toes and light up your soul?  **_[Find one here](https://cozy-spaces-client.herokuapp.com/ "Cozy Spaces")_**&nbsp;
@@ -62,7 +64,7 @@ Cozy Spaces is focused on bringing a warm glow to life through curating truly co
   * Redux
   * GoogleMap API
 
-### Back End
+### Back End  [![alt text][github]][3]
 
   * Node/Express
   * MongoDB/Mongoose
