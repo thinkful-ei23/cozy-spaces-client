@@ -28,7 +28,7 @@ Cozy Spaces is focused on bringing a warm glow to life through curating truly co
 |:---:|:---:|:---:|
 | Landing Page | Registration | Login |
 
-| <img alt="Listings" src="img/Listings.PNG" width="350"> | <img alt="Specific Place Details" src="img/Specific_Place_Details.PNG" width="350"> | <img alt="Add Listing" src="img/AddListing.PNG" width="350"> |
+| <img alt="Listings" src="img/Listings2.PNG" width="350"> | <img alt="Specific Place Details" src="img/Specific_Place_Details2.PNG" width="350"> | <img alt="Add Listing" src="img/AddListing6.PNG" width="350"> |
 |:---:|:---:|:---:|
 | Listings | Specific Plac Details | Add Listing |
 
