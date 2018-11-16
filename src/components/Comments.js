@@ -11,7 +11,7 @@ class Comments extends React.Component {
     if (!this.props.loggedIn) {
       registerLink =  <div className='textCenter'>
                         <p>Have a comment to share?</p>
-                        <Link className='button' to="/register"> Join the cozy force!</Link>
+                        <Link to="/register"> Join the cozy community!</Link>
                       </div>;
     }
 
