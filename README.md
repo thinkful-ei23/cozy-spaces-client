@@ -13,6 +13,12 @@
 
 Cozy Spaces is focused on bringing a warm glow to life through curating truly cozy spaces, especially for anyone experiencing cold climates, and/or nostalgia of a cozier time.  Need a cozy space to warm up your toes and light up your soul?  **_[Find one here](https://cozy-spaces-client.herokuapp.com/ "Cozy Spaces")_**&nbsp;
 
+Demo account:
+
+username: demoUser
+
+password: demoUser1234
+
 [![Twitter Icon][twitter]][1]&nbsp;&nbsp;
 [![Instagram Icon][instagram]][2]&nbsp;&nbsp;&nbsp;&nbsp;
 [![Product Hunt Icon][producthunt]][4]&nbsp;&nbsp;&nbsp;&nbsp;
