@@ -22,6 +22,7 @@ export class LogIn extends React.Component {
           Don't have an account? Go to the
           <Link to="/register"> registration page</Link>
         </p>
+        <p>Or try our demo user:</p><p>Username: demoUser <br /> Password: demoUser1234</p>
       </main>
     );
   }
