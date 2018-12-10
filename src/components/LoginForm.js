@@ -27,6 +27,7 @@ class LoginForm extends React.Component {
                     this.onSubmit(values)
                 )}>
                 {error}
+                <label htmlFor="username">Username</label>
                 <Field
                     component={Input}
                     type="text"
@@ -34,8 +35,8 @@ class LoginForm extends React.Component {
                     id="username"
                     autocomplete="username"
                     validate={[required, nonEmpty]}
-                    label="Username"
                 />
+                <label htmlFor="password">Password</label> 
                 <Field
                     component={Input}
                     type="password"
@@ -43,7 +44,6 @@ class LoginForm extends React.Component {
                     id="password"
                     autocomplete="current-password"
                     validate={[required, nonEmpty]}
-                    label='Password'
                 />
                 <button className="button login" disabled={this.props.pristine || this.props.submitting}>
                     Cozy up!

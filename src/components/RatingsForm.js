@@ -43,66 +43,66 @@ class RatingsForm extends React.Component {
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
         >
           {error}
+          <label htmlFor="warmLighting">Warm Lighting</label>
           <Field
             component={Input}
             type="number"
             name="warmLighting"
             id="warmLighting"
-            label="Warm Lighting"
             min="0"
             max="5"
             validate={[required]}
           />
+          <label htmlFor="relaxedMusic">Relaxed Music</label>
           <Field
             component={Input}
             type="number"
             name="relaxedMusic"
-            label="Relaxed Music"
             min="0"
             max="5"
             validate={[required]}
           />
+          <label htmlFor="calmEnvironment">Calm environment</label>
           <Field
             component={Input}
             type="number"
             name="calmEnvironment"
-            label="Calm environment"
             min="0"
             max="5"
             validate={[required]}
           />
+          <label htmlFor="softFabrics">Soft fabrics in space (walls or floor)</label>
           <Field
             component={Input}
             type="number"
             name="softFabrics"
-            label="Soft fabrics in space (walls or floor)"
             min="0"
             max="5"
             validate={[required]}
           />
+          <label htmlFor="comfySeating">Comfy Seating</label>
           <Field
             component={Input}
             type="number"
             name="comfySeating"
-            label="Comfy Seating"
             min="0"
             max="5"
             validate={[required]}
           />
+          <label htmlFor="hotFoodDrink">Hot Food and Drink</label>
           <Field
             component={Input}
             type="number"
             name="hotFoodDrink"
-            label="Hot Food and Drink"
             min="0"
             max="5"
             validate={[required]}
           />
+          <label htmlFor="comment">Comments</label>
           <Field
             component={Input}
             type="textarea"
             name="comment"
-            label="Comment"
           />
           <button
             className="button"

@@ -71,19 +71,19 @@ export class MapContainer extends Component {
       <form>
         <div className="topBottomMargin8px">
           <label className="blackText" htmlFor="name">
-            Name:
+            Name
           </label>
           <input type="text" id="name" />
         </div>
         <div className="topBottomMargin8px">
           <label className="blackText" htmlFor="address">
-            Address:
+            Address
           </label>
           <input type="text" id="address" />
         </div>
         <div className="topBottomMargin8px">
           <label className="blackText" htmlFor="typeOfPlace">
-            Type of Place:
+            Type of Place
           </label>
           <input type="text" id="typeOfPlace" />
         </div>

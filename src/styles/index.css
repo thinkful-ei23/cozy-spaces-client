@@ -60,9 +60,10 @@ input {
   padding: 6px 2px;
 }
 label {
-  display: inline-block;
+  display: block;
   font-size: 16px;
   padding-right: 8px;
+  text-align: left;
 }
 li {
   font-size: 16px;
@@ -123,6 +124,7 @@ ul {
 .textCenter {
   text-align: center;
 }
+
 .topMargin8px {
   margin-top: 8px;
 }
